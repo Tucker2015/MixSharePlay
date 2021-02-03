@@ -47,10 +47,6 @@ export default class VideoPlayer extends React.Component {
         return (
 
             <div >
-                <div>
-
-                </div>
-
 
                 <div className="">
                     {this.state.stream ? (

@@ -104,51 +104,25 @@ const Profile = ({
 
   return (
     <Layout>
-      <div className="profile">
+      <div className="profile row ">
+
         <h1>Profile page</h1>
-        <p>
-          This is the profile page. User can edit his own profile and Admin can edit any user's
-          profile. Only authenticated users can see this page.
-        </p>
         {isLoading ? (
           <Loader />
         ) : (
             <div className="profile-info">
-              <img src={image ? image : profile.avatar} className="avatar" />
-              <div className="info-container">
-                <div>
-                  <span className="label">Provider: </span>
-                  <span className="info">{profile.provider}</span>
-                </div>
-                <div>
-                  <span className="label">Role: </span>
-                  <span className="info">{profile.role}</span>
-                </div>
-                <div>
-                  <span className="label">Name: </span>
-                  <span className="info">{profile.name}</span>
-                </div>
-                <div>
-                  <span className="label">Username: </span>
-                  <span className="info">{profile.username}</span>
-                </div>
-                <div>
-                  <span className="label">Live Stream Enabled: </span>
-                  <span className="info">{profile.live_stream}</span>
-                </div>
-                <div>
-                  <span className="label">Email: </span>
-                  <span className="info">{profile.email}</span>
-                </div>
-                <div>
-                  <span className="label">Joined: </span>
-                  <span className="info">
-                    {moment(profile.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}
-                  </span>
-                </div>
-                <div>
+              <div className="card mt-5">
+                <img src={image ? image : profile.avatar} alt="" height="300" />
+                <div className="card-header h3">{profile.name}'s Profile
+</div><div className="card-body">
+                  <h5 className="card-title">Username : {profile.username}</h5>
+                  <h5 className="card-title">Email : {profile.email}</h5>
+                  <h5 className="card-title">Live Stream Enabled : {profile.live_stream}</h5>
+                  <h5 className="card-title">Provider: {profile.provider}</h5>
+                  <h5 className="card-title">Joined : {moment(profile.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}</h5>
+                  <hr></hr>
                   <button
-                    className="btn"
+                    className="btn bg-success text-light"
                     type="button"
                     onClick={handleClickEdit}
                     disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
@@ -158,105 +132,111 @@ const Profile = ({
                 </div>
               </div>
             </div>
+
           )}
 
         {error && <p className="error">{error}</p>}
 
         {isEdit && (
-          <div className="form">
-            <form onSubmit={formik.handleSubmit}>
-              <div>
-                <label>Avatar:</label>
-                <input name="image" type="file" onChange={onChange} />
-                {image && (
-                  <button
-                    className="btn"
-                    onClick={() => {
-                      setImage(null);
-                      setAvatar(null);
-                    }}
-                    type="button"
-                  >
-                    Remove Image
-                  </button>
-                )}
-              </div>
-              <input name="id" type="hidden" value={formik.values.id} />
-              <div className="input-div">
-                <label>Name:</label>
-                <input
-                  placeholder="Name"
-                  name="name"
-                  className=""
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.name}
-                />
-                {formik.touched.name && formik.errors.name ? (
-                  <p className="error">{formik.errors.name}</p>
-                ) : null}
-              </div>
-              <div className="input-div">
-                <label>Username:</label>
-                <input
-                  placeholder="Username"
-                  name="username"
-                  className=""
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.username}
-                />
-                {formik.touched.username && formik.errors.username ? (
-                  <p className="error">{formik.errors.username}</p>
-                ) : null}
-              </div>
-              <div className="input-div">
-                <label>Live Stream Enabled:</label>
-                <input
-                  placeholder="Yes / No"
-                  name="live_stream"
-                  className=""
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.live_stream}
-                />
-                {formik.touched.live_stream && formik.errors.live_stream ? (
-                  <p className="error">{formik.errors.live_stream}</p>
-                ) : null}
-              </div>
-              {profile.provider === 'email' && (
-                <div className="input-div">
-                  <label>Password:</label>
+          <div className="card mt-5 ml-5">
+            <div className="card-header h3">Edit Profile</div>
+            <div className="form">
+              <form onSubmit={formik.handleSubmit}>
+                <div>
+                  <label>Avatar:</label>
+                  <input name="image" className="btn w-75" type="file" onChange={onChange} />
+                  {image && (
+                    <button
+                      className="btn w-100"
+                      onClick={() => {
+                        setImage(null);
+                        setAvatar(null);
+                      }}
+                      type="button"
+                    >
+                      Remove Image
+                    </button>
+                  )}
+                </div>
+                <input name="id" type="hidden" value={formik.values.id} />
+                <div className="input-div card-title">
+                  <label>Name:</label>
                   <input
-                    placeholder="Password"
-                    name="password"
+                    placeholder="Name"
+                    name="name"
                     className=""
-                    type="password"
+                    type="text"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.password}
+                    value={formik.values.name}
                   />
-                  {formik.touched.password && formik.errors.password ? (
-                    <p className="error">{formik.errors.password}</p>
+                  {formik.touched.name && formik.errors.name ? (
+                    <p className="error">{formik.errors.name}</p>
                   ) : null}
                 </div>
-              )}
-              <button type="submit" className="btn">
-                Save
+                <div className="input-div">
+                  <label>Username:</label>
+                  <input
+                    placeholder="Username"
+                    name="username"
+                    className=""
+                    type="text"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.username}
+                  />
+                  {formik.touched.username && formik.errors.username ? (
+                    <p className="error">{formik.errors.username}</p>
+                  ) : null}
+                </div>
+                {/* <div className="input-div">
+                  <label>Live Stream Enabled:</label>
+                  <input
+                    placeholder="Yes / No"
+                    name="live_stream"
+                    className="w-100 disable"
+                    type="text"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.live_stream}
+                  />
+                  {formik.touched.live_stream && formik.errors.live_stream ? (
+                    <p className="error">{formik.errors.live_stream}</p>
+                  ) : null}
+                </div> */}
+                {profile.provider === 'email' && (
+                  <div className="input-div">
+                    <label>Password:</label>
+                    <input
+                      placeholder="Password"
+                      name="password"
+                      className=""
+                      type="password"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.password}
+                    />
+                    {formik.touched.password && formik.errors.password ? (
+                      <p className="error">{formik.errors.password}</p>
+                    ) : null}
+                  </div>
+                )}
+                <button type="submit" className="btn">
+                  Save
               </button>
-              <button
-                onClick={() => handleDeleteUser(profile.id, history)}
-                type="button"
-                className="btn"
-              >
-                Delete profile
+                <button
+                  onClick={() => handleDeleteUser(profile.id, history)}
+                  type="button"
+                  className="btn"
+                >
+                  Delete profile
               </button>
-            </form>
+              </form>
+            </div>
+
           </div>
         )}
+
       </div>
     </Layout>
   );

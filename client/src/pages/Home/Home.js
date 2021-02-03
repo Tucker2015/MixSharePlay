@@ -30,8 +30,8 @@ const Home = ({ auth, reseedDatabase }) => {
 
   return (
     <Layout>
-      <div className="home-page">
-        <h1>Home page</h1>
+      <div className="home-page mt-2">
+        <div className="bg-success w-25 p-2 text-center"><h4>Home Page</h4></div>
 
         {!auth.isAuthenticated ? (
           <div>
