@@ -2,10 +2,10 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import LiveStreams from '../Live/LiveStream';
 import Layout from '../../layout/Layout';
-import MessageList from '../../components/MessageList/MessageList';
-import MessageForm from '../../components/MessageForm/MessageForm';
+// import MessageList from '../../components/MessageList/MessageList';
+// import MessageForm from '../../components/MessageForm/MessageForm';
 import { reseedDatabase } from '../../store/actions/authActions';
 
 import './styles.css';
@@ -30,6 +30,7 @@ const Home = ({ auth, reseedDatabase }) => {
 
   return (
     <Layout>
+      <LiveStreams />
       <div className="home-page mt-2">
         <div className="bg-success w-25 p-2 text-center"><h4>Home Page</h4></div>
 

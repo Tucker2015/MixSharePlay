@@ -1,21 +1,21 @@
 const NodeMediaServer = require('node-media-server'),
     config = require('./config/default').rtmp_server,
     User = require('./models/User').User,
-    // helpers = require('./helpers/helpers');
+    helpers = require('./helpers/helpers'),
 
     nms = new NodeMediaServer(config);
 
 nms.on('prePublish', async (id, StreamPath, args) => {
-    let stream_key = getStreamKeyFromStreamPath(StreamPath);
+    let live_stream = getStreamKeyFromStreamPath(StreamPath);
     console.log('[NodeEvent on prePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 
-    User.findOne({ stream_key: stream_key }, (err, user) => {
+    User.findOne({ live_stream: live_stream }, (err, user) => {
         if (!err) {
             if (!user) {
                 let session = nms.getSession(id);
                 session.reject();
             } else {
-                helpers.generateStreamThumbnail(stream_key);
+                helpers.generateStreamThumbnail(live_stream);
             }
         }
     });

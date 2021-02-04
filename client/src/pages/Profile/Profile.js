@@ -4,35 +4,13 @@ import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
-
+import './styles.css';
 import { getProfile, editUser, deleteUser } from '../../store/actions/userActions';
 import { loadMe } from '../../store/actions/authActions';
 import Layout from '../../layout/Layout';
 import Loader from '../../components/Loader/Loader';
 import requireAuth from '../../hoc/requireAuth';
 import { profileSchema } from './validation';
-
-import './styles.css';
-
-//// nema password za oauth usere ni na klijentu ni serveru
-// validacija na serveru i error handilng na clientu
-// css i html
-//// delete user i logika da ne brise seedovane
-//// admin ruta i hoc
-// error handling login register posto je zajednicki loading i error
-//// mongo atlas i heroku deploy package json i promenljive env i config
-//// avatar staza u bazu samo fajl
-//// gitignore za placeholder avatar
-//// delete profile ruta
-
-// hendlovanje staza za slike, default avatar za izbrisane sa heroku
-// readme
-//// posle edit user treba redirect na novi username url
-
-// fore
-// za facebook more https apsolutni callback url
-// FACEBOOK_CALLBACK_URL=https://mern-boilerplate-demo.herokuapp.com/auth/facebook/callback
-// da bi prihvatio fb domen mora dole da se poklapa sa siteurl
 
 const Profile = ({
   getProfile,
@@ -104,43 +82,43 @@ const Profile = ({
 
   return (
     <Layout>
-      <div className="profile row ">
 
-        <h1>Profile page</h1>
-        {isLoading ? (
-          <Loader />
-        ) : (
-            <div className="profile-info">
-              <div className="card mt-5">
-                <img src={image ? image : profile.avatar} alt="" height="300" />
-                <div className="card-header h3">{profile.name}'s Profile
+      {isLoading ? (
+        <Loader />
+      ) : (
+          <div className="mx-auto col">
+            <div className="profile card mt-5 ">
+              <img src={image ? image : profile.avatar} alt="" height="300" />
+              <div className="card-header h3">{profile.name}'s Profile
 </div><div className="card-body">
-                  <h5 className="card-title">Username : {profile.username}</h5>
-                  <h5 className="card-title">Email : {profile.email}</h5>
-                  <h5 className="card-title">Live Stream Enabled : {profile.live_stream}</h5>
-                  <h5 className="card-title">Provider: {profile.provider}</h5>
-                  <h5 className="card-title">Joined : {moment(profile.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}</h5>
-                  <hr></hr>
-                  <button
-                    className="btn bg-success text-light"
-                    type="button"
-                    onClick={handleClickEdit}
-                    disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
-                  >
-                    {isEdit ? 'Cancel' : 'Edit'}
-                  </button>
-                </div>
+                <h5 className="card-title">Username : {profile.username}</h5>
+                <h5 className="card-title">Email : {profile.email}</h5>
+                <h5 className="card-title">Live Stream Enabled : {profile.live_stream}</h5>
+                <h5 className="card-title">Provider: {profile.provider}</h5>
+                <h5 className="card-title">Joined : {moment(profile.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}</h5>
+                <hr></hr>
+                <button
+                  className="btn bg-primary text-light"
+                  type="button"
+                  onClick={handleClickEdit}
+                  disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
+                >
+                  {isEdit ? 'Cancel' : 'Edit'}
+                </button>
+
               </div>
             </div>
+          </div>
 
-          )}
+        )}
 
-        {error && <p className="error">{error}</p>}
+      {error && <p className="error">{error}</p>}
 
-        {isEdit && (
-          <div className="card mt-5 ml-5">
+      {isEdit && (
+        <div className="mx-auto col">
+          <div className="profile card mt-1 ">
             <div className="card-header h3">Edit Profile</div>
-            <div className="form">
+            <div className="form p-3">
               <form onSubmit={formik.handleSubmit}>
                 <div>
                   <label>Avatar:</label>
@@ -179,7 +157,7 @@ const Profile = ({
                   <input
                     placeholder="Username"
                     name="username"
-                    className=""
+                    className="card-title"
                     type="text"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -221,23 +199,27 @@ const Profile = ({
                     ) : null}
                   </div>
                 )}
-                <button type="submit" className="btn">
-                  Save
-              </button>
+
                 <button
-                  onClick={() => handleDeleteUser(profile.id, history)}
+                  className="btn bg-primary text-light"
+                  type="submit"
+                >Save
+                </button>
+                <button
+                  className="btn bg-danger text-light"
                   type="button"
-                  className="btn"
-                >
-                  Delete profile
-              </button>
+                  onClick={() => handleDeleteUser(profile.id, history)}
+                >Delete Profile
+                </button>
               </form>
             </div>
 
           </div>
-        )}
+        </div>
 
-      </div>
+      )}
+
+
     </Layout>
   );
 };

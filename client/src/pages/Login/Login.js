@@ -28,72 +28,69 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
 
   return (
     <Layout>
-      <div className="login">
-        <div className="container">
-          <h1>Log in page</h1>
-          <p>
-            back to{' '}
-            <Link className="bold" to="/">
-              Home page
-          </Link>
-          </p>
-          <form onSubmit={formik.handleSubmit}>
-            <h2>Log in with social media</h2>
-            <a className="fb btn" href={FACEBOOK_AUTH_LINK}>
-              <i className="fa fa-facebook fa-fw" /> Login with Facebook
+
+      <div className="container-sm border border-dark p-4 text-light">
+        <h1>Log in page</h1>
+
+        <form onSubmit={formik.handleSubmit}>
+          <h2>Log in with social media</h2>
+          <a className="fb btn text-light" href={FACEBOOK_AUTH_LINK}>
+            <i className="fa fa-facebook fa-fw" /> Login with Facebook
           </a>
-            <a className="google btn" href={GOOGLE_AUTH_LINK}>
-              <i className="fa fa-google fa-fw" />
+          <a className="google btn text-light" href={GOOGLE_AUTH_LINK}>
+            <i className="fa fa-google fa-fw" />
             Login with Google
           </a>
-            <h2>Login with email address</h2>
-            <p className="logins">Admin: email0@email.com 123456789</p>
-            <p className="logins">User: email1@email.com 123456789</p>
-            <div>
-              <input
-                placeholder="Email address"
-                name="email"
-                className="text"
-                type="text"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <p className="error">{formik.errors.email}</p>
-              ) : null}
-              <input
-                placeholder="Password"
-                name="password"
-                type="password"
-                className="text"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password}
-              />
-              {formik.touched.password && formik.errors.password ? (
-                <p className="error">{formik.errors.password}</p>
-              ) : null}
-            </div>
-            {auth.error && <p className="error">{auth.error}</p>}
-            <div>
-              <button
-                className="btn submit"
-                disabled={auth.isLoading || !formik.isValid}
-                type="submit"
-              >
-                Log in now
+          <h2>Login with email address</h2>
+
+          <div>
+            <input
+              placeholder="Email address"
+              name="email"
+              className="text"
+              type="text"
+              style={{ width: '50%', color: '#fff' }}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <p className="error">{formik.errors.email}</p>
+            ) : null}
+            <input
+              placeholder="Password"
+              name="password"
+              type="password"
+              style={{ width: '50%', color: '#fff' }}
+              className="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+            {formik.touched.password && formik.errors.password ? (
+              <p className="error">{formik.errors.password}</p>
+            ) : null}
+          </div>
+          {auth.error && <p className="error">{auth.error}</p>}
+          <div>
+            <button
+              className="btn submit bg-primary text-light"
+              style={{ width: 120, color: '#fff' }}
+              disabled={auth.isLoading || !formik.isValid}
+              type="submit"
+            >
+              Sign In
             </button>
-            </div>
-            <div>
-              Don't have an account?{' '}
-              <Link className="bold" to="/register">
-                Register
+          </div>
+          <div>
+            Don't have an account?{' '}
+            <Link className="bold" to="/register">
+              Register
             </Link>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
+
     </Layout>
   );
 };

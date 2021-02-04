@@ -45,7 +45,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
                   </li>
                 )}
                 <li className="nav-item" onClick={onLogOut}>
-                  <a href="#">Log out</a>
+                  <a href="/">Log out</a>
                 </li>
               </>
             ) : (

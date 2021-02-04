@@ -8,6 +8,7 @@ body,
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   font-family: Khand;
+  background-color: #343434;
 }
 
 a {
@@ -75,6 +76,6 @@ button[disabled] {
 }
 
 .loader {
-  background-color: #0f0;
+  background-color: rgb(70, 70, 70);
   color: black;
 }

@@ -14,3 +14,14 @@ public/images/*
 !public/images/avatar0.jpg
 !public/images/avatar1.jpg
 !public/images/avatar2.jpg
+
+server/thumbnails/*
+!server/thumbnails/.gitkeep
+
+#ignore sessions but keep folder
+server/sessions/*
+!server/sessions/.gitkeep
+
+# ignore media but keep folder
+server/media/*
+!server/media/.gitkeep
