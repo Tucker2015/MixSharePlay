@@ -9,6 +9,7 @@ import Layout from '../../layout/Layout';
 import { reseedDatabase } from '../../store/actions/authActions';
 
 import './styles.css';
+import { profileSchema } from '../Profile/validation';
 
 const ReseedMessage = ({ handleReseed }) => {
   return (
@@ -30,21 +31,20 @@ const Home = ({ auth, reseedDatabase }) => {
 
   return (
     <Layout>
-      <LiveStreams />
-      <div className="home-page mt-2">
-        <div className="bg-success w-25 p-2 text-center"><h4>Home Page</h4></div>
+      <div className="container mt-5">
+        <h1 class="text-center mainLogoText">MixShare Live</h1>
 
         {!auth.isAuthenticated ? (
-          <div>
+          <div className="container">
             <p>
               Welcome guest !{' '}
               <Link className="bold" to="/login">
                 Log in
-              </Link>{' '}
-              or{' '}
+      </Link>{' '}
+      or{' '}
               <Link className="bold" to="/register">
                 Register
-              </Link>
+      </Link>
             </p>
             {/* <ReseedMessage handleReseed={handleReseed} /> */}
 
@@ -52,10 +52,9 @@ const Home = ({ auth, reseedDatabase }) => {
         ) : (
             <>
               <p>
-                Welcome <span className="name">{auth.me.name}</span> !
-            </p>
-              <ReseedMessage handleReseed={handleReseed} />
-              {/* <MessageForm /> */}
+                Welcome <span className="name text-light h3">{auth.me.name} Stream Key: {auth.me.stream_key}</span> !
+    </p>
+
             </>
           )}
         {/* <MessageList /> */}

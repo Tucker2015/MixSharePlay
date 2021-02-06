@@ -5,7 +5,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Joi from 'joi';
 import { isValidUrl } from '../utils/utils';
-import shortid from 'shortid';
+var shortid = require('shortid');
+
 const { Schema } = mongoose;
 
 const userSchema = new Schema(
@@ -33,9 +34,7 @@ const userSchema = new Schema(
     live_stream: {
       type: String,
     },
-    stream_key: {
-      type: String,
-    },
+    stream_key: { type: String, default: shortid.generate() },
     password: {
       type: String,
       trim: true,
@@ -80,6 +79,7 @@ userSchema.methods.toJSON = function () {
     email: this.email,
     username: this.username,
     live_stream: this.live_stream,
+    stream_key: this.stream_key,
     avatar: avatar,
     name: this.name,
     role: this.role,

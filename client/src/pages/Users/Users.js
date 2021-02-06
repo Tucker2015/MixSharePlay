@@ -24,52 +24,40 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
           This is the Users page. Here are listed all of the users of the app. Click the avatar or
           the username link to go to user's profile. Only authenticated users can see this page.
         </p>
-        <div className="list">
+        <div className="row">
           {isLoading ? (
             <Loader />
           ) : (
-            <>
-              {users.map((user, index) => {
-                return (
-                  <div key={index} className="profile">
-                    <Link to={`/${user.username}`}>
-                      <img src={user.avatar} className="avatar" />
-                    </Link>
-                    <div className="info-container">
+              <>
+                {users.map((user, index) => {
+                  return (
+                    <div key={index} className="mx-auto card bg-dark text-light m-2">
+                      <Link to={`/${user.username}`}>
+                        <img src={user.avatar} width="200" height="200" />
+                      </Link>
                       <div>
-                        <span className="label">Provider: </span>
-                        <span className="info">{user.provider}</span>
+                        <h4 className="card-header h3">{user.name}</h4>
                       </div>
-                      <div>
-                        <span className="label">Role: </span>
-                        <span className="info">{user.role}</span>
-                      </div>
-                      <div>
-                        <span className="label">Name: </span>
-                        <span className="info">{user.name}</span>
-                      </div>
-                      <div>
-                        <span className="label">Username: </span>
-                        <Link to={`/${user.username}`} className="info bold profile-link">
-                          {user.username}
-                        </Link>
-                      </div>
-                      <div>
-                        <span className="label">Email: </span>
-                        <span className="info">{user.email}</span>
-                      </div>
-                      <div>
-                        <span className="label">Joined: </span>
-                        <span className="info">
-                          {moment(user.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}
-                        </span>
+                      <div className="info-container">
+                        <div>
+                          <span className="label">Username: </span>
+                          <Link to={`/${user.username}`} className="text-light">
+                            {user.username}
+                          </Link>
+                        </div>
+
+                        <div>
+                          <span className="label">Joined: </span>
+                          <span className="info">
+                            {moment(user.createdAt).format('Do MMMM  YYYY')}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </>
-          )}
+                  );
+                })}
+              </>
+            )}
         </div>
       </div>
     </Layout>

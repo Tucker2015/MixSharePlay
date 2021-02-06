@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import config from '../../default';
-
+import Layout from '../../layout/Layout'
 export default class LiveStreams extends React.Component {
 
     constructor(props) {
@@ -13,9 +13,7 @@ export default class LiveStreams extends React.Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => {
-            this.getLiveStreams();
-        }, 500);
+        this.getLiveStreams();
     }
 
     componentWillUnmount() {
@@ -23,7 +21,7 @@ export default class LiveStreams extends React.Component {
     }
 
     getLiveStreams() {
-        axios.get('http://127.0.0.1:' + config.rtmp_server.http.port + '/api/streams')
+        axios.get('http://10.0.0.6:8888/api/streams')
             .then(res => {
                 let streams = res.data;
                 if (typeof (streams['live'] !== 'undefined')) {
@@ -74,16 +72,18 @@ export default class LiveStreams extends React.Component {
         });
 
         return (
-            <div className="container mt-5">
+            <Layout>
+                <div className="container mt-5">
 
-                <h4 className="w-50 p-3 mb-2 bg-success text-white rounded">Live Streams</h4>
-                <hr className="my-4" />
+                    <h4 className="w-50 p-3 mb-2 bg-success text-white rounded">Live Streams</h4>
+                    <hr className="my-4" />
 
-                <div className="streams row">
-                    {streams}
+                    <div className="streams row">
+                        {streams}
+                    </div>
+
                 </div>
-
-            </div>
+            </Layout>
         )
     }
 }

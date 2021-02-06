@@ -13,7 +13,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container">
         <h2 className="logo">MixShare Live</h2>
 
@@ -30,6 +30,9 @@ const Navbar = ({ auth, logOutUser, history }) => {
             </li>
             <li className="nav-item">
               <Link to="/live">Live</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/liveStream">Streams</Link>
             </li>
             {auth.isAuthenticated ? (
               <>

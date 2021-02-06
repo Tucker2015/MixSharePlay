@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import LiveVideo from './pages/Live/LiveVideo'
+import LiveStream from './pages/Live/LiveStream'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Home from './pages/Home/Home';
@@ -43,6 +44,7 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
       {auth.appLoaded ? (
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/liveStream" component={LiveStream} />
           <Route path="/live" component={LiveVideo} />
           <Route path="/register" component={Register} />
           <Route path="/users" component={Users} />

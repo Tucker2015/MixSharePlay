@@ -45,6 +45,7 @@ mongoose
 // Use Routes
 app.use('/', routes);
 app.use('/public', express.static(join(__dirname, '../public')));
+app.use('/streams', require('./routes/streams'));
 
 // Serve static assets if in production
 if (isProduction) {

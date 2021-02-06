@@ -1,28 +1,88 @@
-.login {
-  height: 100%;
+.containerCard {
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
-.login .container {
-  max-width: 400px;
-  flex: 1;
+.containerCard .box {
+  position: relative;
+  width: 450px;
+  height: 500px;
+  color: #fff;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 50px;
+  transition: 0.7s;
 }
-
-.fb {
-  background-color: #3b5998 !important;
-  color: white;
-  width: 200px !important;
-  display: block;
+.containerCard .box:hover {
+  transform: translateY(-20px);
 }
-
-.google {
-  background-color: #dd4b39 !important;
-  color: white;
-  width: 200px !important;
-  display: block;
+.containerCard .box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #314ded, #aaa499);
+  overflow: hidden;
 }
-
-.login .logins {
-  margin: 5px 0;
+.containerCard .box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #314ded, #aaa499);
+  filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.containerCard .box span {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+.container .box span::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  filter: blur(50px);
+  pointer-events: none;
+}
+.containerCard .box .content {
+  position: relative;
+  z-index: 10;
+  padding: 20px 40px;
+}
+.containerCard .box .content h2 {
+  font-size: 1.2em;
+  color: #fff;
+  margin-bottom: 15px;
+}
+.containerCard .box .content p {
+  font-size: 1.1em;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.4em;
+}
+.containerCard .box .content a {
+  display: inline-block;
+  font-size: 1.1em;
+  color: #000;
+  background: #fff;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: 700;
 }

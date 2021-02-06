@@ -1,14 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Khand');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,800,900');
 html,
 body,
 #root {
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   height: 100%;
-  font-family: Khand;
-  background-color: #343434;
+  font-family: Poppins;
+  background-color: #111;
+}
+
+.mainLogoText {
+  font-family: 'Poppins';
+  font-weight: 900;
+  color: #fff;
+  font-size: 5em;
+  text-shadow: 0px 0px 40px rgb(0, 102, 255);
+  justify-content: center;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .mainLogoText {
+    font-size: 3em;
+  }
 }
 
 a {

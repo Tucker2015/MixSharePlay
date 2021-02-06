@@ -90,11 +90,13 @@ const Profile = ({
             <div className="profile card mt-5 ">
               <img src={image ? image : profile.avatar} alt="" height="300" />
               <div className="card-header h3">{profile.name}'s Profile
-</div><div className="card-body">
+</div>
+              <div className="card-body">
                 <h5 className="card-title">Username : {profile.username}</h5>
                 <h5 className="card-title">Email : {profile.email}</h5>
                 <h5 className="card-title">Live Stream Enabled : {profile.live_stream}</h5>
                 <h5 className="card-title">Provider: {profile.provider}</h5>
+                <h5 className="card-title">Stream Key: {profile.stream_key}</h5>
                 <h5 className="card-title">Joined : {moment(profile.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}</h5>
                 <hr></hr>
                 <button

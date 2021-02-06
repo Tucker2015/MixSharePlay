@@ -5,6 +5,7 @@ export const registerSchema = Yup.object({
     .min(2, 'Must be 2 characters at minimum')
     .max(30, 'Must be 30 characters or less')
     .required('Required'),
+  stream_key: Yup.string(),
   live_stream: Yup.string()
     .min(2, 'Must be 2 characters at minimum')
     .max(30, 'Must be 30 characters or less')

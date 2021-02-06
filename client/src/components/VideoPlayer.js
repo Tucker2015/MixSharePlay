@@ -2,7 +2,9 @@ import React from 'react';
 import videojs from 'video.js'
 import axios from 'axios';
 import config from '../default';
-
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 export default class VideoPlayer extends React.Component {
 
     constructor(props) {
@@ -24,7 +26,7 @@ export default class VideoPlayer extends React.Component {
                 autoplay: true,
                 controls: true,
                 sources: [{
-                    src: 'http://10.0.0.6:' + config.rtmp_server.http.port + '/live/hYAo2HGfQ/index.m3u8',
+                    src: 'http://10.0.0.6:' + config.rtmp_server.http.port + '/live/06f-PM2EI/index.m3u8',
                     type: 'application/x-mpegURL'
                 }],
                 fluid: true,
