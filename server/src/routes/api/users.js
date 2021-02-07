@@ -57,7 +57,7 @@ router.put('/:id', [requireJwtAuth, upload.single('avatar')], async (req, res, n
 
     const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser && existingUser.id !== tempUser.id) {
-      return res.status(400).json({ message: 'Username alredy taken.' });
+      return res.status(400).json({ message: 'Username already taken.' });
     }
 
     const updatedUser = { avatar: avatarPath, name: req.body.name, username: req.body.username, password };

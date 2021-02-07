@@ -9,20 +9,9 @@ import Layout from '../../layout/Layout';
 import { reseedDatabase } from '../../store/actions/authActions';
 
 import './styles.css';
-import { profileSchema } from '../Profile/validation';
 
-const ReseedMessage = ({ handleReseed }) => {
-  return (
-    <div>
-      {/* <span style={{ marginRight: '10px' }}>
-        If the app has been vandalized just reseed the database by clicking this button
-      </span>
-      <button onClick={handleReseed} className="btn reseed-btn">
-        Reseed Database
-      </button> */}
-    </div>
-  );
-};
+
+
 
 const Home = ({ auth, reseedDatabase }) => {
   const handleReseed = () => {
@@ -33,34 +22,7 @@ const Home = ({ auth, reseedDatabase }) => {
     <Layout>
       <div className="container mt-5">
         <h1 class="text-center mainLogoText">MixShare Live</h1>
-
-        {!auth.isAuthenticated ? (
-          <div className="container">
-            <p>
-              Welcome guest !{' '}
-              <Link className="bold" to="/login">
-                Log in
-      </Link>{' '}
-      or{' '}
-              <Link className="bold" to="/register">
-                Register
-      </Link>
-            </p>
-            {/* <ReseedMessage handleReseed={handleReseed} /> */}
-
-          </div>
-        ) : (
-            <>
-              <p>
-                Welcome <span className="name text-light h3">{auth.me.name} Stream Key: {auth.me.stream_key}</span> !
-    </p>
-
-            </>
-          )}
-        {/* <MessageList /> */}
-
       </div>
-
     </Layout>
   );
 };

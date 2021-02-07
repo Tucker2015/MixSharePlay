@@ -13,8 +13,8 @@ const Navbar = ({ auth, logOutUser, history }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div className="container">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-3">
+      <div className="container-fluid">
         <h2 className="logo">MixShare Live</h2>
 
         <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -24,7 +24,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav ml-auto ">
             <li className="nav-item">
               <Link to="/">Home</Link>
             </li>

@@ -12,7 +12,8 @@ import { seedDb } from './utils/seed';
 
 const node_media_server = require('./media_server');
 const app = express();
-
+var cors = require('cors');
+app.use(cors());
 // Bodyparser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

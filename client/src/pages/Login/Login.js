@@ -49,7 +49,7 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
                   name="email"
                   className="text"
                   type="text"
-                  style={{ width: '100%', color: '#fff' }}
+                  style={{ width: '100%', color: '#000' }}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
@@ -61,7 +61,7 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
                   placeholder="Password"
                   name="password"
                   type="password"
-                  style={{ width: '100%', color: '#fff' }}
+                  style={{ width: '100%', color: '#000' }}
                   className="text"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -75,7 +75,7 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
               <div>
                 <button
                   className="btn submit bg-primary text-light"
-                  style={{ width: 120, color: '#fff' }}
+                  style={{ width: 120 }}
                   disabled={auth.isLoading || !formik.isValid}
                   type="submit"
                 >
