@@ -6,7 +6,7 @@ const CronJob = require('cron').CronJob,
 
 const job = new CronJob('*/5 * * * * *', function () {
     request
-        .get('http://10.0.0.6:' + port + '/api/streams', function (error, response, body) {
+        .get('http://127.0.0.1:' + port + '/api/streams', function (error, response, body) {
             res.header("Access-Control-Allow-Origin", "*");
             let streams = JSON.parse(body);
             if (typeof (streams['live'] !== undefined)) {

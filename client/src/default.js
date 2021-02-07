@@ -24,7 +24,7 @@ const config = {
         //     cert: '/etc/letsencrypt/live/live.kevtucker.com/fullchain.pem'
         // },
         trans: {
-            ffmpeg: '/usr/local/bin/ffmpeg',
+            ffmpeg: '/app/vendor/ffmpeg/ffmpeg',
             tasks: [
                 {
                     app: 'live',
