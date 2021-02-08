@@ -21,7 +21,7 @@ const Home = ({ auth, reseedDatabase }) => {
   return (
     <Layout>
       <div className="container mt-5">
-        <h1 class="text-center mainLogoText">MixShare Live</h1>
+        <h1 className="text-center mainLogoText">MixShare Live</h1>
       </div>
     </Layout>
   );

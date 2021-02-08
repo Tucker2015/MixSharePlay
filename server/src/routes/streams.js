@@ -3,6 +3,7 @@ const express = require('express'),
     User = require('../models/User').User;
 
 router.get('/info',
+
     (req, res) => {
         if (req.query.streams) {
             let streams = JSON.parse(req.query.streams);
