@@ -22,6 +22,7 @@ const Home = ({ auth, reseedDatabase }) => {
     <Layout>
       <div className="homeBody">
         <h1 className="text-center mainLogoText">MixShare Live</h1>
+        <p> Test Pull </p>
       </div>
     </Layout>
   );
