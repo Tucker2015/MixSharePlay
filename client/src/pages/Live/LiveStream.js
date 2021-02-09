@@ -21,7 +21,7 @@ export default class LiveStreams extends React.Component {
     }
 
     getLiveStreams() {
-        axios.get('http://127.0.0.1:8888/api/streams')
+        axios.get('http://127.0.0.1:8889/api/streams')
             .then(res => {
                 let streams = res.data;
                 if (typeof (streams['live'] !== 'undefined')) {

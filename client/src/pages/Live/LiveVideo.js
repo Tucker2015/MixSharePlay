@@ -29,7 +29,7 @@ export default class VideoPlayer extends React.Component {
                 autoplay: true,
                 controls: true,
                 sources: [{
-                    src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/hYAo2HGfQ/index.m3u8',
+                    src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/o1dh-XxK5/index.m3u8',
                     type: 'application/x-mpegURL'
                 }],
                 fluid: true,
