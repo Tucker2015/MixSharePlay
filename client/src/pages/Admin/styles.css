@@ -1,3 +1,9 @@
+.admin-page {
+  position: relative;
+  margin-left: -20%;
+  margin-right: -20%;
+  height: 100%;
+}
 .admin-page h1 {
   color: #fff;
 }

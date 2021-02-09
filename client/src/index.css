@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,800,900');
+@import '~video.js/dist/video-js.css';
+
 html,
 body,
 #root {
   margin: 0;
   padding: 0;
-
   height: 100%;
   font-family: Poppins;
   background-color: #111;
 }
-
+.headerFont {
+  font-family: 'Poppins' !important;
+  font-weight: 700;
+  font-size: 2.3rem !important;
+}
 .mainLogoText {
   font-family: 'Poppins';
   font-weight: 900;
@@ -28,7 +33,6 @@ body,
 a {
   text-decoration: none;
 }
-@import '~video.js/dist/video-js.css';
 input,
 textarea,
 .btn {

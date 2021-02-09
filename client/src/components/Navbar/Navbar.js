@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-
+import logo from '../../assets/logo.png';
 import { logOutUser } from '../../store/actions/authActions';
 import './styles.css';
 
@@ -15,8 +15,10 @@ const Navbar = ({ auth, logOutUser, history }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-3">
       <div className="container-fluid">
-        <h2 className="logo">MixShare Live</h2>
-
+        <img src={logo} alt="" width="40" height="40" class="d-inline-block align-center rounded mr-2" />
+        <Link to={'/'} className={'navbar-brand headerFont'} >
+          <h2 className="logo">MixShare Live</h2>
+        </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

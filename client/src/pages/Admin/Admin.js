@@ -16,6 +16,7 @@ const Admin = () => {
             Home
           </Link>
         </p>
+        <iframe src="http://10.0.0.6:8888/admin" width="100%" height="1000px"></iframe>
       </div>
     </Layout>
   );

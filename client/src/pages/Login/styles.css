@@ -8,7 +8,7 @@
 .containerCard .box {
   position: relative;
   width: 450px;
-  height: 500px;
+  height: 100%;
   color: #fff;
   background: #111;
   display: flex;
@@ -85,4 +85,10 @@
   padding: 10px;
   text-decoration: none;
   font-weight: 700;
+}
+.containerCard input {
+  background-color: rgba(255, 255, 255, 0.269);
+}
+.containerCard error {
+  color: red;
 }
