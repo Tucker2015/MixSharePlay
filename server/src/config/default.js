@@ -5,14 +5,14 @@ const config = {
     },
     rtmp_server: {
         rtmp: {
-            port: 1935,
+            port: 1936,
             chunk_size: 60000,
             gop_cache: true,
             ping: 60,
             ping_timeout: 30
         },
         http: {
-            port: 8888,
+            port: 8889,
             mediaroot: './src/media',
             allow_origin: '*'
         },
@@ -24,7 +24,7 @@ const config = {
         //     cert: '/etc/letsencrypt/live/live.kevtucker.com/fullchain.pem'
         // },
         trans: {
-            ffmpeg: '/usr/local/bin/ffmpeg',
+            ffmpeg: '/usr/bin/ffmpeg',
             tasks: [
                 {
                     app: 'live',
