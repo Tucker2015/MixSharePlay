@@ -60,6 +60,9 @@ const Navbar = ({ auth, logOutUser, history }) => {
                   <li className="nav-item">
                     <Link to="/login">Login</Link>
                   </li>
+                  <li className="nav-item">
+                    <Link to="/register">Register</Link>
+                  </li>
                 </>
               )}
           </ul>

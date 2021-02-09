@@ -9,6 +9,10 @@ body,
   height: 100%;
   font-family: Poppins;
   background-color: #111;
+  background-image: url('assets/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 .headerFont {
   font-family: 'Poppins' !important;

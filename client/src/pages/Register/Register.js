@@ -31,15 +31,9 @@ const Register = ({ auth, register: { isLoading, error }, history, registerUserW
 
   return (
     <Layout>
-      <div className="register">
+      <div className="register mt-5">
         <div className="containerHeader">
-          <h1 className="headerFont">Register page</h1>
-          <p>
-            back to{' '}
-            <Link className="bold" to="/">
-              Home page
-          </Link>
-          </p>
+          <h1 className="headerFont">Register</h1>
           <div className="containerCard">
             <div className="box">
               <span></span>
@@ -110,7 +104,7 @@ const Register = ({ auth, register: { isLoading, error }, history, registerUserW
                   </div>
                   {error && <p className="error">{error}</p>}
                   <div>
-                    <button className="btn submit" type="submit" disabled={isLoading || !formik.isValid}>
+                    <button className="btn submit bg-primary text-light" type="submit" disabled={isLoading || !formik.isValid}>
                       Sign up now
     </button>
                   </div>
