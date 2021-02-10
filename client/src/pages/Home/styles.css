@@ -12,3 +12,10 @@
   /* border: 1px solid green; */
   min-height: calc(100% - 112px);
 }
+.homeBody .img{
+  position: relative;
+  
+  height: 200px;
+  width: 200px;
+  border-radius: 20px;
+}

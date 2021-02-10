@@ -18,12 +18,9 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
 
   return (
     <Layout>
-      <div className="users">
-        <h1>Users page</h1>
-        <p>
-          This is the Users page. Here are listed all of the users of the app. Click the avatar or
-          the username link to go to user's profile. Only authenticated users can see this page.
-        </p>
+      <div className="users mx-auto mt-5">
+        <h2  >Users page</h2>
+
         <div className="row">
           {isLoading ? (
             <Loader />
@@ -31,9 +28,9 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
               <>
                 {users.map((user, index) => {
                   return (
-                    <div key={index} className="mx-auto card bg-dark text-light m-2">
+                    <div key={index} className="mx-auto mt-3 card bg-dark text-light m-2 p-2">
                       <Link to={`/${user.username}`}>
-                        <img src={user.avatar} width="200" height="200" />
+                        <img src={user.avatar} className="avatar mx-auto" />
                       </Link>
                       <div>
                         <h4 className="card-header h3">{user.name}</h4>

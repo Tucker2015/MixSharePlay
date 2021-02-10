@@ -16,7 +16,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-3">
       <div className="container-fluid">
         <img src={logo} alt="" width="40" height="40" class="d-inline-block align-center rounded mr-2" />
-        <Link to={'/'} className={'navbar-brand headerFont'} >
+        <Link to={'/'} className={'navbar-brand '} >
           <h2 className="logo">MixShare Live</h2>
         </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -52,6 +52,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
                 <li className="nav-item" onClick={onLogOut}>
                   <a href="/">Log out</a>
                 </li>
+                <img className="img " src={auth.me.avatar} alt="" height="50" width="50" />
               </>
             ) : (
                 <>

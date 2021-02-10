@@ -8,7 +8,16 @@
 
   margin: auto;
 }
+.profile h5 {
+  font-family: 'Poppins' !important;
+  font-weight: 300;
+  font-size: 1.1rem !important;
+  color: #000;
+  /* justify-content: center;
+  text-align: center; */
+}
+
 .profile {
-  width: 350px !important;
+  width: 400px !important;
   max-width: 500px;
 }

@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "node-media-server": "^2.2.4",
+    "pm2": "^4.5.4",
     "shortid": "^2.2.16"
   }
 }

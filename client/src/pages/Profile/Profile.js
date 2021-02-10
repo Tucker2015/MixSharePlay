@@ -82,14 +82,16 @@ const Profile = ({
 
   return (
     <Layout>
-
+      <div className="users mx-auto mt-5">
+        <h2>Profile Page</h2>
+      </div>
       {isLoading ? (
         <Loader />
       ) : (
-          <div className="mx-auto col">
-            <div className="profile card mt-5 ">
-              <img src={image ? image : profile.avatar} alt="" height="300" />
-              <div className="card-header h3">{profile.name}'s Profile
+          <div className="mx-auto col mt-3">
+            <div className="profile card mt-5 mx-auto">
+              <img src={image ? image : profile.avatar} alt="" height="350" />
+              <div className="card-header h3 text-center">{profile.name}'s Profile
 </div>
               <div className="card-body">
                 <h5 className="card-title">Username : {profile.username}</h5>

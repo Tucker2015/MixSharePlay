@@ -28,9 +28,9 @@ body,
   justify-content: center;
   text-align: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   .mainLogoText {
-    font-size: 3em;
+    font-size: 2.2em;
   }
 }
 

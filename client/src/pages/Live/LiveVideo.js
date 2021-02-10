@@ -20,6 +20,15 @@ export default class VideoPlayer extends React.Component {
 
     componentDidMount() {
 
+        // This is the original axios request for username
+
+
+        // axios.get('/user', {
+        //     params: {
+        //         username: this.props.match.params.username
+        //     }
+        // }).then(res => {
+
         this.setState({
 
             stream: true,
@@ -29,7 +38,7 @@ export default class VideoPlayer extends React.Component {
                 autoplay: true,
                 controls: true,
                 sources: [{
-                    src: 'http://127.0.0.1:' + config.rtmp_server.http.port + '/live/o1dh-XxK5/index.m3u8',
+                    src: 'http://95.216.190.57:' + config.rtmp_server.http.port + '/live/o1dh-XxK5/index.m3u8',
                     type: 'application/x-mpegURL'
                 }],
                 fluid: true,
@@ -62,6 +71,14 @@ export default class VideoPlayer extends React.Component {
                                 </div>
                             </div>
                         ) : ' Loading ... '}
+
+                        {/* This Shows the current username who is streaming  */}
+
+                        {/* <div className="titleVid"><FontAwesomeIcon className="icon-flash" icon={faCircle} size={24} />
+                            {this.props.match.params.username} Live
+                </div> */}
+
+
                     </div>
                     <div className="box1">
                         <Chatbox />
