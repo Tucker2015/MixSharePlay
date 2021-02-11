@@ -15,7 +15,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-3">
       <div className="container-fluid">
-        <img src={logo} alt="" width="40" height="40" class="d-inline-block align-center rounded mr-2" />
+        <img src={logo} alt="" width="40" height="40" className="d-inline-block align-center rounded mr-2" />
         <Link to={'/'} className={'navbar-brand '} >
           <h2 className="logo">MixShare Live</h2>
         </Link>

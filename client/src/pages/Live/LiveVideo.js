@@ -1,11 +1,11 @@
 import Layout from '../../layout/Layout';
 import React from 'react';
 import videojs from 'video.js'
-import axios from 'axios';
+// import axios from 'axios';
 import config from '../../default';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { compose } from 'redux';
+// import { connect } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import './VideoPlayer.css';
 import Chatbox from '../../components/ChatBox/ChatBox'
 export default class VideoPlayer extends React.Component {

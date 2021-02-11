@@ -1,11 +1,8 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import LiveStreams from '../Live/LiveStream';
+// import { Link } from 'react-router-dom';
 import Layout from '../../layout/Layout';
-// import MessageList from '../../components/MessageList/MessageList';
-// import MessageForm from '../../components/MessageForm/MessageForm';
 import { reseedDatabase } from '../../store/actions/authActions';
 
 import './styles.css';
@@ -13,10 +10,8 @@ import './styles.css';
 
 
 
-const Home = ({ auth, reseedDatabase }) => {
-  const handleReseed = () => {
-    reseedDatabase();
-  };
+const Home = ({ auth }) => {
+
 
   return (
     <Layout>

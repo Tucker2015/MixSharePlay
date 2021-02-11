@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import config from '../../default';
+// import config from '../../default';
 import Layout from '../../layout/Layout'
 export default class LiveStreams extends React.Component {
 
@@ -56,7 +56,7 @@ export default class LiveStreams extends React.Component {
 
                     <Link to={'/stream/' + stream.username}>
                         <div className="stream-thumbnail">
-                            <img src={'/thumbnails/' + stream.stream_key + '.png'} />
+                            <img src={'/thumbnails/' + stream.stream_key + '.png'} alt="thumbnail" />
                         </div>
                     </Link>
 
@@ -73,10 +73,11 @@ export default class LiveStreams extends React.Component {
 
         return (
             <Layout>
-                <div className="container mt-5">
+                <div className="container mt-5 livestream">
 
-                    <h4 className="w-50 p-3 mb-2 bg-success text-white rounded">Live Streams</h4>
-                    <hr className="my-4" />
+                    <div className="profilePage mx-auto mt-5">
+                        <h2>Live Streams</h2>
+                    </div>
 
                     <div className="streams row">
                         {streams}

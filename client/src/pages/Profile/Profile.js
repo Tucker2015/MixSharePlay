@@ -2,16 +2,37 @@ import React, { useEffect, useState, useRef } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { useFormik } from 'formik';
-import moment from 'moment';
+// import moment from 'moment';
 import { withRouter } from 'react-router-dom';
-import './styles.css';
+
 import { getProfile, editUser, deleteUser } from '../../store/actions/userActions';
 import { loadMe } from '../../store/actions/authActions';
 import Layout from '../../layout/Layout';
 import Loader from '../../components/Loader/Loader';
 import requireAuth from '../../hoc/requireAuth';
 import { profileSchema } from './validation';
-import Users from '../Users/Users';
+
+import './styles.css';
+
+//// nema password za oauth usere ni na klijentu ni serveru
+// validacija na serveru i error handilng na clientu
+// css i html
+//// delete user i logika da ne brise seedovane
+//// admin ruta i hoc
+// error handling login register posto je zajednicki loading i error
+//// mongo atlas i heroku deploy package json i promenljive env i config
+//// avatar staza u bazu samo fajl
+//// gitignore za placeholder avatar
+//// delete profile ruta
+
+// hendlovanje staza za slike, default avatar za izbrisane sa heroku
+// readme
+//// posle edit user treba redirect na novi username url
+
+// fore
+// za facebook more https apsolutni callback url
+// FACEBOOK_CALLBACK_URL=https://mern-boilerplate-demo.herokuapp.com/auth/facebook/callback
+// da bi prihvatio fb domen mora dole da se poklapa sa siteurl
 
 const Profile = ({
   getProfile,
@@ -49,8 +70,6 @@ const Profile = ({
     formik.setFieldValue('id', profile.id);
     formik.setFieldValue('name', profile.name);
     formik.setFieldValue('username', profile.username);
-    formik.setFieldValue('live_stream', profile.live_stream);
-
   };
 
   const handleDeleteUser = (id, history) => {
@@ -64,7 +83,6 @@ const Profile = ({
       name: '',
       username: '',
       password: '',
-      live_stream: '',
     },
     validationSchema: profileSchema,
     onSubmit: (values) => {
@@ -72,7 +90,6 @@ const Profile = ({
       formData.append('avatar', avatar);
       formData.append('name', values.name);
       formData.append('username', values.username);
-      formData.append('live_stream', values.live_stream);
       if (profile.provider === 'email') {
         formData.append('password', values.password);
       }
@@ -83,60 +100,61 @@ const Profile = ({
 
   return (
     <Layout>
-      <div className="users mx-auto mt-5">
-        <h2>Profile Page</h2>
-      </div>
-      {isLoading ? (
-        <Loader />
-      ) : (
-          <div>
-            <div style={{
-              display: "flex",
-              justifyContent: "space-around",
-              margin: "18px 0px",
+      <div className="profile">
+        <h2 className="header mt-5">Profile page</h2>
 
-            }}>
-              <div>
-                <img style={{ height: "160px", width: "160px", borderRadius: "80px" }}
-                  src={image ? image : profile.avatar} />
-              </div>
-              <div>
-                <h4>{profile.name}</h4>
-                <div style={{ display: "inline", justifyContent: "space-between", width: "100%" }}>
-                  <h5>Username : {profile.username} </h5>
-                  <h5>Email : {profile.email}</h5>
-                  <h5>Stream Key: {profile.stream_key}</h5>
+        {isLoading ? (
+          <Loader />
+        ) : (
+            <div className="profile-info mt-5 mx-auto">
+              <img src={image ? image : profile.avatar} className="avatar" />
+              <div className="info-container text-light">
+                <div>
+                  <span className="label">Name: </span>
+                  <span className="info">{profile.name}</span>
+                </div>
+                <div>
+                  <span className="label">Stream Key: </span>
+                  <span className="info">{profile.stream_key}</span>
+                </div>
+                <div>
+                  <span className="label">Name: </span>
+                  <span className="info">{profile.name}</span>
+                </div>
+                <div>
+                  <span className="label">Username: </span>
+                  <span className="info">{profile.username}</span>
+                </div>
+                <div>
+                  <span className="label">Email: </span>
+                  <span className="info">{profile.email}</span>
+                </div>
+
+                <div>
+                  <button
+                    className="btn"
+                    type="button"
+                    onClick={handleClickEdit}
+                    disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
+                  >
+                    {isEdit ? 'Cancel' : 'Edit'}
+                  </button>
                 </div>
               </div>
             </div>
-            <div>
-              <button
-                className="editBtn"
-                type="button"
-                onClick={handleClickEdit}
-                disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
-              >
-                {isEdit ? 'Cancel' : 'Edit'}
-              </button>
-            </div>
-          </div>
+          )}
 
-        )}
+        {error && <p className="error">{error}</p>}
 
-      {error && <p className="error">{error}</p>}
-
-      {isEdit && (
-        <div className="profileEdit">
-
-          <h4 className="header">Edit Profile</h4>
-          <div className="form">
+        {isEdit && (
+          <div className="form text-light mx-auto">
             <form onSubmit={formik.handleSubmit}>
               <div>
-                <label style={{ color: '#fff' }}>Avatar:</label>
-                <input name="image" className="btn" style={{ width: "300px" }} type="file" onChange={onChange} />
+                <label>Avatar:</label>
+                <input name="image" type="file" onChange={onChange} />
                 {image && (
                   <button
-                    className="btn w-100"
+                    className="btn"
                     onClick={() => {
                       setImage(null);
                       setAvatar(null);
@@ -178,21 +196,6 @@ const Profile = ({
                   <p className="error">{formik.errors.username}</p>
                 ) : null}
               </div>
-              {/* <div className="input-div">
-                  <label>Live Stream Enabled:</label>
-                  <input
-                    placeholder="Yes / No"
-                    name="live_stream"
-                    className="w-100 disable"
-                    type="text"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.live_stream}
-                  />
-                  {formik.touched.live_stream && formik.errors.live_stream ? (
-                    <p className="error">{formik.errors.live_stream}</p>
-                  ) : null}
-                </div> */}
               {profile.provider === 'email' && (
                 <div className="input-div">
                   <label>Password:</label>
@@ -210,27 +213,20 @@ const Profile = ({
                   ) : null}
                 </div>
               )}
-
+              <button type="submit" className="btn">
+                Save
+              </button>
               <button
-                className="btn bg-primary text-light"
-                type="submit"
-              >Save
-                </button>
-              <button
-                className="btn bg-danger text-light"
-                type="button"
                 onClick={() => handleDeleteUser(profile.id, history)}
-              >Delete Profile
-                </button>
+                type="button"
+                className="btn btn2"
+              >
+                Delete profile
+              </button>
             </form>
           </div>
-
-        </div>
-
-
-      )}
-
-
+        )}
+      </div>
     </Layout>
   );
 };

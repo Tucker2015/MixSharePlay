@@ -1,57 +1,91 @@
-.containerCenter {
+.profile .profile-info {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
+  padding-bottom: 20px;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.555);
-  padding: 15px;
+  border: 2px solid rgb(148, 148, 148);
+  max-width: fit-content;
+  border-radius: 10px;
+  
+}
 
-  margin: auto;
+.profile .avatar {
+  width: 220px;
+  height: 220px;
+  align-self: center;
+  margin-right: 20px;
+  object-fit: cover;
 }
-.users h5 {
-  font-family: 'Poppins' !important;
-  font-weight: 300;
-  font-size: 1.1rem !important;
-  color: rgb(255, 255, 255);
-  /* justify-content: center;
-  text-align: center; */
+@media screen and (max-width: 500px) {
+  .profile .avatar {
+    width: 100px;
+    height: 100px;
+  }
 }
-.editBtn {
-  background: rgb(18, 96, 232);
+
+.profile .label,
+.profile label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.profile .info {
+  font-size: 18px;
+}
+
+.profile .info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.profile .btn {
+  width: auto;
+  margin-right: 10px;
+  border: none;
+  background: rgb(25, 130, 222);
   color: #fff;
-  width: 100px;
-  height: 50px;
-  border: 3px solid rgb(18, 96, 232);
-  position: absolute;
-  margin: auto;
-  right: 0px;
-  left: 0px;
 }
-.profile {
-  position: relative;
-  width: 350px !important;
-  max-width: 400px;
+.profile .btn2 {
+  background: rgb(201, 46, 35);
+  color: #fff;
 }
-.header {
-  color: aliceblue;
+
+.profile input {
+  width: 80%;
+  display: inline;
+  height: 30px;
+}
+@media screen and (max-width: 500px) {
+  .profile input {
+    width: 80%;
+  display: block;
+  height: 55px;
+  }
+}
+
+
+.profile .form {
+  display: flex;
+  padding: 10px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  border: 2px solid rgb(148, 148, 148);
+  max-width: 550px;
+  border-radius: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+
+.profile .header {
+  font-family: 'Poppins' !important;
+  font-weight: 700;
+  font-size: 2.3rem !important;
+  color: azure;
+  text-shadow: 0px 0px 40px rgb(0, 102, 255);
+  justify-content: center;
   text-align: center;
-}
-.profileEdit {
-  margin-top: 70px;
-}
-.profileEdit label{
-  color: aliceblue;
-  font-size: 20px;
-  margin-right: 5px;
-  justify-content: left;
-  align-items: flex-start;
-  align-content: center;
-}
-.profileEdit input{
-  color: rgb(0, 0, 0);
-  width: 350px;
-  display: list-item;
-}
-.profileEdit btn{
-  display: flow-root !important; 
 }
