@@ -11,6 +11,7 @@ import Layout from '../../layout/Layout';
 import Loader from '../../components/Loader/Loader';
 import requireAuth from '../../hoc/requireAuth';
 import { profileSchema } from './validation';
+import Users from '../Users/Users';
 
 const Profile = ({
   getProfile,
@@ -88,29 +89,35 @@ const Profile = ({
       {isLoading ? (
         <Loader />
       ) : (
-          <div className="mx-auto col mt-3">
-            <div className="profile card mt-5 mx-auto">
-              <img src={image ? image : profile.avatar} alt="" height="350" />
-              <div className="card-header h3 text-center">{profile.name}'s Profile
-</div>
-              <div className="card-body">
-                <h5 className="card-title">Username : {profile.username}</h5>
-                <h5 className="card-title">Email : {profile.email}</h5>
-                <h5 className="card-title">Live Stream Enabled : {profile.live_stream}</h5>
-                <h5 className="card-title">Provider: {profile.provider}</h5>
-                <h5 className="card-title">Stream Key: {profile.stream_key}</h5>
-                <h5 className="card-title">Joined : {moment(profile.createdAt).format('dddd, MMMM Do YYYY, H:mm:ss')}</h5>
-                <hr></hr>
-                <button
-                  className="btn bg-primary text-light"
-                  type="button"
-                  onClick={handleClickEdit}
-                  disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
-                >
-                  {isEdit ? 'Cancel' : 'Edit'}
-                </button>
+          <div>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-around",
+              margin: "18px 0px",
 
+            }}>
+              <div>
+                <img style={{ height: "160px", width: "160px", borderRadius: "80px" }}
+                  src={image ? image : profile.avatar} />
               </div>
+              <div>
+                <h4>{profile.name}</h4>
+                <div style={{ display: "inline", justifyContent: "space-between", width: "100%" }}>
+                  <h5>Username : {profile.username} </h5>
+                  <h5>Email : {profile.email}</h5>
+                  <h5>Stream Key: {profile.stream_key}</h5>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button
+                className="editBtn"
+                type="button"
+                onClick={handleClickEdit}
+                disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
+              >
+                {isEdit ? 'Cancel' : 'Edit'}
+              </button>
             </div>
           </div>
 
@@ -119,59 +126,59 @@ const Profile = ({
       {error && <p className="error">{error}</p>}
 
       {isEdit && (
-        <div className="mx-auto col">
-          <div className="profile card mt-1 ">
-            <div className="card-header h3">Edit Profile</div>
-            <div className="form p-3">
-              <form onSubmit={formik.handleSubmit}>
-                <div>
-                  <label>Avatar:</label>
-                  <input name="image" className="btn w-75" type="file" onChange={onChange} />
-                  {image && (
-                    <button
-                      className="btn w-100"
-                      onClick={() => {
-                        setImage(null);
-                        setAvatar(null);
-                      }}
-                      type="button"
-                    >
-                      Remove Image
-                    </button>
-                  )}
-                </div>
-                <input name="id" type="hidden" value={formik.values.id} />
-                <div className="input-div card-title">
-                  <label>Name:</label>
-                  <input
-                    placeholder="Name"
-                    name="name"
-                    className=""
-                    type="text"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.name}
-                  />
-                  {formik.touched.name && formik.errors.name ? (
-                    <p className="error">{formik.errors.name}</p>
-                  ) : null}
-                </div>
-                <div className="input-div">
-                  <label>Username:</label>
-                  <input
-                    placeholder="Username"
-                    name="username"
-                    className="card-title"
-                    type="text"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.username}
-                  />
-                  {formik.touched.username && formik.errors.username ? (
-                    <p className="error">{formik.errors.username}</p>
-                  ) : null}
-                </div>
-                {/* <div className="input-div">
+        <div className="profileEdit">
+
+          <h4 className="header">Edit Profile</h4>
+          <div className="form">
+            <form onSubmit={formik.handleSubmit}>
+              <div>
+                <label style={{ color: '#fff' }}>Avatar:</label>
+                <input name="image" className="btn" style={{ width: "300px" }} type="file" onChange={onChange} />
+                {image && (
+                  <button
+                    className="btn w-100"
+                    onClick={() => {
+                      setImage(null);
+                      setAvatar(null);
+                    }}
+                    type="button"
+                  >
+                    Remove Image
+                  </button>
+                )}
+              </div>
+              <input name="id" type="hidden" value={formik.values.id} />
+              <div className="input-div">
+                <label>Name:</label>
+                <input
+                  placeholder="Name"
+                  name="name"
+                  className=""
+                  type="text"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.name}
+                />
+                {formik.touched.name && formik.errors.name ? (
+                  <p className="error">{formik.errors.name}</p>
+                ) : null}
+              </div>
+              <div className="input-div">
+                <label>Username:</label>
+                <input
+                  placeholder="Username"
+                  name="username"
+                  className=""
+                  type="text"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.username}
+                />
+                {formik.touched.username && formik.errors.username ? (
+                  <p className="error">{formik.errors.username}</p>
+                ) : null}
+              </div>
+              {/* <div className="input-div">
                   <label>Live Stream Enabled:</label>
                   <input
                     placeholder="Yes / No"
@@ -186,40 +193,40 @@ const Profile = ({
                     <p className="error">{formik.errors.live_stream}</p>
                   ) : null}
                 </div> */}
-                {profile.provider === 'email' && (
-                  <div className="input-div">
-                    <label>Password:</label>
-                    <input
-                      placeholder="Password"
-                      name="password"
-                      className=""
-                      type="password"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.password}
-                    />
-                    {formik.touched.password && formik.errors.password ? (
-                      <p className="error">{formik.errors.password}</p>
-                    ) : null}
-                  </div>
-                )}
+              {profile.provider === 'email' && (
+                <div className="input-div">
+                  <label>Password:</label>
+                  <input
+                    placeholder="Password"
+                    name="password"
+                    className=""
+                    type="password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}
+                  />
+                  {formik.touched.password && formik.errors.password ? (
+                    <p className="error">{formik.errors.password}</p>
+                  ) : null}
+                </div>
+              )}
 
-                <button
-                  className="btn bg-primary text-light"
-                  type="submit"
-                >Save
+              <button
+                className="btn bg-primary text-light"
+                type="submit"
+              >Save
                 </button>
-                <button
-                  className="btn bg-danger text-light"
-                  type="button"
-                  onClick={() => handleDeleteUser(profile.id, history)}
-                >Delete Profile
+              <button
+                className="btn bg-danger text-light"
+                type="button"
+                onClick={() => handleDeleteUser(profile.id, history)}
+              >Delete Profile
                 </button>
-              </form>
-            </div>
-
+            </form>
           </div>
+
         </div>
+
 
       )}
 
