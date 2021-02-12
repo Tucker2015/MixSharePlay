@@ -11,6 +11,22 @@
     padding: 10px;
     border-radius: 20px;
   }
+  @media screen and (max-width: 500px) {
+    .card-avatar {
+      height: 100px;
+    width: 100px;
+    
+    }
+    .card-body h3 {
+      font-size: 1rem;
+    }
+    .card-body p {
+      font-size: 0.8rem;
+    }
+    .card {
+      height: auto !important;
+    }
+  }
   .container {
     transition: 0.5s;
   }
@@ -21,7 +37,7 @@
   .container:hover {
     translate: (-20px);
   }
-  .conatiner .header h2{
+  .container .header h2{
     font-family: 'Poppins' !important;
     font-weight: 700;
     font-size: 2.3rem !important;

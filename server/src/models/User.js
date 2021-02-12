@@ -146,7 +146,7 @@ export const validateUser = (user) => {
   const schema = {
     avatar: Joi.any(),
     name: Joi.string().min(2).max(30).required(),
-    live_stream: Joi.string(),
+    live_stream: Joi.string().valid("Yes", "No"),
     username: Joi.string()
       .min(2)
       .max(20)

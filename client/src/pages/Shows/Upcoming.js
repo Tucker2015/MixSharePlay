@@ -18,10 +18,10 @@ export default class Upcoming extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 mt-3">
-                            <div className="card  text-light">
+                            <div className="card text-light">
                                 <div className="card-horizontal">
                                     <div className="img-square-wrapper">
-                                        <img className="card-avatar" src={htrain} alt="Card image cap" />
+                                        <img className="card-avatar" src={htrain} alt="" />
                                     </div>
                                     <div className="card-body">
                                         <h3 className="card-title" style={{ fontWeight: 800 }}>The H-Train Show on MBR Radio</h3>
@@ -41,7 +41,7 @@ export default class Upcoming extends Component {
                             <div className="card text-light">
                                 <div className="card-horizontal">
                                     <div className="img-square-wrapper">
-                                        <img className="card-avatar" src={pcr} alt="Card image cap" />
+                                        <img className="card-avatar" src={pcr} alt="" />
                                     </div>
                                     <div className="card-body">
                                         <h3 className="card-title" style={{ fontWeight: 800 }}>Peoples City Radio Live</h3>

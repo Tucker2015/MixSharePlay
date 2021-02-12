@@ -5,6 +5,9 @@ export const profileSchema = Yup.object({
     .min(2, 'Must be 2 characters at minimum')
     .max(30, 'Must be 30 characters or less')
     .required(),
+  stream_key: Yup.string()
+    .min(9, 'Must be 9 Random Characters')
+    .max(9, 'Must be 9 Random Characters'),
   username: Yup.string()
     .min(2, 'Must be 2 characters at minimum')
     .max(20, 'Must be 20 characters or less')
