@@ -36,6 +36,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
             <li className="nav-item">
               <Link to="/liveStream">Streams</Link>
             </li>
+
             {auth.isAuthenticated ? (
               <>
                 <li className="nav-item">
@@ -52,12 +53,10 @@ const Navbar = ({ auth, logOutUser, history }) => {
                 <li className="nav-item" onClick={onLogOut}>
                   <a href="/">Log out</a>
                 </li>
-                <img className="img " src={auth.me.avatar} alt="" height="50" width="50" />
+                <img className="img " src={auth.me.avatar} alt="avatar" height="50" width="50" />
               </>
             ) : (
                 <>
-
-
                   <li className="nav-item">
                     <Link to="/login">Login</Link>
                   </li>
