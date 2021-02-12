@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-
 import { getUsers } from '../../store/actions/usersActions';
 import Layout from '../../layout/Layout';
 import Loader from '../../components/Loader/Loader';
@@ -19,7 +18,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
   return (
     <Layout>
       <div className="users mx-auto mt-5">
-        <h2  >Users page</h2>
+        <h2>Users page</h2>
 
         <div className="row">
           {isLoading ? (
@@ -28,26 +27,32 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
               <>
                 {users.map((user, index) => {
                   return (
-                    <div key={index} className="mx-auto mt-3 card bg-dark text-light m-2 p-2">
-                      <Link to={`/${user.username}`}>
-                        <img src={user.avatar} className="avatar mx-auto" />
-                      </Link>
-                      <div>
-                        <h4 className="card-header h3">{user.name}</h4>
-                      </div>
-                      <div className="info-container">
-                        <div>
-                          <span className="label">Username: </span>
-                          <Link to={`/${user.username}`} className="text-light">
-                            {user.username}
-                          </Link>
-                        </div>
-
-                        <div>
-                          <span className="label">Joined: </span>
-                          <span className="info">
-                            {moment(user.createdAt).format('Do MMMM  YYYY')}
-                          </span>
+                    <div className="users mx-auto">
+                      <div className="con mt-3">
+                        <img src={user.avatar} className="avatar" />
+                        <div className="info-container mt-2 text-light">
+                          <div>
+                            <span className="label">Name: </span>
+                            <span className="info">{user.name}</span>
+                            <div>
+                              <span className="label">Username: </span>
+                              <span className="info">{user.username}</span>
+                            </div>
+                            <div>
+                              <span className="label">Email: </span>
+                              <span className="info">{user.email}</span>
+                            </div>
+                            <div>
+                              <span className="label">Live Streams: </span>
+                              <span className="info text-uppercase" >{user.live_stream}</span>
+                            </div>
+                            <div>
+                              <span className="label">Joined: </span>
+                              <span className="info">
+                                {moment(user.createdAt).format('Do MMMM  YYYY')}
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

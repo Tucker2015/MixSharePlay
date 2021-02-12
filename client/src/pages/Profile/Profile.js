@@ -149,12 +149,12 @@ const Profile = ({
         {isEdit && (
           <div className="form text-light mx-auto">
             <form onSubmit={formik.handleSubmit}>
-              <div>
+              <div className="input-div">
                 <label>Avatar:</label>
-                <input name="image" type="file" onChange={onChange} />
+                <input name="image" type="file" onChange={onChange} style={{ color: "#000", fontSize: "14px" }} />
                 {image && (
                   <button
-                    className="btn"
+                    className="btn btn2"
                     onClick={() => {
                       setImage(null);
                       setAvatar(null);
@@ -181,6 +181,7 @@ const Profile = ({
                   <p className="error">{formik.errors.name}</p>
                 ) : null}
               </div>
+
               <div className="input-div">
                 <label>Username:</label>
                 <input

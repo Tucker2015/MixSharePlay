@@ -1,12 +1,31 @@
-.videoBox {
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100% !important;
+  
+}
+.cont{
   position: relative;
   width: 100%;
   margin: 20px 0px;
+  align-items: center;
+}
+.videoBox {
+  
+  position: relative;
+  width: 90%;
+  margin: 20px 0px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 10px;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 500px) {
+  .videoBox {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 }
 .videoBox .box1 {
   position: relative;

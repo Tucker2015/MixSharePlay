@@ -8,6 +8,9 @@ import config from '../../default';
 // import { Link } from 'react-router-dom';
 import './VideoPlayer.css';
 import Chatbox from '../../components/ChatBox/ChatBox'
+import Navbar from '../../components/Navbar/Navbar'
+import Upcoming from '../Shows/Upcoming';
+
 export default class VideoPlayer extends React.Component {
 
     constructor(props) {
@@ -61,30 +64,35 @@ export default class VideoPlayer extends React.Component {
         return (
 
 
-            <Layout>
-                <div className="videoBox">
-                    <div className="box1">
-                        {this.state.stream ? (
-                            <div className="">
-                                <div className="" data-vjs-player >
-                                    <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
+            <div>
+                <Navbar />
+                <div className="cont">
+
+                    <div className="videoBox mx-auto">
+                        <div className="box1">
+                            {this.state.stream ? (
+                                <div className="">
+                                    <div className="" data-vjs-player >
+                                        <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
+                                    </div>
                                 </div>
-                            </div>
-                        ) : ' Loading ... '}
+                            ) : ' Loading ... '}
 
-                        {/* This Shows the current username who is streaming  */}
+                            {/* This Shows the current username who is streaming  */}
 
-                        {/* <div className="titleVid"><FontAwesomeIcon className="icon-flash" icon={faCircle} size={24} />
+                            {/* <div className="titleVid"><FontAwesomeIcon className="icon-flash" icon={faCircle} size={24} />
                             {this.props.match.params.username} Live
                 </div> */}
 
 
-                    </div>
-                    <div className="box1">
-                        <Chatbox />
+                        </div>
+                        <div className="box1">
+                            <Chatbox />
+                        </div>
                     </div>
                 </div>
-            </Layout>
+                <Upcoming />
+            </div>
 
 
 
