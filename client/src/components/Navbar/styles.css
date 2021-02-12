@@ -2,9 +2,10 @@
   display: inline-block;
   color: white;
   margin: 0;
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 2.3rem;
+  font-weight: 800;
   white-space: nowrap;
+  letter-spacing: 1px;
 }
 @media screen and (max-width: 768px) {
   .logo {
@@ -21,7 +22,7 @@
 
 .nav-item {
   display: inline-flex;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 @media screen and (max-width: 500px) {
   .navbar-collapse  {

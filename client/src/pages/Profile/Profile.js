@@ -101,25 +101,21 @@ const Profile = ({
   return (
     <Layout>
       <div className="profile">
-        <h2 className="header mt-5">Profile page</h2>
+        <h2 className="header mt-2">Profile page</h2>
 
         {isLoading ? (
           <Loader />
         ) : (
-            <div className="profile-info mt-5 mx-auto">
+            <div className="profile-info mt-3 mx-auto">
               <img src={image ? image : profile.avatar} className="avatar" />
               <div className="info-container text-light">
                 <div>
                   <span className="label">Name: </span>
-                  <span className="info">{profile.name}</span>
+                  <span className="info text-capitalize">{profile.name}</span>
                 </div>
                 <div>
                   <span className="label">Stream Key: </span>
                   <span className="info">{profile.stream_key}</span>
-                </div>
-                <div>
-                  <span className="label">Name: </span>
-                  <span className="info">{profile.name}</span>
                 </div>
                 <div>
                   <span className="label">Username: </span>

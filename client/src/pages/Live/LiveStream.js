@@ -73,8 +73,8 @@ export default class LiveStreams extends React.Component {
 
         return (
             <Layout>
-                <div className="container mt-5 ">
-                    <div className="users mx-auto mt-5">
+                <div className="container mt-2 ">
+                    <div className="users mx-auto mt-2">
                         <h2>Live Streams</h2>
                     </div>
                     <div className="streams row">

@@ -31,11 +31,11 @@ const Navbar = ({ auth, logOutUser, history }) => {
               <Link to="/"><i class="fa fa-home"></i> Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/live"><i class="fa fa-video-camera"></i> Live</Link>
+              <Link to="/live"><i class="fas fa-video"></i> Live</Link>
 
             </li>
             <li className="nav-item">
-              <Link to="/liveStream"><i class="fa fa-television" aria-hidden="true"></i> Streams</Link>
+              <Link to="/liveStream"><i class="fas fa-tv" aria-hidden="true"></i> Streams</Link>
             </li>
 
             {auth.isAuthenticated ? (
@@ -52,14 +52,14 @@ const Navbar = ({ auth, logOutUser, history }) => {
                   </li>
                 )}
                 <li className="nav-item" onClick={onLogOut}>
-                  <a href="/"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+                  <a href="/"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</a>
                 </li>
                 <img className="img " src={auth.me.avatar} alt="avatar" />
               </>
             ) : (
                 <>
                   <li className="nav-item">
-                    <Link to="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</Link>
+                    <Link to="/login"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login</Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</Link>

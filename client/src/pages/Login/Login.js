@@ -28,7 +28,7 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
 
   return (
     <Layout>
-      <div className="login mt-5">
+      <div className="login mt-2">
         <div className="containerHeader">
           <h1 className="headerFont">Login</h1>
           <div className="containerCard">

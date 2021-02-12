@@ -17,7 +17,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
 
   return (
     <Layout>
-      <div className="users mx-auto mt-5">
+      <div className="users mx-auto mt-2">
         <h2>Users page</h2>
 
         <div className="row">
@@ -33,7 +33,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
                         <div className="info-container mt-2 text-light">
                           <div>
                             <span className="label">Name: </span>
-                            <span className="info">{user.name}</span>
+                            <span className="info text-capitalize">{user.name}</span>
                             <div>
                               <span className="label">Username: </span>
                               <span className="info">{user.username}</span>

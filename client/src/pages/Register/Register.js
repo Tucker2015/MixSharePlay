@@ -31,7 +31,7 @@ const Register = ({ auth, register: { isLoading, error }, history, registerUserW
 
   return (
     <Layout>
-      <div className="register mt-5">
+      <div className="register mt-2">
         <div className="containerHeader">
           <h1 className="headerFont">Register</h1>
           <div className="containerCard">

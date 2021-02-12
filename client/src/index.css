@@ -29,6 +29,11 @@ body
   justify-content: center;
   text-align: center;
 }
+@media screen and (max-width: 500px) {
+  .header h2 {
+    font-size: 1.8rem !important;
+  }
+}
 .mainLogoText {
   font-family: 'Poppins';
   font-weight: 900;
@@ -40,7 +45,7 @@ body
 }
 @media screen and (max-width: 500px) {
   .mainLogoText {
-    font-size: 2.2em;
+    font-size: 2.5em;
   }
 }
 
