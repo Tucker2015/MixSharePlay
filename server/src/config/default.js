@@ -18,7 +18,7 @@ const config = {
         },
         https: {
             port: 8443,
-            mediaroot: './server/media',
+            mediaroot: './src/media',
             allow_origin: '*',
             key: '/etc/letsencrypt/live/test.mixshare.co.uk/privkey.pem',
             cert: '/etc/letsencrypt/live/test.mixshare.co.uk/fullchain.pem'

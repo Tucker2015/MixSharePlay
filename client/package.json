@@ -2,28 +2,29 @@
   "name": "mern-boilerplate",
   "version": "0.1.0",
   "private": true,
+  "hompage": "https://test.mixshare.co.uk",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
-    "formik": "^2.1.4",
+    "formik": "^2.2.6",
     "js-cookie": "^2.2.1",
     "jsquery": "^1.1.1",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "popper": "^1.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "video.js": "^7.10.2",
+    "video.js": "^7.11.4",
     "videojs": "^1.0.0",
-    "yup": "^0.28.3"
+    "yup": "^0.28.5"
   },
   "scripts": {
     "start": "set HTTPS=true&&react-scripts start",
@@ -34,7 +35,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://95.216.190.57:5000",
+  "proxy": "https://test.mixshare.co.uk:5000",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -2,15 +2,15 @@ import React from 'react';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import Layout from '../../layout/Layout';
 import { useFormik } from 'formik';
-
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-
+import Background from '../../assets/background.jpg';
 import { loginUserWithEmail } from '../../store/actions/authActions';
 import { FACEBOOK_AUTH_LINK, GOOGLE_AUTH_LINK } from '../../constants';
 import { loginSchema } from './validation';
 import './styles.css';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Login = ({ auth, history, loginUserWithEmail }) => {
   const formik = useFormik({
@@ -27,80 +27,64 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
   if (auth.isAuthenticated) return <Redirect to="/" />;
 
   return (
-    <Layout>
-      <div className="login mt-2">
-        <div className="containerHeader">
-          <h1 className="headerFont">Login</h1>
-          <div className="containerCard">
+    <div>
+      <section>
 
-            <div className="box">
-              <span></span>
-              <div className="content">
-                <form onSubmit={formik.handleSubmit}>
-                  <h2>Log in with social media</h2>
-                  <a className="fb btn text-light" href={FACEBOOK_AUTH_LINK}>
-                    <i className="fa fa-facebook fa-fw" /> Login with Facebook
-  </a>
-                  <a className="google btn text-light" href={GOOGLE_AUTH_LINK}>
-                    <i className="fa fa-google fa-fw" />
-    Login with Google
-  </a>
-                  <h2 className="mt-2">Login with email address</h2>
+        <div className="imgBx">
+          <img src={Background} alt="" />
+        </div>
+        <div className="contentBx">
+          <div className="formBx">
+            <h2>Login</h2>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="inputBx">
+                <span>Email</span>
+                <input
+                  placeholder="Email address"
+                  name="email"
+                  className="text"
+                  type="text"
 
-                  <div>
-                    <input
-                      placeholder="Email address"
-                      name="email"
-                      className="text"
-                      type="text"
-                      style={{ width: '100%', color: '#000' }}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.email}
-                    />
-                    {formik.touched.email && formik.errors.email ? (
-                      <p className="error">{formik.errors.email}</p>
-                    ) : null}
-                    <input
-                      placeholder="Password"
-                      name="password"
-                      type="password"
-                      style={{ width: '100%', color: '#000' }}
-                      className="text"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.password}
-                    />
-                    {formik.touched.password && formik.errors.password ? (
-                      <p className="error">{formik.errors.password}</p>
-                    ) : null}
-                  </div>
-                  {auth.error && <p className="error">{auth.error}</p>}
-                  <div>
-                    <button
-                      className="btn submit bg-primary text-light"
-                      style={{ width: 120 }}
-                      disabled={auth.isLoading || !formik.isValid}
-                      type="submit"
-                    >
-                      Sign In
-    </button>
-                  </div>
-                  <div>
-                    Don't have an account?{' '}
-                    <Link className="bold" to="/register">
-                      Register
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
+                />
+                {formik.touched.email && formik.errors.email ? (
+                  <p className="error">{formik.errors.email}</p>
+                ) : null}
+                <span>Password</span>
+                <input
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  className="text"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
+                />
+                {formik.touched.password && formik.errors.password ? (
+                  <p className="error">{formik.errors.password}</p>
+                ) : null}
+                <input
+                  className="inputBx"
+                  value="Sign In"
+                  disabled={auth.isLoading || !formik.isValid}
+                  type="submit"
+                >
+                </input>
+                <span>
+                  Don't have an account?</span>{' '}
+                <Link className="bold" to="/register">
+                  Sign Up
     </Link>
-                  </div>
-                </form>
               </div>
-            </div>
-
-
+              {auth.error && <p className="error">{auth.error}</p>}
+            </form>
           </div>
         </div>
-      </div>
-    </Layout>
+      </section>
+    </div>
+
   );
 };
 

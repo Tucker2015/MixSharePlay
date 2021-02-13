@@ -46,3 +46,8 @@
     justify-content: center;
     text-align: center;
   }  
+  @media screen and (max-width: 500px) {
+    .container .header h2 {
+      font-size: 1.4rem !important;
+    
+    }}
