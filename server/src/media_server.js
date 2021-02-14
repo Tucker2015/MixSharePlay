@@ -1,4 +1,4 @@
-import User, { hashPassword, validateUser } from '../src/models/User';
+import User, { hashPassword, validateUser } from './models/User.js';
 
 const NodeMediaServer = require('node-media-server'),
     config = require('./config/default').rtmp_server,

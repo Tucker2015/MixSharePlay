@@ -10,6 +10,7 @@ import './VideoPlayer.css';
 import Chatbox from '../../components/ChatBox/ChatBox'
 import Navbar from '../../components/Navbar/Navbar'
 import Upcoming from '../Shows/Upcoming';
+import Likes from '../../components/Likes/Likes';
 
 export default class VideoPlayer extends React.Component {
 
@@ -72,8 +73,11 @@ export default class VideoPlayer extends React.Component {
                         <div className="box1">
                             {this.state.stream ? (
                                 <div className="">
+                                    <Likes />
                                     <div className="" data-vjs-player >
+
                                         <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
+
                                     </div>
                                 </div>
                             ) : ' Loading ... '}
@@ -88,6 +92,7 @@ export default class VideoPlayer extends React.Component {
                         </div>
                         <div className="box1">
                             <Chatbox />
+
                         </div>
                     </div>
                 </div>
