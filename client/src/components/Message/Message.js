@@ -52,14 +52,11 @@ const Message = ({ message, auth, deleteMessage, editMessage, clearMessageError 
   return (
     <div className={message.isLoading ? 'message loader' : 'message'}>
       <div className="message-header">
-        <Link to={`/${message.user.username}`}>
-          <img src={message.user.avatar} className="avatar" />
-        </Link>
+        <img src={message.user.avatar} className="avatar" />
+
         <div>
-          <Link to={`/${message.user.username}`} className="name">
-            {message.user.name}
-          </Link>
-          <span className="username">@{message.user.username}</span>
+
+          <span className="username">{message.user.username}</span>
           <span className="time text-light">{moment(message.createdAt).fromNow()}</span>
           {!moment(message.createdAt).isSame(message.updatedAt, 'minute') && (
             <span className="time text-light">{`Edited: ${moment(
@@ -85,8 +82,8 @@ const Message = ({ message, auth, deleteMessage, editMessage, clearMessageError 
             ) : null}
           </>
         ) : (
-          <p>{message.text}</p>
-        )}
+            <p>{message.text}</p>
+          )}
         {auth.isAuthenticated && (auth.me.id === message.user.id || auth.me.role === 'ADMIN') && (
           <>
             {!isEdit ? (
@@ -99,22 +96,22 @@ const Message = ({ message, auth, deleteMessage, editMessage, clearMessageError 
                 </button>
               </>
             ) : (
-              <>
-                <button type="submit" className="btn" disabled={message.isLoading}>
-                  Submit
+                <>
+                  <button type="submit" className="btn" disabled={message.isLoading}>
+                    Submit
                 </button>
-                <button
-                  onClick={() => {
-                    setIsEdit((oldIsEdit) => !oldIsEdit);
-                    clearMessageError(message.id);
-                  }}
-                  type="button"
-                  className="btn"
-                >
-                  Cancel
+                  <button
+                    onClick={() => {
+                      setIsEdit((oldIsEdit) => !oldIsEdit);
+                      clearMessageError(message.id);
+                    }}
+                    type="button"
+                    className="btn"
+                  >
+                    Cancel
                 </button>
-              </>
-            )}
+                </>
+              )}
           </>
         )}
       </form>

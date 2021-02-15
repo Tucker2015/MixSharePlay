@@ -122,6 +122,23 @@ section .imgBx{
   width: 50%;
   height:100%;
 }
+section .contentBx .formBx h5{
+color: #fff;
+text-align: center;
+font-weight: 500;
+}
+section .contentBx .formBx .facebook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section .contentBx .formBx .facebook img{
+  height: 50px;
+  width: 50px;
+}
+section .contentBx .formBx .facebook img:hover{
+  transform: scale(1.1);
+}
 /* section .imgBx:before{
   content: '';
   position: absolute;

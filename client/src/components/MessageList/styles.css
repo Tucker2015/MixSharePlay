@@ -1,2 +1,12 @@
 .message-list .list {
 }
+.message-list h2 {
+    font-size: 20px;
+    color: #fff;
+  }
+
+
+.message-list .list .comment{
+    font-size: 20px;
+    color: #fff;
+}
