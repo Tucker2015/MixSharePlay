@@ -38,15 +38,9 @@ const MessageForm = ({ addMessage, message: { messages } }) => {
         {formik.touched.text && formik.errors.text ? (
           <p className="error">{formik.errors.text}</p>
         ) : null}
-<<<<<<< HEAD
         <input type="submit" className="btn" value="Post Comment" disabled={isSubmiting} />
       </form>
       <h2 className="mt-2">Please login to post comment</h2>
-=======
-        <input type="submit" className="btn" value="Add Comment" disabled={isSubmiting} />
-      </form>
-      <h2>Please Login to Comment</h2>
->>>>>>> 29db16e2d929a18a5a4105393576db401eae605c
     </div>
   );
 };
