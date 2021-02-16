@@ -1,3 +1,19 @@
 .message-form .btn {
   width: auto;
 }
+.message-form h2 {
+  font-size: 20px;
+  color: #fff;
+}
+.message-form textarea{
+  color: black;
+  font-size: 16px;
+}
+.message-form input{
+  width: auto;
+  margin-right: 10px;
+  border: none;
+  background: rgb(25, 130, 222);
+  color: #fff;
+  
+}

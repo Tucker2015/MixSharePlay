@@ -1,11 +1,16 @@
 .name {
   font-size: 20px;
   font-weight: bold;
+  color: #fff;
 }
-.username,
+.username{
+  color:#fff;
+  text-transform: uppercase;
+  font-weight: 600;
+}
 .time {
-  font-size: 18px;
-  margin-left: 5px;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
 .message {
@@ -17,8 +22,8 @@
 }
 
 .message .avatar {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   margin-right: 10px;
   /* border-radius: 50%; */
@@ -32,9 +37,17 @@
 
 .message p {
   margin: 0;
+  color: azure;
 }
 
 .message .btn {
   width: auto;
   margin-right: 10px;
+  border: none;
+  background: rgb(25, 130, 222);
+  color: #fff;
+  height: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }

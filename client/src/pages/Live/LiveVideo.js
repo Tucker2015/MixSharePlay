@@ -1,7 +1,7 @@
 import Layout from '../../layout/Layout';
 import React from 'react';
 import videojs from 'video.js'
-// import axios from 'axios';
+import axios from 'axios';
 import config from '../../default';
 // import { compose } from 'redux';
 // import { connect } from 'react-redux';
@@ -11,8 +11,10 @@ import Chatbox from '../../components/ChatBox/ChatBox'
 import Navbar from '../../components/Navbar/Navbar'
 import Upcoming from '../Shows/Upcoming';
 import Likes from '../../components/Likes/Likes';
-
+import MessageForm from '../../components/MessageForm/MessageForm';
+import MessageList from '../../components/MessageList/MessageList';
 export default class VideoPlayer extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -73,7 +75,6 @@ export default class VideoPlayer extends React.Component {
                         <div className="box1">
                             {this.state.stream ? (
                                 <div className="">
-                                    <Likes />
                                     <div className="" data-vjs-player >
 
                                         <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
@@ -91,12 +92,13 @@ export default class VideoPlayer extends React.Component {
 
                         </div>
                         <div className="box1">
-                            <Chatbox />
 
+                            <MessageForm />
                         </div>
                     </div>
                 </div>
-                <Upcoming />
+
+                <MessageList />
             </div>
 
 
