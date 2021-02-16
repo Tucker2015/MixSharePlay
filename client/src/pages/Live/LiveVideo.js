@@ -13,6 +13,10 @@ import Upcoming from '../Shows/Upcoming';
 import Likes from '../../components/Likes/Likes';
 import MessageForm from '../../components/MessageForm/MessageForm';
 import MessageList from '../../components/MessageList/MessageList';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 29db16e2d929a18a5a4105393576db401eae605c
 export default class VideoPlayer extends React.Component {
 
 
@@ -44,7 +48,7 @@ export default class VideoPlayer extends React.Component {
                 autoplay: true,
                 controls: true,
                 sources: [{
-                    src: 'https://test.mixshare.co.uk:' + config.rtmp_server.https.port + '/live/o1dh-XxK5/index.m3u8',
+                    src: 'http://176.9.31.102:' + config.rtmp_server.http.port + '/live/o1dh-XxK5/index.m3u8',
                     type: 'application/x-mpegURL'
                 }],
                 fluid: true,
@@ -76,33 +80,30 @@ export default class VideoPlayer extends React.Component {
                             {this.state.stream ? (
                                 <div className="">
                                     <div className="" data-vjs-player >
-
                                         <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
-
                                     </div>
                                 </div>
                             ) : ' Loading ... '}
-
                             {/* This Shows the current username who is streaming  */}
-
                             {/* <div className="titleVid"><FontAwesomeIcon className="icon-flash" icon={faCircle} size={24} />
                             {this.props.match.params.username} Live
                 </div> */}
-
-
                         </div>
                         <div className="box1">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29db16e2d929a18a5a4105393576db401eae605c
                             <MessageForm />
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 29db16e2d929a18a5a4105393576db401eae605c
                 <MessageList />
             </div>
-
-
-
         )
     }
 }

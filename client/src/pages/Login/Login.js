@@ -11,6 +11,7 @@ import { FACEBOOK_AUTH_LINK, GOOGLE_AUTH_LINK } from '../../constants';
 import { loginSchema } from './validation';
 import './styles.css';
 import Navbar from '../../components/Navbar/Navbar';
+import fb from '../../assets/fb.png';
 
 const Login = ({ auth, history, loginUserWithEmail }) => {
   const formik = useFormik({
@@ -80,6 +81,13 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
               </div>
               {auth.error && <p className="error">{auth.error}</p>}
             </form>
+            <h5>Login with Facebook</h5>
+            <div className="facebook">
+              <a className="fb" href={FACEBOOK_AUTH_LINK}>
+                <img src={fb} />
+              </a>
+
+            </div>
           </div>
         </div>
       </section>
