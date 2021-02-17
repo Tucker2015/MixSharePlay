@@ -28,41 +28,44 @@ const Navbar = ({ auth, logOutUser, history }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="nav ml-auto justify-content-center">
             <li className="nav-item">
-              <Link to="/"><i class="fa fa-home"></i> Home</Link>
+              <Link to="/"><i className="fa fa-home"></i> Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/live"><i class="fas fa-video"></i> Live</Link>
+              <Link to="/live"><i className="fas fa-video"></i> Live</Link>
 
             </li>
             <li className="nav-item">
-              <Link to="/liveStream"><i class="fas fa-tv" aria-hidden="true"></i> Streams</Link>
+              <Link to="/liveStream"><i className="fas fa-tv" aria-hidden="true"></i> Streams</Link>
             </li>
 
             {auth.isAuthenticated ? (
               <>
                 <li className="nav-item">
-                  <Link to="/users"><i class="fa fa-users" aria-hidden="true"></i> Users</Link>
+                  <Link to="/users"><i className="fa fa-users" aria-hidden="true"></i> Users</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to={`/${auth.me.username}`}><i class="fa fa-user" aria-hidden="true"></i> Profile</Link>
+                  <Link to={`/${auth.me.username}`}><i className="fa fa-user" aria-hidden="true"></i> Profile</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/help"><i className="fa fa-chalkboard-teacher" aria-hidden="true"></i> Help</Link>
                 </li>
                 {auth.me?.role === 'ADMIN' && (
                   <li className="nav-item">
-                    <Link to="/admin"><i class="fa fa-lock" aria-hidden="true"></i> Admin</Link>
+                    <Link to="/admin"><i className="fa fa-lock" aria-hidden="true"></i> Admin</Link>
                   </li>
                 )}
                 <li className="nav-item" onClick={onLogOut}>
-                  <a href="/"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</a>
+                  <a href="/"><i className="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</a>
                 </li>
                 <img className="img " src={auth.me.avatar} alt="avatar" />
               </>
             ) : (
                 <>
                   <li className="nav-item">
-                    <Link to="/login"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login</Link>
+                    <Link to="/login"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</Link>
+                    <Link to="/register"><i className="fa fa-user-plus" aria-hidden="true"></i> Register</Link>
                   </li>
                 </>
               )}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 // import { Link } from 'react-router-dom';
 
 import requireAdmin from '../../hoc/requireAdmin';
@@ -7,13 +8,14 @@ import './styles.css';
 
 const Admin = () => {
   return (
-    <Layout>
+    <div>
+      <Navbar />
       <div className="admin-page mt-2">
         <h1>Admin dashboard</h1>
 
-        <iframe src="http://176.9.31.102:8889/admin/" width="100%" height="1000px" className="mt-3" title="dashboard"></iframe>
+        <iframe src="https://test.mixshare.co.uk:8443/admin/" width="100%" height="1000px" className="mt-3" title="dashboard"></iframe>
       </div>
-    </Layout>
+    </div>
   );
 };
 

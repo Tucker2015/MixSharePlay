@@ -9,6 +9,7 @@ import Loader from '../../components/Loader/Loader';
 import requireAuth from '../../hoc/requireAuth';
 
 import './styles.css';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Users = ({ getUsers, users: { users, isLoading } }) => {
   useEffect(() => {
@@ -16,11 +17,13 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
   }, []);
 
   return (
-    <Layout>
+    <div>
+      <Navbar />
       <div className="users mx-auto mt-2">
+
         <h2>Users page</h2>
 
-        <div className="row">
+        <div className="row m-5">
           {isLoading ? (
             <Loader />
           ) : (
@@ -62,7 +65,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
             )}
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
