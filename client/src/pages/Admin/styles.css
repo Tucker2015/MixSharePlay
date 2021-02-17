@@ -1,7 +1,6 @@
 .admin-page {
   position: relative;
-  margin-left: -10%;
-  margin-right: -10%;
+  margin: 0 20px;
   height: 100%;
 }
 .admin-page h1 {

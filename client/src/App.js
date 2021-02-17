@@ -14,6 +14,7 @@ import Admin from './pages/Admin/Admin';
 import NotFound from './pages/NotFound/NotFound';
 import Upcoming from './pages/Shows/Upcoming';
 import Loader from './components/Loader/Loader';
+import Help from './pages/Help/Help';
 import { logInUserWithOauth, loadMe } from './store/actions/authActions';
 
 
@@ -51,6 +52,7 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
           <Route path="/notfound" component={NotFound} />
           <Route path="/admin" component={Admin} />
           <Route path="/shows" component={Upcoming} />
+          <Route path="/help" component={Help} />
           <Route exact path="/:username" component={Profile} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />

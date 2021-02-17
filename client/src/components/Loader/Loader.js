@@ -4,8 +4,8 @@ import './styles.css';
 
 const Loader = (props) => {
   return (
-    <div className="loader-container loader" {...props}>
-      <h3 className="loader-content">Loading.  Please Wait !</h3>
+    <div className="loader-container" {...props}>
+      <div className="lds-hourglass"></div>
     </div>
   );
 };

@@ -8,12 +8,12 @@ ST = State
 L = Location
 O = Organization Name
 OU = Organizational Unit 
-CN = www.localhost.com
+CN = test.mixshare.co.uk
 [v3_req]
 keyUsage = critical, digitalSignature, keyAgreement
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = www.localhost.com
-DNS.2 = localhost.com
-DNS.3 = localhost
+DNS.1 = test.mixshare.co.uk
+DNS.2 = test.mixshare.co.uk
+DNS.3 = test.mixshare.co.uk
