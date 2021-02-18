@@ -2,11 +2,11 @@ const CronJob = require('cron').CronJob,
     request = require('request'),
     helpers = require('../helpers/helpers'),
     config = require('../config/default'),
-    port = config.rtmp_server.http.port;
+    port = config.rtmp_server.https.port;
 
 const job = new CronJob('*/5 * * * * *', function () {
     request
-        .get('http://127.0.0.1:' + port + '/api/streams', function (error, response, body) {
+        .get('https://test.mixshare.co.uk:' + port + '/api/streams', function (error, response, body) {
             res.header("Access-Control-Allow-Origin", "*");
             let streams = JSON.parse(body);
             if (typeof (streams['live'] !== undefined)) {

@@ -5,7 +5,9 @@
   justify-content: center;
   align-items: center;
 }
-
+.loader-container h2 {
+color: #fff
+}
 .lds-hourglass {
   display: inline-block;
   position: relative;

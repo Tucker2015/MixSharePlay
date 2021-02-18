@@ -1,6 +1,6 @@
 const express = require('express'),
-    router = express.Router(),
-    User = require('../models/User').User;
+    router = express.Router();
+import User from '../models/User';
 
 router.get('/info',
 
@@ -12,7 +12,7 @@ router.get('/info',
                 if (!streams.hasOwnProperty(stream)) continue;
                 query.$or.push({ stream_key: stream });
             }
-
+	    console.log(User);
             User.find(query, (err, users) => {
                 if (err)
                     return;
