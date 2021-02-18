@@ -6,6 +6,8 @@ import config from '../../default';
 // import { compose } from 'redux';
 // import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
+import watermark from 'videojs-watermark';
+import '../../../node_modules/videojs-watermark/dist/videojs-watermark.css';
 import './VideoPlayer.css';
 import Chatbox from '../../components/ChatBox/ChatBox'
 import Navbar from '../../components/Navbar/Navbar'
@@ -25,37 +27,48 @@ export default class VideoPlayer extends React.Component {
     }
 
     componentDidMount() {
+        videojs.registerPlugin('watermark', watermark)
 
-        // This is the original axios request for username
 
-
-        // axios.get('/user', {
-        //     params: {
-        //         username: this.props.match.params.username
-        //     }
-        // }).then(res => {
-
-        this.setState({
-
-            stream: true,
-            videoJsOptions: {
-                playsinline: true,
-                preload: true,
-                autoplay: true,
-                controls: true,
-                sources: [{
-                    src: 'https://test.mixshare.co.uk:' + config.rtmp_server.https.port + '/live/o1dh-XxK5/index.m3u8',
-                    type: 'application/x-mpegURL'
-                }],
-                fluid: true,
+        axios.get('/user', {
+            params: {
+                username: this.props.match.params.username
             }
+        }).then(res => {
 
-        }, () => {
-            this.player = videojs(this.videoNode, this.state.videoJsOptions, function onPlayerReady() {
-                console.log('onPlayerReady', this)
+            this.setState({
+
+                stream: true,
+                videoJsOptions: {
+                    plugins: {
+                        watermark: {
+                            image: 'https://ktinternet.net/radio-logos/video_logo.png',
+                            position: 'top-left',
+                            hideOnReady: true,
+                            fadeTime: 10000,
+                        },
+                    },
+                    retryOnError: true,
+                    playsinline: true,
+                    suppressNotSupportedError: true,
+                    notSupportedMessage: 'Currently The stream is unavailable',
+                    preload: true,
+                    autoplay: true,
+                    controls: true,
+                    sources: [{
+                        src: 'https://test.mixshare.co.uk:' + config.rtmp_server.https.port + '/live/' + res.data.stream_key + '/index.m3u8',
+                        type: 'application/x-mpegURL'
+                    }],
+                    fluid: true,
+                }
+
+            }, () => {
+                this.player = videojs(this.videoNode, this.state.videoJsOptions, function onPlayerReady() {
+                    console.log('onPlayerReady', this)
+                });
             });
-        });
-    };
+        })
+    }
 
     componentWillUnmount() {
         if (this.player) {
@@ -85,9 +98,9 @@ export default class VideoPlayer extends React.Component {
 
                             {/* This Shows the current username who is streaming  */}
 
-                            {/* <div className="titleVid"><FontAwesomeIcon className="icon-flash" icon={faCircle} size={24} />
-                            {this.props.match.params.username} Live
-                </div> */}
+                            <div className="titleVid">
+                                {this.props.match.params.username} Live
+                </div>
 
 
                         </div>

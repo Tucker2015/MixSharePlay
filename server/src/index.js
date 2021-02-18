@@ -6,11 +6,15 @@ import { readFileSync } from 'fs';
 import { resolve, join } from 'path';
 import passport from 'passport';
 import all_routes from 'express-list-endpoints';
-
+const config = require('./config/default');
 import routes from './routes';
+const Session = require('express-session');
+const FileStore = require('session-file-store')(Session);
 import { seedDb } from './utils/seed';
-
 const node_media_server = require('./media_server');
+const thumbnail_generator = require('./cron/thumbnails');
+
+
 const app = express();
 var cors = require('cors');
 app.use(cors());
@@ -28,7 +32,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 // DB Config
 const dbConnection = isProduction ? process.env.MONGO_URI_PROD : process.env.MONGO_URI_DEV;
-node_media_server.run();
+
 // Connect to Mongo
 mongoose
   .connect(dbConnection, {
@@ -47,8 +51,18 @@ mongoose
 app.use('/', routes);
 app.use('/public', express.static(join(__dirname, '../public')));
 app.use('/streams', require('./routes/streams'));
+app.use('/thumbnails', express.static('server/thumbnails'));
 
-
+app.use('/profiles', express.static('server/media/profiles'));
+app.use(Session({
+  store: new FileStore({
+    path: 'server/sessions'
+  }),
+  secret: config.server.secret,
+  maxAge: Date().now + (60 * 1000 * 30),
+  resave: true,
+  saveUninitialized: false,
+}));
 
 // Serve static assets if in production
 if (isProduction) {
@@ -71,6 +85,8 @@ if (isProduction) {
 
   const server = https.createServer(httpsOptions, app).listen(port, () => {
     console.log('https server running at ' + port);
-    // console.log(all_routes(app));
+    console.log(all_routes(app));
   });
 }
+node_media_server.run();
+thumbnail_generator.start();
