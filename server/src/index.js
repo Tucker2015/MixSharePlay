@@ -51,7 +51,7 @@ mongoose
 app.use('/', routes);
 app.use('/public', express.static(join(__dirname, '../public')));
 app.use('/streams', require('./routes/streams'));
-app.use('/thumbnails', express.static('./thumbnails'));
+app.use('/thumbnails', express.static(join(__dirname,'./thumbnails')));
 
 app.use('/profiles', express.static('server/media/profiles'));
 app.use(Session({
