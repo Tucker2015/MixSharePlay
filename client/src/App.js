@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
-import LiveVideo from './pages/Live/LiveVideo'
-import LiveStream from './pages/Live/LiveStream'
+import VideoPlayer from './pages/Live/LiveVideo'
+import LiveStreams from './pages/Live/LiveStream'
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Home from './pages/Home/Home';
@@ -45,8 +45,13 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
       {auth.appLoaded ? (
         <Switch>
           <Route path="/login" component={Login} />
-          <Route path="/liveStream" component={LiveStream} />
-          <Route path="/live" component={LiveVideo} />
+
+          <Route exact path="/liveStream" render={props => (
+            <LiveStreams  {...props} />
+          )} />
+          <Route exact path="/stream/:username" render={(props) => (
+            <VideoPlayer {...props} />
+          )} />
           <Route path="/register" component={Register} />
           <Route path="/users" component={Users} />
           <Route path="/notfound" component={NotFound} />

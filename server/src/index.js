@@ -51,12 +51,12 @@ mongoose
 app.use('/', routes);
 app.use('/public', express.static(join(__dirname, '../public')));
 app.use('/streams', require('./routes/streams'));
-app.use('/thumbnails', express.static('server/thumbnails'));
+app.use('/thumbnails', express.static('./thumbnails'));
 
 app.use('/profiles', express.static('server/media/profiles'));
 app.use(Session({
   store: new FileStore({
-    path: 'server/sessions'
+    path: './src/sessions'
   }),
   secret: config.server.secret,
   maxAge: Date().now + (60 * 1000 * 30),

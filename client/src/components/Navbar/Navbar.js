@@ -30,10 +30,12 @@ const Navbar = ({ auth, logOutUser, history }) => {
             <li className="nav-item">
               <Link to="/"><i className="fa fa-home"></i> Home</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/live"><i className="fas fa-video"></i> Live</Link>
 
-            </li>
+            {/* Not needed when Thumbnails Available */}
+
+            {/* <li className="nav-item">
+              <Link to="/live"><i className="fas fa-video"></i> Live</Link>
+            </li> */}
             <li className="nav-item">
               <Link to="/liveStream"><i className="fas fa-tv" aria-hidden="true"></i> Streams</Link>
             </li>
