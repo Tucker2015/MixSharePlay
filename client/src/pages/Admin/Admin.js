@@ -20,7 +20,7 @@ const Admin = () => {
       <div className="admin-page mt-2">
         <h1>Admin dashboard</h1>
 
-        <iframe src="https://test.mixshare.co.uk:8443/admin/" width="100%" height="1000px" className="mt-3" title="dashboard"></iframe>
+        <iframe src="https://live.mixshare.co.uk:8443/admin/" width="100%" height="1000px" className="mt-3" title="dashboard"></iframe>
       </div>
     </div>
   );

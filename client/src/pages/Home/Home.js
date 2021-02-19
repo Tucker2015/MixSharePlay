@@ -17,7 +17,8 @@ const Home = ({ auth }) => {
     <Layout>
       <div className="homeBody mt-2">
         <h1 className="text-center mainLogoText">MixShare Live</h1>
-        <h3 className="text-center text-light"> Test Site for MixShare Live </h3>
+        <hr></hr>
+        {/* <h3 className="text-center text-light"> Test Site for MixShare Live </h3> */}
         {!auth.isAuthenticated ? (
           <div>
 

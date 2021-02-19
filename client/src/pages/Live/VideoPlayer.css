@@ -35,3 +35,31 @@
   border: 6px double rgba(131, 131, 131, 0.105);
   padding: 10px;
 }
+.titleVid {
+  position: relative;
+  margin-top: 5px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  padding: 5px;
+ text-transform: uppercase;
+width: 100%;
+}
+.icon-flash {
+  margin-right: 5px;
+  color:red;
+  font-size: 20px;
+  -webkit-animation: flash linear 1s infinite;
+animation: flash linear 2s infinite;
+}
+@-webkit-keyframes flash {
+  0% { opacity: 1; } 
+  50% { opacity: .1; } 
+  100% { opacity: 1; }
+}
+@keyframes flash {
+  0% { opacity: 1; } 
+  50% { opacity: .1; } 
+  100% { opacity: 1; }
+}

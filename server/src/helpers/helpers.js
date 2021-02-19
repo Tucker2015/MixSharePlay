@@ -5,7 +5,7 @@ const spawn = require('child_process').spawn,
 const generateStreamThumbnail = (stream_key) => {
     const args = [
         '-y',
-        '-i', 'https://test.mixshare.co.uk:8443/live/' + stream_key + '/index.m3u8',
+        '-i', 'https://live.mixshare.co.uk:8443/live/' + stream_key + '/index.m3u8',
         '-ss', '00:00:01',
         '-vframes', '1',
         '-vf', 'scale=-2:300',

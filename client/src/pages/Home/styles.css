@@ -12,6 +12,11 @@
   /* border: 1px solid green; */
   min-height: calc(100% - 112px);
 }
+.homeBody hr {
+  border-top: 1px solid;
+  background: linear-gradient(to right, red, rgb(0, 102, 255));
+  height: 5px;
+}
 .homeBody .img{
   position: relative;
   
