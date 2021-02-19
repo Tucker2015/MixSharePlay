@@ -81,13 +81,15 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
               </div>
               {auth.error && <p className="error">{auth.error}</p>}
             </form>
-            <h5>Login with Facebook</h5>
+            <h5>Any users from the Beta site</h5>
+            <h5>will need to Re-Register</h5>
+            {/* <h5>Login with Facebook</h5>
             <div className="facebook">
               <a className="fb" href={FACEBOOK_AUTH_LINK}>
                 <img src={fb} />
               </a>
 
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

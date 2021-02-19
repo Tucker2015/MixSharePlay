@@ -2,7 +2,7 @@
   "name": "mern-boilerplate",
   "version": "0.1.0",
   "private": true,
-  "hompage": "https://test.mixshare.co.uk",
+  "hompage": "https://live.mixshare.co.uk",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -35,7 +35,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://test.mixshare.co.uk:5000",
+  "proxy": "https://live.mixshare.co.uk:5000",
   "browserslist": {
     "production": [
       ">0.2%",

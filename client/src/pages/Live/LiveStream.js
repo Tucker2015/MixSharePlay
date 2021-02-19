@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import config from '../../default';
 import Layout from '../../layout/Layout'
-
+import './LiveStream.css';
 export default class LiveStreams extends React.Component {
 
     constructor(props) {
@@ -14,7 +14,9 @@ export default class LiveStreams extends React.Component {
     }
 
     componentDidMount() {
-        this.getLiveStreams();
+        this.interval = setInterval(() => {
+            this.getLiveStreams();
+        }, 500);
     }
 
     componentWillUnmount() {
@@ -22,7 +24,7 @@ export default class LiveStreams extends React.Component {
     }
 
     getLiveStreams() {
-        axios.get('https://test.mixshare.co.uk:8443/api/streams')
+        axios.get('https://live.mixshare.co.uk:8443/api/streams')
             .then(res => {
                 let streams = res.data;
                 if (typeof (streams['live'] !== 'undefined')) {
@@ -57,7 +59,7 @@ export default class LiveStreams extends React.Component {
 
                     <Link to={'/stream/' + stream.username}>
                         <div className="stream-thumbnail">
-                            <img src={'/thumbnails/' + stream.stream_key + '.png'} style={{width: "100%"}} alt="thumbnail" />
+                            <img src={'/thumbnails/' + stream.stream_key + '.png'} style={{ width: "100%" }} alt="thumbnail" />
                         </div>
                     </Link>
 
@@ -78,7 +80,7 @@ export default class LiveStreams extends React.Component {
                     <div className="users mx-auto mt-2">
                         <h2>Live Streams</h2>
                     </div>
-                    <div className="streams row">
+                    <div className="streams row mt-5">
                         {streams}
                     </div>
 

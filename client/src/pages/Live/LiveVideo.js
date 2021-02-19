@@ -9,12 +9,8 @@ import config from '../../default';
 import watermark from 'videojs-watermark';
 import '../../../node_modules/videojs-watermark/dist/videojs-watermark.css';
 import './VideoPlayer.css';
-import Chatbox from '../../components/ChatBox/ChatBox'
+import Users from '../Users/Users';
 import Navbar from '../../components/Navbar/Navbar'
-import Upcoming from '../Shows/Upcoming';
-import Likes from '../../components/Likes/Likes';
-import MessageForm from '../../components/MessageForm/MessageForm';
-import MessageList from '../../components/MessageList/MessageList';
 export default class VideoPlayer extends React.Component {
 
 
@@ -31,9 +27,9 @@ export default class VideoPlayer extends React.Component {
 
 
         axios.get('/streams/user', {
-           params: {
-               username: this.props.match.params.username
-           }
+            params: {
+                username: this.props.match.params.username
+            }
         }).then(res => {
 
             this.setState({
@@ -56,7 +52,7 @@ export default class VideoPlayer extends React.Component {
                     autoplay: true,
                     controls: true,
                     sources: [{
-                        src: 'https://test.mixshare.co.uk:' + config.rtmp_server.https.port + '/live/' + res.data.stream_key + '/index.m3u8',
+                        src: 'https://live.mixshare.co.uk:' + config.rtmp_server.https.port + '/live/' + res.data.stream_key + '/index.m3u8',
                         type: 'application/x-mpegURL'
                     }],
                     fluid: true,
@@ -89,29 +85,21 @@ export default class VideoPlayer extends React.Component {
                             {this.state.stream ? (
                                 <div className="">
                                     <div className="" data-vjs-player >
-
                                         <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
-
                                     </div>
                                 </div>
                             ) : ' Loading ... '}
 
                             {/* This Shows the current username who is streaming  */}
 
-                            <h5 className="titleVid" style={{ color: "#fff" }}>
+                            <h5 className="titleVid" style={{ color: "#fff" }}><i class="icon-flash fas fa-circle"></i>
                                 {this.props.match.params.username} Live
                 </h5>
-
-
                         </div>
                         <div className="box1">
-
-                            {/* <MessageForm /> */}
                         </div>
                     </div>
                 </div>
-
-                {/* <MessageList /> */}
             </div>
 
 

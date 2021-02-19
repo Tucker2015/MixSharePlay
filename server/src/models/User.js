@@ -34,7 +34,7 @@ const userSchema = new Schema(
     live_stream: {
       type: String,
     },
-    stream_key: { type: String, default: shortid.generate() },
+    stream_key: { type: String, default: shortid.generate },
     password: {
       type: String,
       trim: true,
@@ -63,7 +63,7 @@ const userSchema = new Schema(
 );
 
 console.log(join(__dirname, '../..', process.env.IMAGES_FOLDER_PATH));
-
+console.log(shortid.generate());
 userSchema.methods.toJSON = function () {
   // if not exists avatar1 default
   const absoluteAvatarFilePath = `${join(__dirname, '../..', process.env.IMAGES_FOLDER_PATH)}${this.avatar}`;
