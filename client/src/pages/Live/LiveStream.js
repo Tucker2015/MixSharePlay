@@ -57,7 +57,7 @@ export default class LiveStreams extends React.Component {
 
                     <Link to={'/stream/' + stream.username}>
                         <div className="stream-thumbnail">
-                            <img src={'/thumbnails/' + stream.stream_key + '.png'} alt="thumbnail" />
+                            <img src={'/thumbnails/' + stream.stream_key + '.png'} style={{width: "100%"}} alt="thumbnail" />
                         </div>
                     </Link>
 

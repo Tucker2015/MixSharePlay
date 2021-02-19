@@ -30,10 +30,10 @@ export default class VideoPlayer extends React.Component {
         videojs.registerPlugin('watermark', watermark)
 
 
-        axios.get('/user', {
-            params: {
-                username: this.props.match.params.username
-            }
+        axios.get('/streams/user', {
+           params: {
+               username: this.props.match.params.username
+           }
         }).then(res => {
 
             this.setState({
@@ -98,20 +98,20 @@ export default class VideoPlayer extends React.Component {
 
                             {/* This Shows the current username who is streaming  */}
 
-                            <div className="titleVid">
+                            <h5 className="titleVid" style={{ color: "#fff" }}>
                                 {this.props.match.params.username} Live
-                </div>
+                </h5>
 
 
                         </div>
                         <div className="box1">
 
-                            <MessageForm />
+                            {/* <MessageForm /> */}
                         </div>
                     </div>
                 </div>
 
-                <MessageList />
+                {/* <MessageList /> */}
             </div>
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 // import { Link } from 'react-router-dom';
 
@@ -6,7 +6,14 @@ import requireAdmin from '../../hoc/requireAdmin';
 import Layout from '../../layout/Layout';
 import './styles.css';
 
+const UserList = ({ getUsers, users: { users, isLoading } }) => {
+  useEffect(() => {
+    getUsers();
+  }, []);
+};
+
 const Admin = () => {
+
   return (
     <div>
       <Navbar />
