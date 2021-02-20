@@ -10,6 +10,7 @@ import Register from './pages/Register/Register';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import Users from './pages/Users/Users';
+import UsersAdmin from './pages/Users/UsersAdmin';
 import Admin from './pages/Admin/Admin';
 import NotFound from './pages/NotFound/NotFound';
 import Upcoming from './pages/Shows/Upcoming';
@@ -55,6 +56,7 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
           <Route path="/register" component={Register} />
           <Route path="/users" component={Users} />
           <Route path="/notfound" component={NotFound} />
+          <Route path="/usersAdmin" component={UsersAdmin} />
           <Route path="/admin" component={Admin} />
           <Route path="/shows" component={Upcoming} />
           <Route path="/help" component={Help} />

@@ -48,12 +48,14 @@ const Navbar = ({ auth, logOutUser, history }) => {
                 <li className="nav-item">
                   <Link to={`/${auth.me.username}`}><i className="fa fa-user" aria-hidden="true"></i> Profile</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/help"><i className="fa fa-chalkboard-teacher" aria-hidden="true"></i> Help</Link>
-                </li>
                 {auth.me?.role === 'ADMIN' && (
                   <li className="nav-item">
                     <Link to="/admin"><i className="fa fa-lock" aria-hidden="true"></i> Admin</Link>
+                  </li>
+                )}
+                {auth.me?.role === 'ADMIN' && (
+                  <li className="nav-item">
+                    <Link to="/usersAdmin"><i className="fa fa-lock" aria-hidden="true"></i> Edit Users</Link>
                   </li>
                 )}
                 <li className="nav-item" onClick={onLogOut}>
