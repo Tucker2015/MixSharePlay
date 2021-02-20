@@ -97,7 +97,7 @@ const Profile = ({
       //setIsEdit(false);
     },
   });
-
+  let qrCode = "larix://set/v1?conn[][url]=rtmp%3A%2F%2F176.9.31.54%3A1935%2Flive%2F" + profile.stream_key + "&conn[][name]=MixShare%20Live&conn[][overwrite]=on&enc[vid][res]=1280x720&enc[vid][bitrate]=1000&deleteConn=1";
   return (
     <Layout>
       <div className="profile">
@@ -136,8 +136,11 @@ const Profile = ({
                     {isEdit ? 'Cancel' : 'Edit'}
                   </button>
                 </div>
+
               </div>
+
             </div>
+
           )}
 
         {error && <p className="error">{error}</p>}
@@ -223,6 +226,27 @@ const Profile = ({
             </form>
           </div>
         )}
+      </div>
+      <div className="mt-3">
+        <h3 className="text-center text-light">Connecting to MixShare Live</h3>
+        <p className="textBody text-light">
+          You can use <a target="_blank" href="https://obsproject.com/">OBS</a> or
+            <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream. If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field. Also, add your stream key. Click apply to save.</p>
+      </div>
+      <div className="profile mt-5">
+        <h3 className="text-center text-light">Using Larix with Mobile</h3>
+        <hr className="my-3" />
+        <p className="textBody text-light">
+          To use Larix simply download the App from the links below :
+                    </p>
+        <div className="">
+          <h5 className="textBody text-light" >Download Larix for Mobile</h5>
+          <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster" class="btn btn-secondary btn-m mr-2" role="button" aria-disabled="true">Download Larix for Android</a>
+
+          <a href="https://apps.apple.com/us/app/larix-broadcaster/id1042474385" class="btn btn-secondary btn-m m-1" role="button" aria-disabled="true">Download Larix for iOS</a>
+          <p className="textBody text-light mt-3">Then hit the button below to open your profile in Larix automatically :</p>
+          <a href={qrCode} class="btn btn-secondary btn-lg mt-2 mb-5" role="button" aria-disabled="true">Open Profile in Larix</a>
+        </div>
       </div>
     </Layout>
   );
