@@ -12,18 +12,8 @@ import './VideoPlayer.css';
 import Users from '../Users/Users';
 import Navbar from '../../components/Navbar/Navbar'
 import Loader from '../../components/Loader/Loader';
-import {
-    FacebookMessengerIcon,
-    FacebookMessengerShareButton,
-    EmailShareButton,
-    EmailIcon,
-    FacebookShareButton,
-    FacebookShareCount,
-    FacebookIcon,
-    TwitterShareButton,
-    TwitterIcon,
-} from "react-share";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default class VideoPlayer extends React.Component {
 
 
@@ -86,9 +76,11 @@ export default class VideoPlayer extends React.Component {
     }
 
     render() {
-
+        const showToast = () => {
+            navigator.clipboard.writeText('https://live.mixshare.co.uk/stream/' + this.props.match.params.username)
+            toast('URL Copied to ClipBoard')
+        };
         const shareUrl = 'https://live.mixshare.co.uk/stream/' + this.props.match.params.username;
-        const title = this.props.match.params.username + ' Streaming Live now on Mixshare Live';
 
         return (
             <div>
@@ -107,43 +99,23 @@ export default class VideoPlayer extends React.Component {
 
                             <div className="videoBar">
                                 <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
-                                <h5>Share to: </h5>
-                                <FacebookShareButton
-                                    url={shareUrl}
-                                    quote={title}
-                                    className="FacebookShare"
-                                >
-                                    <FacebookIcon size={32} round />
-                                </FacebookShareButton>
-                                <FacebookShareCount url={shareUrl} className="FacebookShareCount">
-                                    {count => count}
-                                </FacebookShareCount>
-                                <FacebookMessengerShareButton
-                                    url={shareUrl}
-                                    appId="907416556722170"
-                                    className="Demo__some-network__share-button"
-                                >
-                                    <FacebookMessengerIcon size={32} round />
-                                </FacebookMessengerShareButton>
-                                <TwitterShareButton
-                                    url={shareUrl}
-                                    title={title}
-                                    className="Demo__some-network__share-button"
-                                >
-                                    <TwitterIcon size={32} round />
-                                </TwitterShareButton>
-                                <div className="Demo__some-network__share-count">&nbsp;</div>
-                                <EmailShareButton
-                                    url={shareUrl}
-                                    subject={title}
-                                    body="I am streaming Live now on MixShare Live."
-                                    className="Demo__some-network__share-button">
-                                    <EmailIcon size={32} round />
-                                </EmailShareButton>
+                                <button
+                                    className="mobileButton"
+                                    onClick={showToast}>Copy Stream Link</button>
+                                <ToastContainer
+                                    position="top-center"
+                                    autoClose={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                />
                             </div>
                         </div>
                         <div className="box1">
                             <h3>Chat Box coming very soon !</h3>
+
                         </div>
                     </div>
                 </div>

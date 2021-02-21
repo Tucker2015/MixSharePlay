@@ -10,17 +10,38 @@
   width: 100%;
   margin: 0 auto;
   /* border: 1px solid green; */
-  min-height: calc(100% - 112px);
 }
 .homeBody hr {
   border-top: 1px solid;
   background: linear-gradient(to right, red, rgb(0, 102, 255));
   height: 5px;
 }
-.homeBody .img{
+
+.homeBody p {
+  text-align: center;
+  color: #fff;
+}
+.homeBody .img {
   position: relative;
-  
+
   height: 200px;
   width: 200px;
   border-radius: 20px;
+}
+.textContainer {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+.textContainer h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+}
+.textContainer h4 {
+  text-align: center;
+  color: #fff;
+  font-size: 1.3em;
 }
