@@ -7,8 +7,6 @@ import { useFormik } from 'formik';
 import { registerUserWithEmail } from '../../store/actions/registerActions';
 import { registerSchema } from './validation';
 import './styles.css';
-import Layout from '../../layout/Layout';
-import Navbar from '../../components/Navbar/Navbar';
 import Background from '../../assets/background.jpg';
 
 const Register = ({ auth, register: { isLoading, error }, history, registerUserWithEmail }) => {
