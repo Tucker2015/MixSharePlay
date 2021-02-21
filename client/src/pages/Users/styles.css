@@ -13,11 +13,13 @@
   padding: 10px;
   padding-bottom: 10px;
   box-sizing: border-box;
-  border: 2px solid rgb(148, 148, 148);
+  border: 4px solid ;
   width: 300px;
-  max-width: 500px;
-  border-radius: 20px;
-  background-color: rgba(77, 77, 77, 0.173);
+  height: 350px;
+  max-width: 400px;
+  border-image-source: linear-gradient(to right, red, rgb(0, 102, 255));
+  border-image-slice: 1;
+  -webkit-box-shadow: 10px 10px 20px -15px rgb(0, 102, 255);
   
 }
 .users .profile {
@@ -43,13 +45,13 @@
 }
 
 .users .label {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: bold;
   margin-right: 10px;
 }
 
 .users .info {
-  font-size: 16px;
+  font-size: 0.9em;
 }
 
 .users .info-container {

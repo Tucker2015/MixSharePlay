@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 // import moment from 'moment';
 import { withRouter } from 'react-router-dom';
-
+import obs from './obs.png';
 import { getProfile, editUser, deleteUser } from '../../store/actions/userActions';
 import { loadMe } from '../../store/actions/authActions';
 import Layout from '../../layout/Layout';
@@ -232,6 +232,10 @@ const Profile = ({
         <p className="textBody text-light">
           You can use <a target="_blank" href="https://obsproject.com/">OBS</a> or
             <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream. If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field. Also, add your stream key. Click apply to save.</p>
+        <p className="textBody text-light">Your Stream Key : {profile.stream_key}</p>
+        <div className="obs">
+          <img src={obs} alt="" />
+        </div>
       </div>
       <div className="profile mt-5">
         <h3 className="text-center text-light">Using Larix with Mobile</h3>
