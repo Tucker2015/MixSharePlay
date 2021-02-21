@@ -1,0 +1,52 @@
+.userAdmin h2 {
+  font-family: 'Poppins' !important;
+  font-weight: 700;
+  font-size: 2.3rem !important;
+  color: azure;
+  text-shadow: 0px 0px 40px rgb(0, 102, 255);
+  justify-content: center;
+  text-align: center;
+}
+
+.userAdmin .con {
+  display: flex;
+  padding: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(148, 148, 148);
+  width: 300px;
+  max-width: 500px;
+ 
+}
+.userAdmin .profile {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+}
+.userAdmin .profile:last-child {
+  border-bottom: 0;
+}
+
+.userAdmin .label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.userAdmin .info {
+  font-size: 14px;
+}
+
+.userAdmin .info-container {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+}
+
+.userAdmin .list {
+  min-height: 100%;
+}
+
+.userAdmin .profile-info {
+  color: rgb(0, 0, 238);
+}

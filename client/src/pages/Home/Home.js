@@ -27,9 +27,10 @@ const Home = ({ auth, isLoading }) => {
               ) : (
                   <>
                     <h5 className="text-center text-light text-capitalize">Welcome back {auth.me.name} </h5>
+
+                    <p className="text-center text-light text-capitalize mt-4">We are just getting the final touches done to the site but you can still Stream live.</p>
                   </>
                 )}
-
             </>
           )}
         </div>
