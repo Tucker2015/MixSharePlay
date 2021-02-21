@@ -29,6 +29,13 @@ section .contentBx .formBx h6{
   text-align: center;
   font-weight: 500;
   }
+
+  section .contentBx .formBx p{
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    font-size : 0.9rem;
+    }
 section .contentBx .formBx .facebook {
   display: flex;
   justify-content: center;

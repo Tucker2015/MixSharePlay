@@ -11,6 +11,7 @@ import '../../../node_modules/videojs-watermark/dist/videojs-watermark.css';
 import './VideoPlayer.css';
 import Users from '../Users/Users';
 import Navbar from '../../components/Navbar/Navbar'
+import Loader from '../../components/Loader/Loader';
 export default class VideoPlayer extends React.Component {
 
 
@@ -74,8 +75,6 @@ export default class VideoPlayer extends React.Component {
 
     render() {
         return (
-
-
             <div>
                 <Navbar />
                 <div className="cont">
@@ -88,11 +87,11 @@ export default class VideoPlayer extends React.Component {
                                         <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
                                     </div>
                                 </div>
-                            ) : ' Loading ... '}
+                            ) : <Loader />}
 
                             {/* This Shows the current username who is streaming  */}
 
-                            <h5 className="titleVid" style={{ color: "#fff" }}><i class="icon-flash fas fa-circle"></i>
+                            <h5 className="titleVid" style={{ color: "#fff" }}><i className="icon-flash fas fa-circle"></i>
                                 {this.props.match.params.username} Live
                 </h5>
                         </div>
