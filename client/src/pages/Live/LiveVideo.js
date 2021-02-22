@@ -14,7 +14,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import Loader from '../../components/Loader/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ChatBox from '../../components/ChatBox/ChatBox';
 
 
 export default class VideoPlayer extends React.Component {
@@ -119,7 +119,7 @@ export default class VideoPlayer extends React.Component {
                             </div>
                         </div>
                         <div className="box1">
-                            <h3>Chat Box coming very soon !</h3>
+                            <ChatBox roomId={this.props.match.params.username}/>
 
                         </div>
                     </div>
