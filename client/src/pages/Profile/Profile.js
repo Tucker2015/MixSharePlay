@@ -207,7 +207,7 @@ const Profile = ({
           </div>
         )}
       </div>
-      <div className="mt-3">
+      <div className="mx-auto mt-3">
         <h3 className="text-center text-light">Connecting to MixShare Live</h3>
         <p className="textBody text-light">
           You can use <a target="_blank" href="https://obsproject.com/">OBS</a> or

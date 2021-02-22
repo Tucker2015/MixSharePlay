@@ -14,7 +14,11 @@ import Navbar from '../../components/Navbar/Navbar'
 import Loader from '../../components/Loader/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
+
 export default class VideoPlayer extends React.Component {
+
 
 
     constructor(props) {
@@ -76,10 +80,11 @@ export default class VideoPlayer extends React.Component {
     }
 
     render() {
-        const showToast = () => {
-            navigator.clipboard.writeText('https://live.mixshare.co.uk/stream/' + this.props.match.params.username)
-            toast('URL Copied to ClipBoard')
-        };
+
+        // const showToast = () => {
+        //     navigator.clipboard.writeText('https://live.mixshare.co.uk/stream/' + this.props.match.params.username)
+        //     toast('URL Copied to ClipBoard')
+        // };
         const shareUrl = 'https://live.mixshare.co.uk/stream/' + this.props.match.params.username;
 
         return (
@@ -99,7 +104,7 @@ export default class VideoPlayer extends React.Component {
 
                             <div className="videoBar">
                                 <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
-                                <button
+                                {/* <button
                                     className="mobileButton"
                                     onClick={showToast}>Copy Stream Link</button>
                                 <ToastContainer
@@ -110,7 +115,7 @@ export default class VideoPlayer extends React.Component {
                                     rtl={false}
                                     pauseOnFocusLoss
                                     draggable
-                                />
+                                /> */}
                             </div>
                         </div>
                         <div className="box1">

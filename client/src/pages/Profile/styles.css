@@ -24,6 +24,9 @@
   align-items: center;
   justify-content: center;
   height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile .label,
