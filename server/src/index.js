@@ -7,6 +7,7 @@ import { resolve, join } from 'path';
 import passport from 'passport';
 import all_routes from 'express-list-endpoints';
 const config = require('./config/default');
+const rooms = {}
 import routes from './routes';
 // const Session = require('express-session');
 // const FileStore = require('session-file-store')(Session);
@@ -63,6 +64,7 @@ app.use('/thumbnails', express.static(join(__dirname, './thumbnails')));
 //   saveUninitialized: false,
 // }));
 
+
 // Serve static assets if in production
 if (isProduction) {
   // Set static folder
@@ -71,7 +73,7 @@ if (isProduction) {
   app.get('*', (req, res) => {
     res.sendFile(resolve(__dirname, '../..', 'client', 'build', 'index.html')); // index is in /server/src so 2 folders up
   });
-
+  
   const port = process.env.PORT || 80;
   app.listen(port, () => console.log(`Server started on port ${port}`));
 } else {
@@ -86,6 +88,56 @@ if (isProduction) {
     console.log('https server running at ' + port);
     console.log(all_routes(app));
   });
+  const io = require('socket.io')(server);
+  io.on('connection', socket => {
+
+    socket.on('join-room',(room,user)=>{
+      socket.join(room)
+      if (rooms[room] != null){
+        if(rooms[room].users[socket.id])
+        socket.emit('getRoom',rooms[room])
+        else
+        {
+          rooms[room].users[socket.id] = user;
+          socket.emit('getRoom',rooms[room])
+        }
+        }
+        else
+        {
+          rooms[room] = { users: {},messages:[] }
+          rooms[room].users[socket.id] = user;
+          socket.emit('getRoom',rooms[room])
+        }
+   
+    });
+    socket.on('join-room-without-login',(room)=>{
+      if (rooms[room] != null){
+        console.log("sdfsd8")
+        socket.emit('getRoom',rooms[room])
+      }
+      else
+      {
+        console.log("not found")
+      }
+    });
+    socket.on('new-user', (room, name) => {
+   
+      socket.join(room)   
+      socket.to(room).broadcast.emit('user-connected', name)
+    })
+    socket.on('send-chat-message', (room, msg) => {
+      rooms[room].messages.push(msg);
+      console.log(rooms[room].messages)
+      console.log(room)
+      socket.to(room).emit('chat-message', { message: rooms[room].messages, name: rooms[room].users[socket.id] })
+    })
+    socket.on('disconnect', () => {
+      getUserRooms(socket).forEach(room => {
+        socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+        delete rooms[room].users[socket.id]
+      })
+    })
+  })
 }
 node_media_server.run();
 thumbnail_generator.start();
