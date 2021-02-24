@@ -6,7 +6,7 @@
     justify-content: space-between;
     width: 100%;
     max-width: 867px;
-    margin: 25px 10px;
+    margin: 0px 0px;
     height: calc(100% - 50px);
     border: var(--border);
     border-radius: 5px;
@@ -22,7 +22,9 @@
     background: #1d2439;
     color: #aaafb5;
   }
-  
+  .msger-header-title{
+    text-transform: capitalize;
+  }
   .msger-chat {
     flex: 1;
     overflow-y: auto;
@@ -40,7 +42,7 @@
   .msg {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
   }
   .msg:last-of-type {
     margin: 0;
@@ -65,9 +67,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .msg-info-name {
+    text-transform: capitalize;
     margin-right: 10px;
     font-weight: bold;
   }
@@ -105,10 +108,11 @@
     border: none;
     border-radius: 3px;
     font-size: 1em;
+    color: rgb(255, 255, 255);
   }
   .msger-input {
     flex: 1;
-    background: #ddd;
+    background: #111;
   }
   .msger-send-btn {
     margin-left: 10px;
@@ -124,6 +128,20 @@
   
   .msger-chat {
     background-color: #343a4d;
-    max-height: 400px
+    max-height: 400px;
+  }
+  @media screen and (max-width: 500px) {
+    .msger-chat {
+      background-color: #343a4d;
+      max-height: 200px;
+    }
+    .msger {
+      display: inline;
+      flex-flow: column wrap;
+      margin: auto;
+    }
+    .msg-info {
+      margin-bottom: 0;
+    }
   }
   
