@@ -46,11 +46,11 @@ export default ({ roomId }) => {
             <section class="msger">
                 <header class="msger-header">
                     <div class="msger-header-title">
-                        <i class="fas fa-comment-alt"></i> Chat
-</div>
-                    <div class="msger-header-options">
-                        <span><i class="fas fa-cog"></i></span>
+                        <i class="fas fa-comment-alt"></i> Chatroom Beta Test
                     </div>
+                    {/* <div class="msger-header-options">
+                        <span><i class="fas fa-cog"></i></span>
+                    </div> */}
                 </header>
 
                 <main class="msger-chat">
@@ -58,12 +58,12 @@ export default ({ roomId }) => {
                     {
                         messages.map((x, i) => <div key={i} class="msg left-msg">
                             {/* <div
-                          class="msg-img"
-                      ></div> */}
+                                class="msg-img"
+                            ></div> */}
 
                             <div class="msg-bubble">
                                 <div class="msg-info">
-                                    <div class="msg-info-name">{x.username ? x.username : ""}</div>
+                                    <div class="msg-info-name">{x.username ? x.username : ""} :</div>
                                     {/* <div class="msg-info-time">{x.time?x.time:""}</div> */}
                                 </div>
 

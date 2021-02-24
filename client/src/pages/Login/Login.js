@@ -92,7 +92,7 @@ const Login = ({ auth, history, loginUserWithEmail }) => {
           </div>
         </div>
       </section>
-    </div>
+    </div >
 
   );
 };

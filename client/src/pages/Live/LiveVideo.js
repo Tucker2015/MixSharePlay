@@ -3,9 +3,9 @@ import React from 'react';
 import videojs from 'video.js'
 import axios from 'axios';
 import config from '../../default';
-// import { compose } from 'redux';
-// import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import watermark from 'videojs-watermark';
 import '../../../node_modules/videojs-watermark/dist/videojs-watermark.css';
 import './VideoPlayer.css';
@@ -15,11 +15,9 @@ import Loader from '../../components/Loader/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ChatBox from '../../components/ChatBox/ChatBox';
-
+import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, EmailIcon, EmailShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
 
 export default class VideoPlayer extends React.Component {
-
-
 
     constructor(props) {
         super(props);
@@ -35,7 +33,8 @@ export default class VideoPlayer extends React.Component {
 
         axios.get('/streams/user', {
             params: {
-                username: this.props.match.params.username
+                username: this.props.match.params.username,
+                name: this.props.match.params.name
             }
         }).then(res => {
 
@@ -80,12 +79,15 @@ export default class VideoPlayer extends React.Component {
     }
 
     render() {
-
+        const fburl = 'https://live.mixshare.co.uk/';
+        const fbtitle = this.props.match.params.username + ' Playing live now on MixShare Live';
+        const shareUrl = 'https://live.mixshare.co.uk/streams/' + this.props.match.params.username;
+        const title = this.props.match.params.username + ' Playing live now on MixShare Live';
         // const showToast = () => {
         //     navigator.clipboard.writeText('https://live.mixshare.co.uk/stream/' + this.props.match.params.username)
         //     toast('URL Copied to ClipBoard')
         // };
-        const shareUrl = 'https://live.mixshare.co.uk/stream/' + this.props.match.params.username;
+
 
         return (
             <div>
@@ -104,22 +106,41 @@ export default class VideoPlayer extends React.Component {
 
                             <div className="videoBar">
                                 <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
-                                {/* <button
-                                    className="mobileButton"
-                                    onClick={showToast}>Copy Stream Link</button>
-                                <ToastContainer
-                                    position="top-center"
-                                    autoClose={false}
-                                    newestOnTop={false}
-                                    closeOnClick
-                                    rtl={false}
-                                    pauseOnFocusLoss
-                                    draggable
-                                /> */}
+                                <h5>{this.props.match.params.name}</h5>
+                                <FacebookShareButton
+                                    url={fburl}
+                                    quote={fbtitle}
+                                    className="Demo__some-network__share-button"
+                                >
+                                    <FacebookIcon size={32} round />
+                                </FacebookShareButton>
+                                <TwitterShareButton
+                                    url={shareUrl}
+                                    title={title}
+                                    className="Demo__some-network__share-button"
+                                >
+                                    <TwitterIcon size={32} round />
+                                </TwitterShareButton>
+                                <EmailShareButton
+                                    url={shareUrl}
+                                    subject={title}
+                                    body="Check me streaming live on MixShare Live"
+                                    className="Demo__some-network__share-button"
+                                >
+                                    <EmailIcon size={32} round />
+                                </EmailShareButton>
+                                <WhatsappShareButton
+                                    url={shareUrl}
+                                    title={title}
+                                    separator=":: "
+                                    className="Demo__some-network__share-button"
+                                >
+                                    <WhatsappIcon size={32} round />
+                                </WhatsappShareButton>
                             </div>
                         </div>
-                        <div className="box1">
-                            <ChatBox roomId={this.props.match.params.username}/>
+                        <div className="box2">
+                            <ChatBox roomId={this.props.match.params.username} />
 
                         </div>
                     </div>
