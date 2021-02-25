@@ -1,4 +1,3 @@
-import Layout from '../../layout/Layout';
 import React from 'react';
 import videojs from 'video.js'
 import axios from 'axios';
@@ -9,14 +8,11 @@ import { Link } from 'react-router-dom';
 import watermark from 'videojs-watermark';
 import '../../../node_modules/videojs-watermark/dist/videojs-watermark.css';
 import './VideoPlayer.css';
-import Users from '../Users/Users';
 import Navbar from '../../components/Navbar/Navbar'
 import Loader from '../../components/Loader/Loader';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ChatBox from '../../components/ChatBox/ChatBox';
 import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, EmailIcon, EmailShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
-
+import Upcoming from '../Shows/Upcoming'
 export default class VideoPlayer extends React.Component {
 
     constructor(props) {
@@ -145,6 +141,7 @@ export default class VideoPlayer extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Upcoming />
             </div>
 
 

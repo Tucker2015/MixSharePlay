@@ -47,7 +47,7 @@ export const loginUserWithEmail = (formData, history) => async (dispatch, getSta
     });
 
     dispatch(loadMe());
-    history.push('/');
+    history.push('/liveStream');
   } catch (err) {
     dispatch({
       type: LOGIN_WITH_EMAIL_FAIL,
@@ -90,7 +90,7 @@ export const logOutUser = (history) => async (dispatch) => {
       type: LOGOUT_SUCCESS,
     });
     if (history) history.push('/');
-  } catch (err) {}
+  } catch (err) { }
 };
 
 export const reseedDatabase = () => async (dispatch, getState) => {
