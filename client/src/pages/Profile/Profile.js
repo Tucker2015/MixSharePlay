@@ -211,7 +211,8 @@ const Profile = ({
         <h3 className="text-center text-light">Connecting to MixShare Live</h3>
         <p className="textBody text-light">
           You can use <a target="_blank" href="https://obsproject.com/">OBS</a> or
-            <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream. If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field. Also, add your stream key. Click apply to save.</p>
+            <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream.  We also support <a target="_blank" href="https://restream.io/">restream.io</a> and <a target="_blank" href="https://castr.io/">castr.io</a></p>
+        <p className="textBody text-light">If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field. Also, add your stream key. Click apply to save.</p>
         <p className="textBody text-light">Your Stream Key : {profile.stream_key}</p>
         <div className="obs">
           <img src={obs} alt="" />

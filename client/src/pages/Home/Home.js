@@ -1,8 +1,8 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import bg from './bg.jpg';
 import { reseedDatabase } from '../../store/actions/authActions';
 import Upcoming from '../Shows/Upcoming';
 import './styles.css';
@@ -16,28 +16,21 @@ const Home = ({ auth, isLoading }) => {
 
     <>
       <Navbar />
-      <div className="homeBody mt-2">
-        {isLoading ? (<Loader />) : (
-          <>
-            <h1 className="text-center mainLogoText">MixShare Live</h1>
-            <hr></hr>
-            {!auth.isAuthenticated ? (
-              <div>
-              </div>
-            ) : (
-                <>
 
-                </>
-              )}
-          </>
-        )}
-        <div className="textContainer">
-          <h2>Welcome to MixShare Live</h2>
-          <h4>Live Video streaming platform for DJ's and Creators.</h4>
+      <div className="banner">
+        <img src={bg} alt="" />
+        <div className="content">
+          <h1>MixShare Live</h1>
+          <h2>Live Video Streaming</h2>
+          <p>For Viewers, DJ's and Creators.</p>
+          <Link to="/liveStream">
+            <button className="button">Watch Live</button>
+          </Link>
+          <Link to="/login">
+            <button className="button button2">Login</button>
+          </Link>
         </div>
-        <hr></hr>
       </div>
-      <Upcoming />
     </>
   );
 };
