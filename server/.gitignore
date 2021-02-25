@@ -8,7 +8,7 @@ package-lock.json
 
 /.vscode
 .env
-
+server/src/config/default.js
 !public/images
 public/images/*
 !public/images/avatar0.jpg

@@ -8,7 +8,7 @@ package-lock.json
 
 /.vscode
 .env
-
+server/src/config/default.js
 !public/images
 public/images/*
 !public/images/avatar0.jpg
@@ -25,3 +25,4 @@ server/src/sessions/*
 # ignore media but keep folder
 server/src/media/*
 !server/src/media/.gitkeep
+server/src/config/default.js
