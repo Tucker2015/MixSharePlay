@@ -34,9 +34,6 @@ const Home = ({ auth, isLoading }) => {
         <div className="textContainer">
           <h2>Welcome to MixShare Live</h2>
           <h4>Live Video streaming platform for DJ's and Creators.</h4>
-          <br></br>
-          <p>We are just getting the final touches done to the site but you can still watch our content and live stream while we are ready.</p>
-          <br></br>
         </div>
         <hr></hr>
       </div>
