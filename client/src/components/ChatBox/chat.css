@@ -29,6 +29,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+    
   }
   .msger-chat::-webkit-scrollbar {
     width: 6px;
@@ -128,6 +129,7 @@
   
   .msger-chat {
     background-color: #343a4d;
+    height: 400px;
     max-height: 400px;
   }
   @media screen and (max-width: 500px) {
