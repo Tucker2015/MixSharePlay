@@ -65,30 +65,29 @@ export default ({ roomId }) => {
     }, [])
     return (
         <div className="mx-auto">
-            <section class="msger">
-                <header class="msger-header">
-                    <div class="msger-header-title">
-                        <i class="fas fa-comment-alt"></i> Chat
-</div>
-                    <div class="msger-header-options">
-                        <span><i class="fas fa-cog"></i></span>
-                    </div>
+            <section className="msger">
+                <header className="msger-header">
+                    <div className="msger-header-title">
+                        <i className="fas fa-comment-alt"></i> Chat</div>
+                    {/* <div className="msger-header-options">
+                        <span><i className="fas fa-cog"></i></span>
+                    </div> */}
                 </header>
-                <main class="msger-chat" ref={RefScroll} >
+                <main className="msger-chat" ref={RefScroll} >
 
                     {
-                        messages.map((x, i) => <div key={i} class="msg left-msg">
+                        messages.map((x, i) => <div key={i} className="msg left-msg">
                             {/* <div
-                     class="msg-img"
+                     className="msg-img"
                  ></div> */}
 
-                            <div class="msg-bubble">
-                                <div class="msg-info">
-                                    <div class="msg-info-name">{x.username ? x.username : ""}</div>
-                                    {/* <div class="msg-info-time">{x.time?x.time:""}</div> */}
+                            <div className="msg-bubble">
+                                <div className="msg-info">
+                                    <div className="msg-info-name">{x.username ? x.username : ""}</div>
+                                    {/* <div className="msg-info-time">{x.time?x.time:""}</div> */}
                                 </div>
 
-                                <div class="msg-text">
+                                <div className="msg-text">
                                     {
                                         x.message ? x.message : ""
                                     }
@@ -99,17 +98,17 @@ export default ({ roomId }) => {
                     }
 
                 </main>
-                <div class="msger-inputarea">
+                <div className="msger-inputarea">
                     <input type="text" readOnly={user && user.me && user.me != null ? false : true} value={message} placeholder={user && user.me && user.me != null ? "Enter your message..." : "Login to comment"} onKeyPress={event => {
                         if (event.key === 'Enter') {
                             sendMsg()
                         }
-                    }} onChange={(e) => setmessage(e.target.value)} class="msger-input" />
+                    }} onChange={(e) => setmessage(e.target.value)} className="msger-input" />
                     <button type="button" onClick={() => {
                         if (user && user.me && user.me != null)
                             sendMsg()
 
-                    }} class="msger-send-btn">Send</button>
+                    }} className="msger-send-btn">Send</button>
                 </div>
             </section>
             {/* <div className="bg-success m-2 p-4 text-light">
