@@ -51,6 +51,7 @@ export default class VideoPlayer extends React.Component {
                     playsinline: true,
                     suppressNotSupportedError: true,
                     notSupportedMessage: 'Currently The stream is unavailable',
+                    poster: 'https://ktinternet.net/radio-logos/video_poster.png',
                     preload: true,
                     autoplay: true,
                     controls: true,

@@ -57,6 +57,9 @@
   }
   
 }
+.video-js.vjs-ended .vjs-poster {
+  display: block;
+}
 .videoBox .box1 h3 {
   color: #fff;
   text-align: center;
