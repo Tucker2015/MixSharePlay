@@ -20,6 +20,10 @@
   background: rgb(12, 109, 227) !important;
   
 }
+.content .button2 a {
+  text-decoration: none !important;
+  
+}
 .content .button2:hover{
   background: rgba(34, 104, 189, 0.81) !important;
   transform: translateY(-5px);

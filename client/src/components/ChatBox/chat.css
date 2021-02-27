@@ -7,7 +7,7 @@
     width: 100%;
     max-width: 867px;
     margin: 0px 0px;
-    height: calc(100% - 50px);
+    height: calc(100% - 0px);
     border: var(--border);
     border-radius: 5px;
     background: var(--msger-bg);
@@ -128,13 +128,12 @@
   }
   
   .msger-chat {
-    background-color: #343a4d;
+    background-color: #333746c9;
     height: 400px;
     max-height: 400px;
   }
   @media screen and (max-width: 500px) {
     .msger-chat {
-      background-color: #343a4d;
       max-height: 200px;
     }
     .msger {

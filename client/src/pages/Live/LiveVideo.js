@@ -30,10 +30,11 @@ export default class VideoPlayer extends React.Component {
         axios.get('/streams/user', {
             params: {
                 username: this.props.match.params.username,
-                name: this.props.match.params.name
-            }
-        }).then(res => {
 
+            }
+
+        }).then(res => {
+            console.log(res.data);
             this.setState({
 
                 stream: true,
@@ -102,7 +103,7 @@ export default class VideoPlayer extends React.Component {
 
                             <div className="videoBar">
                                 <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
-                                <h5>{this.props.match.params.name}</h5>
+
                                 <FacebookShareButton
                                     url={fburl}
                                     quote={fbtitle}
