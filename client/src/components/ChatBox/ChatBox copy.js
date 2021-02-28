@@ -65,30 +65,30 @@ export default ({ roomId }) => {
     }, [])
     return (
         <div className="mx-auto">
-            <section class="msger">
-                <header class="msger-header">
-                    <div class="msger-header-title">
-                        <i class="fas fa-comment-alt"></i> Chat
+            <section className="msger">
+                <header className="msger-header">
+                    <div className="msger-header-title">
+                        <i className="fas fa-comment-alt"></i> Chat
 </div>
-                    <div class="msger-header-options">
-                        <span><i class="fas fa-cog"></i></span>
+                    <div className="msger-header-options">
+                        <span><i className="fas fa-cog"></i></span>
                     </div>
                 </header>
-                <main class="msger-chat" ref={RefScroll} >
+                <main className="msger-chat" ref={RefScroll} >
 
                     {
-                        messages.map((x, i) => <div key={i} class="msg left-msg">
+                        messages.map((x, i) => <div key={i} className="msg left-msg">
                             {/* <div
-                     class="msg-img"
+                     className="msg-img"
                  ></div> */}
 
-                            <div class="msg-bubble">
-                                <div class="msg-info">
-                                    <div class="msg-info-name">{x.username ? x.username : ""}</div>
-                                    {/* <div class="msg-info-time">{x.time?x.time:""}</div> */}
+                            <div className="msg-bubble">
+                                <div className="msg-info">
+                                    <div className="msg-info-name">{x.username ? x.username : ""}</div>
+                                    {/* <div className="msg-info-time">{x.time?x.time:""}</div> */}
                                 </div>
 
-                                <div class="msg-text">
+                                <div className="msg-text">
                                     {
                                         x.message ? x.message : ""
                                     }

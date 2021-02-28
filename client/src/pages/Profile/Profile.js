@@ -81,7 +81,7 @@ const Profile = ({
   return (
     <Layout>
       <div className="profile">
-        <h2 className="header mt-2">Profile page</h2>
+        <h2 className="header mt-2">Profile Page</h2>
 
         {isLoading ? (
           <Loader />
@@ -126,7 +126,7 @@ const Profile = ({
         {error && <p className="error">{error}</p>}
 
         {isEdit && (
-          <div className="form text-light mx-auto">
+          <div className="profile-info mx-auto">
             <form onSubmit={formik.handleSubmit}>
               <div className="input-div">
                 <label>Avatar:</label>
@@ -193,16 +193,18 @@ const Profile = ({
                   ) : null}
                 </div>
               )}
-              <button type="submit" className="btn">
-                Save
+              <div className="btn-container">
+                <button type="submit" className="btn">
+                  Save
               </button>
-              <button
-                onClick={() => handleDeleteUser(profile.id, history)}
-                type="button"
-                className="btn btn2"
-              >
-                Delete profile
+                <button
+                  onClick={() => handleDeleteUser(profile.id, history)}
+                  type="button"
+                  className="btn btn2"
+                >
+                  Delete profile
               </button>
+              </div>
             </form>
           </div>
         )}
@@ -233,7 +235,7 @@ const Profile = ({
           <a href={qrCode} class="btn btn-secondary btn-lg mt-2 mb-5" role="button" aria-disabled="true">Open Profile in Larix</a>
         </div>
       </div>
-    </Layout>
+    </Layout >
   );
 };
 
