@@ -84,7 +84,7 @@ export default ({ roomId }) => {
                             <div className="msg-bubble">
                                 <div className="msg-info">
                                     <div className="msg-info-name">{x.username ? x.username : ""}</div>
-                                    {/* <div className="msg-info-time">{x.time?x.time:""}</div> */}
+                                    {/* <div className="msg-info-time">{x.time ? x.time : ""}</div> */}
                                 </div>
 
                                 <div className="msg-text">
