@@ -104,6 +104,45 @@
   justify-content: center;
   text-align: center;
 }
+.help-container {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 700px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.help-container h3 {
+  color: #fff;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 24px;
+}
+.help-container p {
+  color: #fff;
+  text-align: center;
+}
+.larix-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.larix-buttons-container2 {
+  display: flex;
+  justify-content: center;
+}
+
+.larix-button {
+  position: relative;
+  width: auto;
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background: rgb(25, 130, 222);
+  color: #fff;
+  border-radius: 10px;
+}
 
 @media screen and (max-width: 700px) {
   .profile .profile-info {
@@ -140,5 +179,9 @@
     align-items: center;
     justify-content: center;
     height: 200px;
+  }
+  .help-container {
+    position: relative;
+    display: inline;
   }
 }

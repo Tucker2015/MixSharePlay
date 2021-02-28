@@ -1,40 +1,14 @@
-#root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100% !important;
-}
-
 .videoBox {
   position: relative;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  margin: 20px 0px;
+  margin: 10px auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 10px;
-  justify-content: center;
-  align-items: center;
 }
-.mobileButton {
-  width: 50%;
-  padding: 5px;
-  outline: none;
-  font-weight: 300;
-  border: 1px solid #1d6ee6;
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: rgb(247, 240, 240);
-  background: #1d6ee6;
-  border-radius: 30px;
-}
-@media screen and (max-width: 500px) {
-  .videoBox {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-  .mobileButton {
-    display: none !important;
-  }
-}
+
 .videoBox .box1 {
   position: relative;
   background: #111;
@@ -48,6 +22,7 @@
   background: #111;
   width: 100%;
   height: auto;
+
   /* border: 6px double rgba(131, 131, 131, 0.105); */
   /* padding: 10px; */
 }
@@ -55,7 +30,6 @@
   .videoBox .box2 {
     height: 100%;
   }
-  
 }
 .video-js.vjs-ended .vjs-poster {
   display: block;
@@ -109,5 +83,13 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@media screen and (max-width: 500px) {
+  .videoBox {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+  .mobileButton {
+    display: none !important;
   }
 }
