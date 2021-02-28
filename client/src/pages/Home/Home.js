@@ -20,6 +20,7 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
 
     <>
       <Navbar />
+
       <div className="banner">
         <img src={bg} alt="" />
         <div className="content">
