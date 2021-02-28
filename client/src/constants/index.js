@@ -1,4 +1,4 @@
-export const FACEBOOK_AUTH_LINK = 'https://live.mixshare.co.uk/auth/facebook/';
+export const FACEBOOK_AUTH_LINK = 'https://live.mixshare.co.uk:5000/auth/facebook/';
 
 /* Should it be 
 export const FACEBOOK_AUTH_LINK = 'https://live.mixshare.co.uk/auth/facebook/callback';
