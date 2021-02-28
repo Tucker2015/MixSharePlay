@@ -209,31 +209,36 @@ const Profile = ({
           </div>
         )}
       </div>
-      <div className="mx-auto mt-3">
-        <h3 className="text-center text-light">Connecting to MixShare Live</h3>
-        <p className="textBody text-light">
+      <div className="help-container">
+        <h3>Connecting to MixShare Live</h3>
+        <p>
           You can use <a target="_blank" href="https://obsproject.com/">OBS</a> or
             <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream.  We also support <a target="_blank" href="https://restream.io/">restream.io</a> and <a target="_blank" href="https://castr.io/">castr.io</a></p>
-        <p className="textBody text-light">If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field. Also, add your stream key. Click apply to save.</p>
-        <p className="textBody text-light">Your Stream Key : {profile.stream_key}</p>
+        <p>If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field.</p>
+        <p>Also, add your stream key. Click apply to save.</p>
+        <p>Your Stream Key : {profile.stream_key}</p>
         <div className="obs">
           <img src={obs} alt="" />
         </div>
-      </div>
-      <div className="profile mt-5">
-        <h3 className="text-center text-light">Using Larix with Mobile</h3>
-        <hr className="my-3" />
-        <p className="textBody text-light">
-          To use Larix simply download the App from the links below :
-                    </p>
-        <div className="">
-          <h5 className="textBody text-light" >Download Larix for Mobile</h5>
-          <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster" class="btn btn-secondary btn-m mr-2" role="button" aria-disabled="true">Download Larix for Android</a>
 
-          <a href="https://apps.apple.com/us/app/larix-broadcaster/id1042474385" class="btn btn-secondary btn-m m-1" role="button" aria-disabled="true">Download Larix for iOS</a>
-          <p className="textBody text-light mt-3">Then hit the button below to open your profile in Larix automatically :</p>
-          <a href={qrCode} class="btn btn-secondary btn-lg mt-2 mb-5" role="button" aria-disabled="true">Open Profile in Larix</a>
+
+        <h3>Using Larix with Mobile</h3>
+        <p>To use Larix simply download the App from the links below :</p>
+
+        <h3>Download Larix for Mobile</h3>
+        <div className="larix-buttons-container">
+          <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster" className="larix-button" role="button" aria-disabled="true">Larix for Android</a>
+
+          <a href="https://apps.apple.com/us/app/larix-broadcaster/id1042474385" className="larix-button" role="button" aria-disabled="true">Larix for iOS</a>
         </div>
+        <p className=" mt-3">Then hit the button below to open your profile in Larix automatically :</p>
+        <div className="larix-buttons-container2">
+
+          <a href={qrCode} className="larix-button" role="button" aria-disabled="true">Open Profile in Larix</a>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     </Layout >
   );

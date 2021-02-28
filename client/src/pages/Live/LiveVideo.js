@@ -88,63 +88,62 @@ export default class VideoPlayer extends React.Component {
 
 
         return (
-            <div>
+            <>
                 <Navbar />
-                <div className="cont">
 
-                    <div className="videoBox mx-auto">
-                        <div className="box1">
-                            {this.state.stream ? (
-                                <div className="">
-                                    <div className="" data-vjs-player >
-                                        <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
-                                    </div>
+                <div className="videoBox mx-auto">
+                    <div className="box1">
+                        {this.state.stream ? (
+                            <div className="">
+                                <div className="" data-vjs-player >
+                                    <video ref={node => this.videoNode = node} className="video-js vjs-big-play-centered" />
                                 </div>
-                            ) : <Loader />}
-
-                            <div className="videoBar">
-                                <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
-
-                                <FacebookShareButton
-                                    url={fburl}
-                                    quote={fbtitle}
-                                    className="Demo__some-network__share-button"
-                                >
-                                    <FacebookIcon size={32} round />
-                                </FacebookShareButton>
-                                <TwitterShareButton
-                                    url={shareUrl}
-                                    title={title}
-                                    className="Demo__some-network__share-button"
-                                >
-                                    <TwitterIcon size={32} round />
-                                </TwitterShareButton>
-                                <EmailShareButton
-                                    url={shareUrl}
-                                    subject={title}
-                                    body="Check me streaming live on MixShare Live"
-                                    className="Demo__some-network__share-button"
-                                >
-                                    <EmailIcon size={32} round />
-                                </EmailShareButton>
-                                <WhatsappShareButton
-                                    url={shareUrl}
-                                    title={title}
-                                    separator=":: "
-                                    className="Demo__some-network__share-button"
-                                >
-                                    <WhatsappIcon size={32} round />
-                                </WhatsappShareButton>
                             </div>
-                        </div>
-                        <div className="box2">
-                            <ChatBox roomId={this.props.match.params.username} />
+                        ) : <Loader />}
 
+                        <div className="videoBar">
+                            <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
+
+                            <FacebookShareButton
+                                url={fburl}
+                                quote={fbtitle}
+                                className="Demo__some-network__share-button"
+                            >
+                                <FacebookIcon size={32} round />
+                            </FacebookShareButton>
+                            <TwitterShareButton
+                                url={shareUrl}
+                                title={title}
+                                className="Demo__some-network__share-button"
+                            >
+                                <TwitterIcon size={32} round />
+                            </TwitterShareButton>
+                            <EmailShareButton
+                                url={shareUrl}
+                                subject={title}
+                                body="Check me streaming live on MixShare Live"
+                                className="Demo__some-network__share-button"
+                            >
+                                <EmailIcon size={32} round />
+                            </EmailShareButton>
+                            <WhatsappShareButton
+                                url={shareUrl}
+                                title={title}
+                                separator=":: "
+                                className="Demo__some-network__share-button"
+                            >
+                                <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
                         </div>
                     </div>
+                    <div className="box2">
+                        <ChatBox roomId={this.props.match.params.username} />
+
+                    </div>
                 </div>
+
                 <Upcoming />
-            </div>
+            </>
 
 
         )
