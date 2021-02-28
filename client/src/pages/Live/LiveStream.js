@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import config from '../../default';
 import Layout from '../../layout/Layout'
 import './LiveStream.css';
+import Upcoming from '../Shows/Upcoming';
 export default class LiveStreams extends React.Component {
 
     constructor(props) {
@@ -83,7 +84,7 @@ export default class LiveStreams extends React.Component {
                     <div className="streams row mt-5">
                         {streams}
                     </div>
-
+                    <Upcoming />
                 </div>
             </Layout>
         )

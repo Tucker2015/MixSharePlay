@@ -142,7 +142,6 @@ export default class VideoPlayer extends React.Component {
                     </div>
                 </div>
 
-                <Upcoming />
             </>
 
 
