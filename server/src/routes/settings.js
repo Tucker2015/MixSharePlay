@@ -1,7 +1,7 @@
 const express = require('express'),
     router = express.Router(),
-    User = require('../models/User').User,
-    shortid = require('shortid');
+import User from '../models/User';
+shortid = require('shortid');
 
 router.get('/stream_key',
     require('connect-ensure-login').ensureLoggedIn(),

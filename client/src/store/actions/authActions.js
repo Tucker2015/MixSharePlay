@@ -71,6 +71,7 @@ export const logInUserWithOauth = (token) => async (dispatch, getState) => {
       type: LOGIN_WITH_OAUTH_SUCCESS,
       payload: { me: response.data.me, token },
     });
+
   } catch (err) {
     dispatch({
       type: LOGIN_WITH_OAUTH_FAIL,

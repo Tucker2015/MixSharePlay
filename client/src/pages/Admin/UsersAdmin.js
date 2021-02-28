@@ -40,10 +40,6 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
                               <span className="info">{user.username}</span>
                             </div>
                             <div>
-                              <span className="label">Username: </span>
-                              <span className="info">{user.stream_key}</span>
-                            </div>
-                            <div>
                               <span className="label">Email: </span>
                               <span className="info">{user.email}</span>
                             </div>
