@@ -30,7 +30,7 @@ export default class LiveStreams extends React.Component {
                 let streams = res.data;
                 if (typeof (streams['live'] !== 'undefined')) {
                     this.getStreamsInfo(streams['live']);
-                    console.log(res.data);
+                    // console.log(res.data);
                 }
             });
     }
@@ -41,11 +41,11 @@ export default class LiveStreams extends React.Component {
                 streams: live_streams
             }
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({
                 live_streams: res.data
             }, () => {
-                console.log(this.state);
+                // console.log(this.state);
 
             });
         });

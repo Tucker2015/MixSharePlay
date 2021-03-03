@@ -27,6 +27,12 @@
   /* border: 6px double rgba(131, 131, 131, 0.105); */
   /* padding: 10px; */
 }
+.views-span{
+  margin-left: 10px;
+}
+.views-span i{
+  vertical-align: middle;
+}
 @media screen and (max-width: 500px) {
   .videoBox .box2 {
     height: 100%;

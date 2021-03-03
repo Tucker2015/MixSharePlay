@@ -57,6 +57,14 @@ const userSchema = new Schema(
       unique: true,
       sparse: true,
     },
+
+    live_views: {
+      type: Number,
+      default: 0,
+      validate(value) {
+        if (value < 0) throw new Error("Negative views aren't real.");
+      }
+    },
     messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
   },
   { timestamps: true },

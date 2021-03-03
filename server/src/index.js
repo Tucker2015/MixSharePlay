@@ -9,6 +9,7 @@ import all_routes from 'express-list-endpoints';
 const config = require('./config/default');
 const rooms = {}
 import routes from './routes';
+import User from './models/User';
 // const Session = require('express-session');
 // const FileStore = require('session-file-store')(Session);
 import { seedDb } from './utils/seed';
@@ -131,11 +132,29 @@ if (isProduction) {
       console.log(room)
       socket.to(room).emit('chat-message', { message: rooms[room].messages, name: rooms[room].users[socket.id] })
     })
+    socket.on('view-add-stream', (room) => {
+      // update the view to moongo DB against stream
+      var query = {'username': room};
+      console.log(room)
+      User.findOneAndUpdate(query, { $inc: { live_views: 1 } }, {}, function(err, doc) {
+        console.log(doc)
+        socket.to(room).emit('view-update', doc.live_views)
+      });
+      // emit broadcast with updated views count
+    })
     socket.on('disconnect', () => {
-      getUserRooms(socket).forEach(room => {
-        socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
-        delete rooms[room].users[socket.id]
-      })
+      // update view back to mongo DB agianst stream
+      
+      // emit broadcasr with updated views count
+      // getUserRooms(socket).forEach(room => {
+      //   // var query = {'username': room};
+      //   // User.findOneAndUpdate(query, { $inc: { live_views: -1 } }, {}, function(err, doc) {
+      //   //   // console.log(doc)
+      //   //   socket.to(room).broadcast.emit('view-update', doc.live_views)
+      //   // });
+      //   socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+      //   delete rooms[room].users[socket.id]
+      // })
     })
   })
 }
