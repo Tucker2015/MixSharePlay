@@ -61,6 +61,7 @@ export default ({ roomId }) => {
                 socket.emit("join-room-without-login", roomId)
 
             }
+            socket.emit("view-add-stream",roomId)
         }
     }, [])
     return (

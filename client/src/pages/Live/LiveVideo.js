@@ -11,8 +11,11 @@ import './VideoPlayer.css';
 import Navbar from '../../components/Navbar/Navbar'
 import Loader from '../../components/Loader/Loader';
 import ChatBox from '../../components/ChatBox/ChatBox';
+import LiveView from '../../components/Views/LiveViews';
 import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, EmailIcon, EmailShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
 import Upcoming from '../Shows/Upcoming'
+
+
 export default class VideoPlayer extends React.Component {
 
     constructor(props) {
@@ -34,7 +37,7 @@ export default class VideoPlayer extends React.Component {
             }
 
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({
 
                 stream: true,
@@ -81,11 +84,6 @@ export default class VideoPlayer extends React.Component {
         const fbtitle = this.props.match.params.username + ' Playing live now on MixShare Live';
         const shareUrl = 'https://live.mixshare.co.uk/streams/' + this.props.match.params.username;
         const title = this.props.match.params.username + ' Playing live now on MixShare Live';
-        // const showToast = () => {
-        //     navigator.clipboard.writeText('https://live.mixshare.co.uk/stream/' + this.props.match.params.username)
-        //     toast('URL Copied to ClipBoard')
-        // };
-
 
         return (
             <>
@@ -102,8 +100,11 @@ export default class VideoPlayer extends React.Component {
                         ) : <Loader />}
 
                         <div className="videoBar">
-                            <h5><i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live</h5>
+                            <h5>
+                                <i className="icon-flash fas fa-circle"></i>{this.props.match.params.username} Live
+                                {/* <LiveView roomId={this.props.match.params.username} /> */}
 
+                            </h5>
                             <FacebookShareButton
                                 url={fburl}
                                 quote={fbtitle}

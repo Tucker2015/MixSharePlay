@@ -21,7 +21,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
       <Navbar />
       <div className="users mx-auto mt-2">
 
-        <h2>Users page</h2>
+        <h2>Users Page</h2>
 
         <div className="row m-5">
           {isLoading ? (

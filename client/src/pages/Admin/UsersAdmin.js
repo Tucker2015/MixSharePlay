@@ -48,6 +48,10 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
                               <span className="info text-uppercase" >{user.live_stream}</span>
                             </div>
                             <div>
+                              <span className="label">Provider: </span>
+                              <span className="info text-uppercase" >{user.provider}</span>
+                            </div>
+                            <div>
                               <span className="label">Stream Key: </span>
                               <span className="info" style={{ color: "red", fontWeight: "500" }}>{user.stream_key}</span>
                             </div>

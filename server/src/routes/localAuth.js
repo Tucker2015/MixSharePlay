@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import Joi from 'joi';
-import faker from 'faker';
 
 import User from '../models/User';
 import requireLocalAuth from '../middleware/requireLocalAuth';
@@ -38,7 +37,7 @@ router.post('/register', async (req, res, next) => {
         stream_key,
         username,
         name,
-        avatar: faker.image.avatar(),
+        avatar: 'https://ktinternet.net/radio-logos/avatar.jpg',
       });
 
       newUser.registerUser(newUser, (err, user) => {
