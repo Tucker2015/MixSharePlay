@@ -10,8 +10,6 @@ const config = require('./config/default');
 const rooms = {}
 import routes from './routes';
 import User from './models/User';
-// const Session = require('express-session');
-// const FileStore = require('session-file-store')(Session);
 import { seedDb } from './utils/seed';
 const node_media_server = require('./media_server');
 const thumbnail_generator = require('./cron/thumbnails');
@@ -45,7 +43,6 @@ mongoose
   })
   .then(() => {
     console.log('MongoDB Connected...');
-    // seedDb();
   })
   .catch((err) => console.log(err));
 
@@ -54,17 +51,6 @@ app.use('/', routes);
 app.use('/public', express.static(join(__dirname, '../public')));
 app.use('/streams', require('./routes/streams'));
 app.use('/thumbnails', express.static(join(__dirname, './thumbnails')));
-// app.use('/profiles', express.static('server/media/profiles'));
-// app.use(Session({
-//   store: new FileStore({
-//     path: './src/sessions'
-//   }),
-//   secret: config.server.secret,
-//   maxAge: Date().now + (60 * 1000 * 30),
-//   resave: true,
-//   saveUninitialized: false,
-// }));
-
 
 // Serve static assets if in production
 if (isProduction) {
@@ -74,7 +60,7 @@ if (isProduction) {
   app.get('*', (req, res) => {
     res.sendFile(resolve(__dirname, '../..', 'client', 'build', 'index.html')); // index is in /server/src so 2 folders up
   });
-  
+
   const port = process.env.PORT || 80;
   app.listen(port, () => console.log(`Server started on port ${port}`));
 } else {
@@ -89,41 +75,46 @@ if (isProduction) {
     console.log('https server running at ' + port);
     console.log(all_routes(app));
   });
-  const io = require('socket.io')(server);
+  const io = require('socket.io')(server, {
+    // "force new connection": true,
+    // "reconnectionAttempts": "infinity",
+    // "timeout": 10000,
+    // "transports": ["websocket"],
+    // cors: {
+    //   origin: "https://live.mixshare.co.uk",
+    //   methods: ["GET", "POST"]
+    // }
+  });
   io.on('connection', socket => {
 
-    socket.on('join-room',(room,user)=>{
+    socket.on('join-room', (room, user) => {
       socket.join(room)
-      if (rooms[room] != null){
-        if(rooms[room].users[socket.id])
-        socket.emit('getRoom',rooms[room])
-        else
-        {
+      if (rooms[room] != null) {
+        if (rooms[room].users[socket.id])
+          socket.emit('getRoom', rooms[room])
+        else {
           rooms[room].users[socket.id] = user;
-          socket.emit('getRoom',rooms[room])
+          socket.emit('getRoom', rooms[room])
         }
-        }
-        else
-        {
-          rooms[room] = { users: {},messages:[] }
-          rooms[room].users[socket.id] = user;
-          socket.emit('getRoom',rooms[room])
-        }
-   
-    });
-    socket.on('join-room-without-login',(room)=>{
-      if (rooms[room] != null){
-        console.log("sdfsd8")
-        socket.emit('getRoom',rooms[room])
       }
-      else
-      {
+      else {
+        rooms[room] = { users: {}, messages: [], views:{} }
+        rooms[room].users[socket.id] = user;
+        socket.emit('getRoom', rooms[room])
+      }
+
+    });
+    socket.on('join-room-without-login', (room) => {
+      if (rooms[room] != null) {
+        socket.emit('getRoom', rooms[room])
+      }
+      else {
         console.log("not found")
       }
     });
     socket.on('new-user', (room, name) => {
-   
-      socket.join(room)   
+
+      socket.join(room)
       socket.to(room).broadcast.emit('user-connected', name)
     })
     socket.on('send-chat-message', (room, msg) => {
@@ -133,27 +124,38 @@ if (isProduction) {
       socket.to(room).emit('chat-message', { message: rooms[room].messages, name: rooms[room].users[socket.id] })
     })
     socket.on('view-add-stream', (room) => {
-      // update the view to moongo DB against stream
-      var query = {'username': room};
-      console.log(room)
-      User.findOneAndUpdate(query, { $inc: { live_views: 1 } }, {}, function(err, doc) {
-        console.log(doc)
-        socket.to(room).emit('view-update', doc.live_views)
-      });
-      // emit broadcast with updated views count
+      socket.join(room);
+
+      if (rooms[room] != null) {
+        rooms[room].views[socket.id] = socket.id;
+      }
+      else {
+        rooms[room] = { users: {}, messages: [], views:{} }
+        rooms[room].views[socket.id] = socket.id;
+      }
+      // socket.to(room).emit('live-view-update', Object.keys(rooms[room].views).length)
+      socket.emit('live-view-update', rooms)
+      socket.broadcast.emit('live-view-update', rooms)
+
+
     })
     socket.on('disconnect', () => {
-      // update view back to mongo DB agianst stream
-      
+      console.log(socket.id);
+      console.log(rooms);
+      for (const room in rooms) {
+        delete rooms[room]['views'][socket.id];
+      }
+      console.log("AFTER DELETE")
+      console.log(rooms);
+      socket.emit('live-view-update', rooms)
+      socket.broadcast.emit('live-view-update', rooms)
+        
+
       // emit broadcasr with updated views count
-      // getUserRooms(socket).forEach(room => {
-      //   // var query = {'username': room};
-      //   // User.findOneAndUpdate(query, { $inc: { live_views: -1 } }, {}, function(err, doc) {
-      //   //   // console.log(doc)
-      //   //   socket.to(room).broadcast.emit('view-update', doc.live_views)
-      //   // });
-      //   socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+      // socket.rooms.forEach(room => {
+        
       //   delete rooms[room].users[socket.id]
+      //   socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
       // })
     })
   })

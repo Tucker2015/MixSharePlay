@@ -9,9 +9,9 @@ export default ({ roomId }) => {
     // var liveviews = Math.floor(Math.random() * 20) + 1  ;
     React.useEffect(() => {
         // var liveviews = Math.floor(Math.random() * 20) + 1  ;
-        socket.on('view-update', views => {
+        socket.on('live-view-update', views => {
             console.log(views);
-            setviews(views) 
+            setviews(views.live_views) 
         })
     }, [])
     return (

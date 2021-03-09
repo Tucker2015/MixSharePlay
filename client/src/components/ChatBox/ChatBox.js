@@ -7,7 +7,7 @@ const socket = io.connect('', { secure: true, rejectUnauthorized: false })
 export default ({ roomId }) => {
     const [messages, setmessages] = React.useState([]);
     const [message, setmessage] = React.useState("");
-
+    const [views, setviews] = React.useState("");
     const user = useSelector(x => x.auth);
     const sendMsg = () => {
         let msg = {
@@ -37,7 +37,7 @@ export default ({ roomId }) => {
     }
     React.useEffect(() => {
         socket.on('getRoom', room => {
-            console.log(room)
+            // console.log(room)
             if (room && room.messages) {
                 setmessages(room.messages)
                 setInterval(() => {
@@ -53,6 +53,17 @@ export default ({ roomId }) => {
                 }, 500);
             }
         });
+        socket.on('live-view-update', rooms => {
+            if(rooms){
+                if (roomId && rooms[roomId] && rooms[roomId].views) {
+                    setviews(Object.keys(rooms[roomId].views).length)
+                }else{
+                    if (user && user.me && user.me.username) {
+                     setviews(Object.keys(rooms[user.me.username].views).length)
+                    }
+                }
+            } 
+        })
         if (roomId) {
             if (user && user.me && user.me.username) {
                 socket.emit("join-room", roomId, user.me.username)
@@ -70,9 +81,9 @@ export default ({ roomId }) => {
                 <header className="msger-header">
                     <div className="msger-header-title">
                         <i className="fas fa-comment-alt"></i> Chat</div>
-                    {/* <div className="msger-header-options">
-                        <span><i className="fas fa-cog"></i></span>
-                    </div> */}
+                    <div className="msger-header-options">
+                        <span><i className="fas fa-eye"></i> {views}</span>
+                    </div>
                 </header>
                 <main className="msger-chat" ref={RefScroll} >
 

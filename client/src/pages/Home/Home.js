@@ -28,15 +28,15 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
           <h2>Live Video Streaming</h2>
           <p>For Viewers, DJ's and Creators.</p>
           <Link to="/liveStream">
-            <button className="button">Watch Live</button>
+            <button className="button"><i className="fas fa-tv" aria-hidden="true"></i> Watch Live</button>
           </Link>
           {auth.isAuthenticated ? (
             <button className="button button2" onClick={onLogOut}>
-              <a className="text-light" href="/">Log out</a>
+              <a className="text-light" href="/"><i className="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</a>
             </button>
           ) : (
               <Link to="/login">
-                <button className="button button2">Login</button>
+                <button className="button button2"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</button>
               </Link>
             )}
         </div>

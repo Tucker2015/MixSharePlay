@@ -6,9 +6,9 @@
   margin: 10px 0px;
   height: calc(100% - 0px);
   border: var(--border);
-  border-radius: 5px;
+  border-radius: 10px;
   background: var(--msger-bg);
-  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.66);
 }
 
 .msger-header {
@@ -26,6 +26,9 @@
   flex: 1;
   overflow-y: auto;
   padding: 10px;
+    background-color: #3337463e;
+    height: 400px;
+    max-height: 400px;
 }
 .msger-chat::-webkit-scrollbar {
   width: 6px;
@@ -123,11 +126,7 @@
   background: rgb(0, 180, 50);
 }
 
-.msger-chat {
-  background-color: #333746c9;
-  height: 400px;
-  max-height: 400px;
-}
+
 @media screen and (max-width: 500px) {
   .msger-chat {
     max-height: 200px;
