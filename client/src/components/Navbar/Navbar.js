@@ -19,6 +19,15 @@ const Navbar = ({ auth, logOutUser, history }) => {
         <Link to={'/'} className={'navbar-brand '} >
           <h2 className="logo">MixShare Live</h2>
         </Link>
+        {auth.isAuthenticated ? (
+          <>
+            <Link to={`/${auth.me.username}`}>
+              <button className="goLive"><i class="fas fa-video"></i> Go Live</button>
+            </Link>
+          </>
+        ) : (
+            <></>
+          )}
         <button className="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,18 +39,13 @@ const Navbar = ({ auth, logOutUser, history }) => {
             <li className="nav-item">
               <Link to="/"><i className="fa fa-home"></i> Home</Link>
             </li>
-
-            {/* Not needed when Thumbnails Available */}
-
-            {/* <li className="nav-item">
-              <Link to="/live"><i className="fas fa-video"></i> Live</Link>
-            </li> */}
             <li className="nav-item">
               <Link to="/liveStream"><i className="fas fa-tv" aria-hidden="true"></i> Streams</Link>
             </li>
 
             {auth.isAuthenticated ? (
               <>
+
                 <li className="nav-item">
                   <Link to="/users"><i className="fa fa-users" aria-hidden="true"></i> Users</Link>
                 </li>

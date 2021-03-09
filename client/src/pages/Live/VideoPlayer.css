@@ -12,7 +12,6 @@
 
 .videoBox .box1 {
   position: relative;
-  background: #111;
   width: 100%;
   height: 100%;
   /* border: 6px double rgba(131, 131, 131, 0.105); */
@@ -20,7 +19,6 @@
 }
 .videoBox .box2 {
   position: relative;
-  background: #111;
   width: 100%;
   height: auto;
 
@@ -48,18 +46,21 @@
 .videoBar {
   position: relative;
   display: flex;
+  padding: 5px;
   margin-top: 5px;
+  border-radius: 10px;
+  background: #111;
 }
 .videoBar .social {
   position: relative;
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 .videoBar h5 {
   font-size: 16px;
   font-weight: 400;
   color: #fff;
-  padding: 5px;
+  margin-top: 10px;
   width: 100%;
   text-transform: uppercase;
 }
