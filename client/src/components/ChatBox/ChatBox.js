@@ -54,15 +54,15 @@ export default ({ roomId }) => {
             }
         });
         socket.on('live-view-update', rooms => {
-            if(rooms){
+            if (rooms) {
                 if (roomId && rooms[roomId] && rooms[roomId].views) {
                     setviews(Object.keys(rooms[roomId].views).length)
-                }else{
+                } else {
                     if (user && user.me && user.me.username) {
-                     setviews(Object.keys(rooms[user.me.username].views).length)
+                        setviews(Object.keys(rooms[user.me.username].views).length)
                     }
                 }
-            } 
+            }
         })
         if (roomId) {
             if (user && user.me && user.me.username) {
@@ -72,7 +72,7 @@ export default ({ roomId }) => {
                 socket.emit("join-room-without-login", roomId)
 
             }
-            socket.emit("view-add-stream",roomId)
+            socket.emit("view-add-stream", roomId)
         }
     }, [])
     return (
@@ -80,7 +80,7 @@ export default ({ roomId }) => {
             <section className="msger">
                 <header className="msger-header">
                     <div className="msger-header-title">
-                        <i className="fas fa-comment-alt"></i> Chat</div>
+                        <i className="fas fa-comment-alt"></i> Live Chat</div>
                     <div className="msger-header-options">
                         <span><i className="fas fa-eye"></i> {views}</span>
                     </div>
