@@ -2,10 +2,11 @@
   position: relative;
   justify-content: center;
   align-items: center;
+  
   width: 100%;
   margin: 5px auto;
   padding: 10px;
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 10px;
 }
@@ -19,7 +20,7 @@
 }
 .videoBox .box2 {
   position: relative;
-  width: 100%;
+  width: 600px;
   height: auto;
 
   /* border: 6px double rgba(131, 131, 131, 0.105); */
@@ -34,6 +35,19 @@
 @media screen and (max-width: 500px) {
   .videoBox .box2 {
     height: 100%;
+    width: 100%;
+  }
+  .videoBox {
+    position: relative;
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto;
+  padding: 10px;
+  display: block;
+  grid-gap: 10px;
+  }
+  .mobileButton {
+    display: none !important;
   }
 }
 .video-js.vjs-ended .vjs-poster {
@@ -93,11 +107,4 @@
     opacity: 1;
   }
 }
-@media screen and (max-width: 500px) {
-  .videoBox {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-  .mobileButton {
-    display: none !important;
-  }
-}
+
