@@ -9,6 +9,7 @@ import './styles.css';
 import Loader from '../../components/Loader/Loader';
 import Navbar from '../../components/Navbar/Navbar';
 import { logOutUser } from '../../store/actions/authActions';
+import CookieConsent from "react-cookie-consent";
 
 const Home = ({ auth, isLoading, logOutUser, history }) => {
 
@@ -35,11 +36,12 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
               <a className="text-light" href="/"><i className="fas fa-sign-out-alt" aria-hidden="true"></i> Log out</a>
             </button>
           ) : (
-              <Link to="/login">
-                <button className="button button2"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</button>
-              </Link>
-            )}
+            <Link to="/login">
+              <button className="button button2"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</button>
+            </Link>
+          )}
         </div>
+
       </div>
     </>
   );

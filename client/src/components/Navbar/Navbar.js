@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { logOutUser } from '../../store/actions/authActions';
 import './styles.css';
-
+import CookieConsent from "react-cookie-consent";
 const Navbar = ({ auth, logOutUser, history }) => {
   const onLogOut = (event) => {
     event.preventDefault();
@@ -26,8 +26,8 @@ const Navbar = ({ auth, logOutUser, history }) => {
             </Link>
           </>
         ) : (
-            <></>
-          )}
+          <></>
+        )}
         <button className="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,18 +68,27 @@ const Navbar = ({ auth, logOutUser, history }) => {
                 <img className="img " src={auth.me.avatar} alt="avatar" />
               </>
             ) : (
-                <>
-                  <li className="nav-item">
-                    <Link to="/login"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/register"><i className="fa fa-user-plus" aria-hidden="true"></i> Register</Link>
-                  </li>
-                </>
-              )}
+              <>
+                <li className="nav-item">
+                  <Link to="/login"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/register"><i className="fa fa-user-plus" aria-hidden="true"></i> Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
+      <CookieConsent
+        flipButtons
+        contentClasses="text-capitalize"
+        enableDeclineButton
+        onDecline={() => {
+          alert("Sorry you decline to Accept");
+
+        }}
+        buttonText="I Accept">This website uses cookies to enhance the user experience.</CookieConsent>
     </nav>
   );
 };
