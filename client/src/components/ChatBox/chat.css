@@ -8,6 +8,7 @@
   border-radius: 10px;
   background: var(--msger-bg);
   box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.66);
+  height: 90vh;
 }
 
 .msger-header {
@@ -26,9 +27,8 @@
   flex: 1;
   overflow-y: auto;
   padding: 10px;
-    background-color: #3337463e;
-    /* height: 900px; */
-    /* max-height: 900px; */
+  background-color: #3337463e;
+  /* max-height: 900px; */
 }
 .msger-chat::-webkit-scrollbar {
   width: 6px;
@@ -125,7 +125,6 @@
 .msger-send-btn:hover {
   background: rgb(0, 180, 50);
 }
-
 
 @media screen and (max-width: 500px) {
   .msger-chat {

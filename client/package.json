@@ -17,6 +17,7 @@
     "moment": "^2.29.1",
     "popper": "^1.0.1",
     "react": "^16.14.0",
+    "react-cookie-consent": "^6.2.3",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-meta-tags": "^1.0.1",
