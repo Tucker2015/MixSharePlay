@@ -74,6 +74,26 @@
   color: #fff;
   font-size: 18px;
 }
+footer {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+}
+.footerBx {
+  display: flex;
+  margin: 0 10px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+.footerBx a {
+  text-decoration: none;
+  margin: 5px;
+  color: #bbb;
+}
+.footerBx a:hover {
+  color: #fff;
+}
 @media (max-width: 991px){
   .banner .content h2{
   font-size: 30px;
