@@ -1,6 +1,6 @@
 /node_modules
 package-lock.json
-
+server/src/config/default.js
 /config/dev.js
 /security/cert.key
 /security/cert.pem
