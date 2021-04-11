@@ -41,7 +41,13 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
             </Link>
           )}
         </div>
-
+        <footer className="footerBx">
+          <a href="https://mixshare.co.uk">©2021, MixShare.</a>
+          <div className="">
+            <a href="mailto:info@mixshare.co.uk?subject=Contact from MixShare Live">Contact Us</a>
+            <a href="https://mixshare.co.uk/page/privacy">Privacy Policy</a>
+          </div>
+        </footer>
       </div>
     </>
   );

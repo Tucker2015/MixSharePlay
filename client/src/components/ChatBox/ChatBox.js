@@ -2,6 +2,7 @@ import React, { Component, useRef } from 'react'
 import './chat.css'
 import io from 'socket.io-client';
 import { useSelector } from 'react-redux'
+import ReactScrollableFeed from 'react-scrollable-feed'
 
 const socket = io.connect('', { secure: true, rejectUnauthorized: false })
 export default ({ roomId }) => {
@@ -85,20 +86,16 @@ export default ({ roomId }) => {
                         <span><i className="fas fa-eye"></i> {views}</span>
                     </div>
                 </header>
-                <main className="msger-chat" ref={RefScroll} >
-
-                    {
-                        messages.map((x, i) => <div key={i} className="msg left-msg">
-                            {/* <div
-                     className="msg-img"
-                 ></div> */}
-
+                <main className="msger-chat" >
+                    <ReactScrollableFeed
+                        forceScroll="true"
+                    >
+                        {messages.map((x, i) => <div key={i} className="msg left-msg">
                             <div className="msg-bubble">
                                 <div className="msg-info">
                                     <div className="msg-info-name">{x.username ? x.username : ""}</div>
                                     {/* <div className="msg-info-time">{x.time ? x.time : ""}</div> */}
                                 </div>
-
                                 <div className="msg-text">
                                     {
                                         x.message ? x.message : ""
@@ -106,9 +103,8 @@ export default ({ roomId }) => {
                                 </div>
                             </div>
                         </div>
-                        )
-                    }
-
+                        )}
+                    </ReactScrollableFeed>
                 </main>
                 <div className="msger-inputarea">
                     <input type="text" readOnly={user && user.me && user.me != null ? false : true} value={message} placeholder={user && user.me && user.me != null ? "Enter your message..." : "Login to comment"} onKeyPress={event => {

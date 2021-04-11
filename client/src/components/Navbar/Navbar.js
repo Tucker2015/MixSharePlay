@@ -22,7 +22,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
         {auth.isAuthenticated ? (
           <>
             <Link to={`/${auth.me.username}`}>
-              <button className="goLive"><i class="fas fa-video"></i> Go Live</button>
+              <button className="goLive"><i className="fas fa-video"></i> Go Live</button>
             </Link>
           </>
         ) : (
@@ -80,7 +80,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
           </ul>
         </div>
       </div>
-      <CookieConsent
+      {/* <CookieConsent
         flipButtons
         contentClasses="text-capitalize"
         enableDeclineButton
@@ -88,7 +88,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
           alert("Sorry you decline to Accept");
 
         }}
-        buttonText="I Accept">This website uses cookies to enhance the user experience.</CookieConsent>
+        buttonText="I Accept">This website uses cookies to enhance the user experience.</CookieConsent> */}
     </nav>
   );
 };

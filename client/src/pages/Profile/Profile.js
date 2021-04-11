@@ -77,7 +77,8 @@ const Profile = ({
       //setIsEdit(false);
     },
   });
-  let qrCode = "larix://set/v1?conn[][url]=rtmp%3A%2F%2F176.9.31.54%3A1935%2Flive%2F" + profile.stream_key + "&conn[][name]=MixShare%20Live&conn[][overwrite]=on&enc[vid][res]=1280x720&enc[vid][bitrate]=1000&deleteConn=1";
+  let qrCode = "larix://set/v1?conn[][url]=rtmp%3A%2F%2Flive.mixshare.co.uk%3A1935%2Flive%2F" + profile.stream_key + "&conn[][name]=MixShare%20Live&conn[][overwrite]=on&enc[vid][res]=1280x720&enc[vid][bitrate]=1000&deleteConn=1";
+
   return (
     <Layout>
       <div className="profile">
@@ -86,42 +87,42 @@ const Profile = ({
         {isLoading ? (
           <Loader />
         ) : (
-            <div className="profile-info mt-3 mx-auto">
-              <img src={image ? image : profile.avatar} className="avatar" alt="avatar" />
-              <div className="info-container text-light">
-                <div>
-                  <span className="label">Name: </span>
-                  <span className="info text-capitalize">{profile.name}</span>
-                </div>
-                <div>
-                  <span className="label">Stream Key: </span>
-                  <span className="info">{profile.stream_key}</span>
-                </div>
-                <div>
-                  <span className="label">Username: </span>
-                  <span className="info">{profile.username}</span>
-                </div>
-                <div>
-                  <span className="label">Email: </span>
-                  <span className="info">{profile.email}</span>
-                </div>
+          <div className="profile-info mt-3 mx-auto">
+            <img src={image ? image : profile.avatar} className="avatar" alt="avatar" />
+            <div className="info-container text-light">
+              <div>
+                <span className="label">Name: </span>
+                <span className="info text-capitalize">{profile.name}</span>
+              </div>
+              <div>
+                <span className="label">Stream Key: </span>
+                <span className="info">{profile.stream_key}</span>
+              </div>
+              <div>
+                <span className="label">Username: </span>
+                <span className="info">{profile.username}</span>
+              </div>
+              <div>
+                <span className="label">Email: </span>
+                <span className="info">{profile.email}</span>
+              </div>
 
-                <div>
-                  <button
-                    className="btn"
-                    type="button"
-                    onClick={handleClickEdit}
-                    disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
-                  >
-                    {isEdit ? 'Cancel' : 'Edit'}
-                  </button>
-                </div>
-
+              <div>
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={handleClickEdit}
+                  disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
+                >
+                  {isEdit ? 'Cancel' : 'Edit'}
+                </button>
               </div>
 
             </div>
 
-          )}
+          </div>
+
+        )}
 
         {error && <p className="error">{error}</p>}
 
