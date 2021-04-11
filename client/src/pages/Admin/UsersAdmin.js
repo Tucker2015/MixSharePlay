@@ -40,16 +40,20 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
                               <span className="info">{user.username}</span>
                             </div>
                             <div>
-                              <span className="label">Username: </span>
-                              <span className="info">{user.stream_key}</span>
-                            </div>
-                            <div>
                               <span className="label">Email: </span>
                               <span className="info">{user.email}</span>
                             </div>
                             <div>
                               <span className="label">Live Streams: </span>
                               <span className="info text-uppercase" >{user.live_stream}</span>
+                            </div>
+                            <div>
+                              <span className="label">Provider: </span>
+                              <span className="info text-uppercase" >{user.provider}</span>
+                            </div>
+                            <div>
+                              <span className="label">Stream Key: </span>
+                              <span className="info" style={{ color: "red", fontWeight: "500" }}>{user.stream_key}</span>
                             </div>
                             <div>
                               <span className="label">Joined: </span>

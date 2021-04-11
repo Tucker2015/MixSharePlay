@@ -7,7 +7,7 @@ router.get(
   '/facebook',
   passport.authenticate('facebook', {
     scope: ['public_profile', 'email'],
-  }),
+  }, {callback: 'https://live.mixshare.co.uk:5000/auth/facebook/callback'}),
 );
 
 const clientUrl = process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL_PROD : process.env.CLIENT_URL_DEV;

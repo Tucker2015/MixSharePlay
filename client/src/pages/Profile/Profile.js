@@ -77,56 +77,57 @@ const Profile = ({
       //setIsEdit(false);
     },
   });
-  let qrCode = "larix://set/v1?conn[][url]=rtmp%3A%2F%2F176.9.31.54%3A1935%2Flive%2F" + profile.stream_key + "&conn[][name]=MixShare%20Live&conn[][overwrite]=on&enc[vid][res]=1280x720&enc[vid][bitrate]=1000&deleteConn=1";
+  let qrCode = "larix://set/v1?conn[][url]=rtmp%3A%2F%2Flive.mixshare.co.uk%3A1935%2Flive%2F" + profile.stream_key + "&conn[][name]=MixShare%20Live&conn[][overwrite]=on&enc[vid][res]=1280x720&enc[vid][bitrate]=1000&deleteConn=1";
+
   return (
     <Layout>
       <div className="profile">
-        <h2 className="header mt-2">Profile page</h2>
+        <h2 className="header mt-2">Profile Page</h2>
 
         {isLoading ? (
           <Loader />
         ) : (
-            <div className="profile-info mt-3 mx-auto">
-              <img src={image ? image : profile.avatar} className="avatar" alt="avatar" />
-              <div className="info-container text-light">
-                <div>
-                  <span className="label">Name: </span>
-                  <span className="info text-capitalize">{profile.name}</span>
-                </div>
-                <div>
-                  <span className="label">Stream Key: </span>
-                  <span className="info">{profile.stream_key}</span>
-                </div>
-                <div>
-                  <span className="label">Username: </span>
-                  <span className="info">{profile.username}</span>
-                </div>
-                <div>
-                  <span className="label">Email: </span>
-                  <span className="info">{profile.email}</span>
-                </div>
+          <div className="profile-info mt-3 mx-auto">
+            <img src={image ? image : profile.avatar} className="avatar" alt="avatar" />
+            <div className="info-container text-light">
+              <div>
+                <span className="label">Name: </span>
+                <span className="info text-capitalize">{profile.name}</span>
+              </div>
+              <div>
+                <span className="label">Stream Key: </span>
+                <span className="info">{profile.stream_key}</span>
+              </div>
+              <div>
+                <span className="label">Username: </span>
+                <span className="info">{profile.username}</span>
+              </div>
+              <div>
+                <span className="label">Email: </span>
+                <span className="info">{profile.email}</span>
+              </div>
 
-                <div>
-                  <button
-                    className="btn"
-                    type="button"
-                    onClick={handleClickEdit}
-                    disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
-                  >
-                    {isEdit ? 'Cancel' : 'Edit'}
-                  </button>
-                </div>
-
+              <div>
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={handleClickEdit}
+                  disabled={!(me?.username === profile.username || me?.role === 'ADMIN')}
+                >
+                  {isEdit ? 'Cancel' : 'Edit'}
+                </button>
               </div>
 
             </div>
 
-          )}
+          </div>
+
+        )}
 
         {error && <p className="error">{error}</p>}
 
         {isEdit && (
-          <div className="form text-light mx-auto">
+          <div className="profile-info mx-auto">
             <form onSubmit={formik.handleSubmit}>
               <div className="input-div">
                 <label>Avatar:</label>
@@ -193,46 +194,54 @@ const Profile = ({
                   ) : null}
                 </div>
               )}
-              <button type="submit" className="btn">
-                Save
+              <div className="btn-container">
+                <button type="submit" className="btn">
+                  Save
               </button>
-              <button
-                onClick={() => handleDeleteUser(profile.id, history)}
-                type="button"
-                className="btn btn2"
-              >
-                Delete profile
+                <button
+                  onClick={() => handleDeleteUser(profile.id, history)}
+                  type="button"
+                  className="btn btn2"
+                >
+                  Delete profile
               </button>
+              </div>
             </form>
           </div>
         )}
       </div>
-      <div className="mx-auto mt-3">
-        <h3 className="text-center text-light">Connecting to MixShare Live</h3>
-        <p className="textBody text-light">
+      <div className="help-container">
+        <h3>Connecting to MixShare Live</h3>
+        <p>
           You can use <a target="_blank" href="https://obsproject.com/">OBS</a> or
-            <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream. If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field. Also, add your stream key. Click apply to save.</p>
-        <p className="textBody text-light">Your Stream Key : {profile.stream_key}</p>
+            <a target="_blank" href="https://www.xsplit.com/">XSplit</a> to Live stream.  We also support <a target="_blank" href="https://restream.io/">restream.io</a> and <a target="_blank" href="https://castr.io/">castr.io</a></p>
+        <p>If you're using OBS, go to Settings - Stream and select Custom from service dropdown. Enter <b>rtmp://live.mixshare.co.uk:1935/live</b> in server input field.</p>
+        <p>Also, add your stream key. Click apply to save.</p>
+        <p>Your Stream Key : {profile.stream_key}</p>
         <div className="obs">
           <img src={obs} alt="" />
         </div>
-      </div>
-      <div className="profile mt-5">
-        <h3 className="text-center text-light">Using Larix with Mobile</h3>
-        <hr className="my-3" />
-        <p className="textBody text-light">
-          To use Larix simply download the App from the links below :
-                    </p>
-        <div className="">
-          <h5 className="textBody text-light" >Download Larix for Mobile</h5>
-          <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster" class="btn btn-secondary btn-m mr-2" role="button" aria-disabled="true">Download Larix for Android</a>
 
-          <a href="https://apps.apple.com/us/app/larix-broadcaster/id1042474385" class="btn btn-secondary btn-m m-1" role="button" aria-disabled="true">Download Larix for iOS</a>
-          <p className="textBody text-light mt-3">Then hit the button below to open your profile in Larix automatically :</p>
-          <a href={qrCode} class="btn btn-secondary btn-lg mt-2 mb-5" role="button" aria-disabled="true">Open Profile in Larix</a>
+
+        <h3>Using Larix with Mobile</h3>
+        <p>To use Larix simply download the App from the links below :</p>
+
+        <h3>Download Larix for Mobile</h3>
+        <div className="larix-buttons-container">
+          <a href="https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster" className="larix-button" role="button" aria-disabled="true">Larix for Android</a>
+
+          <a href="https://apps.apple.com/us/app/larix-broadcaster/id1042474385" className="larix-button" role="button" aria-disabled="true">Larix for iOS</a>
         </div>
+        <p className=" mt-3">Then hit the button below to open your profile in Larix automatically :</p>
+        <div className="larix-buttons-container2">
+
+          <a href={qrCode} className="larix-button" role="button" aria-disabled="true">Open Profile in Larix</a>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
-    </Layout>
+    </Layout >
   );
 };
 

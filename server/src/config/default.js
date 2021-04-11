@@ -7,9 +7,10 @@ const config = {
         rtmp: {
             port: 1935,
             chunk_size: 60000,
-            gop_cache: true,
+            gop_cache: false,
             ping: 60,
-            ping_timeout: 30
+            ping_timeout: 30,
+            api: true
         },
         http: {
             port: 8888,
@@ -21,7 +22,8 @@ const config = {
             mediaroot: './src/media',
             allow_origin: '*',
             key: '/etc/letsencrypt/live/live.mixshare.co.uk/privkey.pem',
-            cert: '/etc/letsencrypt/live/live.mixshare.co.uk/fullchain.pem'
+            cert: '/etc/letsencrypt/live/live.mixshare.co.uk/fullchain.pem',
+            api: true
         },
         trans: {
             ffmpeg: '/usr/bin/ffmpeg',

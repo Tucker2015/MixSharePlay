@@ -47,7 +47,7 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
         <Switch>
           <Route path="/login" component={Login} />
 
-          <Route exact path="/liveStream" render={props => (
+          <Route exact path="/liveStream" render={(props) => (
             <LiveStreams  {...props} />
           )} />
           <Route exact path="/stream/:username" render={(props) => (

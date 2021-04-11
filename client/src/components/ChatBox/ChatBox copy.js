@@ -2,13 +2,12 @@ import React, { Component, useRef } from 'react'
 import './chat.css'
 import io from 'socket.io-client';
 import { useSelector } from 'react-redux'
-import ReactScrollableFeed from 'react-scrollable-feed'
 
 const socket = io.connect('', { secure: true, rejectUnauthorized: false })
 export default ({ roomId }) => {
     const [messages, setmessages] = React.useState([]);
     const [message, setmessage] = React.useState("");
-    const [views, setviews] = React.useState("");
+
     const user = useSelector(x => x.auth);
     const sendMsg = () => {
         let msg = {
@@ -38,7 +37,7 @@ export default ({ roomId }) => {
     }
     React.useEffect(() => {
         socket.on('getRoom', room => {
-            // console.log(room)
+            console.log(room)
             if (room && room.messages) {
                 setmessages(room.messages)
                 setInterval(() => {
@@ -54,17 +53,6 @@ export default ({ roomId }) => {
                 }, 500);
             }
         });
-        socket.on('live-view-update', rooms => {
-            if (rooms) {
-                if (roomId && rooms[roomId] && rooms[roomId].views) {
-                    setviews(Object.keys(rooms[roomId].views).length)
-                } else {
-                    if (user && user.me && user.me.username) {
-                        setviews(Object.keys(rooms[user.me.username].views).length)
-                    }
-                }
-            }
-        })
         if (roomId) {
             if (user && user.me && user.me.username) {
                 socket.emit("join-room", roomId, user.me.username)
@@ -73,7 +61,6 @@ export default ({ roomId }) => {
                 socket.emit("join-room-without-login", roomId)
 
             }
-            socket.emit("view-add-stream", roomId)
         }
     }, [])
     return (
@@ -81,21 +68,26 @@ export default ({ roomId }) => {
             <section className="msger">
                 <header className="msger-header">
                     <div className="msger-header-title">
-                        <i className="fas fa-comment-alt"></i> Live Chat</div>
+                        <i className="fas fa-comment-alt"></i> Chat
+</div>
                     <div className="msger-header-options">
-                        <span><i className="fas fa-eye"></i> {views}</span>
+                        <span><i className="fas fa-cog"></i></span>
                     </div>
                 </header>
-                <main className="msger-chat" >
-                    <ReactScrollableFeed
-                        forceScroll="true"
-                    >
-                        {messages.map((x, i) => <div key={i} className="msg left-msg">
+                <main className="msger-chat" ref={RefScroll} >
+
+                    {
+                        messages.map((x, i) => <div key={i} className="msg left-msg">
+                            {/* <div
+                     className="msg-img"
+                 ></div> */}
+
                             <div className="msg-bubble">
                                 <div className="msg-info">
                                     <div className="msg-info-name">{x.username ? x.username : ""}</div>
-                                    {/* <div className="msg-info-time">{x.time ? x.time : ""}</div> */}
+                                    {/* <div className="msg-info-time">{x.time?x.time:""}</div> */}
                                 </div>
+
                                 <div className="msg-text">
                                     {
                                         x.message ? x.message : ""
@@ -103,20 +95,21 @@ export default ({ roomId }) => {
                                 </div>
                             </div>
                         </div>
-                        )}
-                    </ReactScrollableFeed>
+                        )
+                    }
+
                 </main>
-                <div className="msger-inputarea">
+                <div class="msger-inputarea">
                     <input type="text" readOnly={user && user.me && user.me != null ? false : true} value={message} placeholder={user && user.me && user.me != null ? "Enter your message..." : "Login to comment"} onKeyPress={event => {
                         if (event.key === 'Enter') {
                             sendMsg()
                         }
-                    }} onChange={(e) => setmessage(e.target.value)} className="msger-input" />
+                    }} onChange={(e) => setmessage(e.target.value)} class="msger-input" />
                     <button type="button" onClick={() => {
                         if (user && user.me && user.me != null)
                             sendMsg()
 
-                    }} className="msger-send-btn">Send</button>
+                    }} class="msger-send-btn">Send</button>
                 </div>
             </section>
             {/* <div className="bg-success m-2 p-4 text-light">

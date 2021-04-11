@@ -21,7 +21,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
       <Navbar />
       <div className="users mx-auto mt-2">
 
-        <h2>Users page</h2>
+        <h2>Users Page</h2>
 
         <div className="row m-5">
           {isLoading ? (
@@ -40,10 +40,6 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
                             <div>
                               <span className="label">Username: </span>
                               <span className="info">{user.username}</span>
-                            </div>
-                            <div>
-                              <span className="label">Email: </span>
-                              <span className="info">{user.email}</span>
                             </div>
                             <div>
                               <span className="label">Live Streams: </span>

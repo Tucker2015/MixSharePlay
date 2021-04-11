@@ -1,52 +1,42 @@
-#root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100% !important;
-}
-.cont {
-  position: relative;
-  width: 100%;
-  margin: 20px 0px;
-  align-items: center;
-}
 .videoBox {
-  position: relative;
-  width: 90%;
-  margin: 20px 0px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  grid-gap: 10px;
-  justify-content: center;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 100vh;
 }
-.mobileButton {
-  width: 50%;
+.videoBox > *:nth-child(1) {
+  flex: 1 1 70%;
+  min-width: 25ch;
   padding: 5px;
-  outline: none;
-  font-weight: 300;
-  border: 1px solid #1d6ee6;
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: rgb(247, 240, 240);
-  background: #1d6ee6;
-  border-radius: 30px;
 }
-@media screen and (max-width: 500px) {
+.videoBox > *:nth-child(2) {
+  flex: 1 1 30%;
+  min-width: 15ch;
+  padding: 10px;
+
+  /* height: 100%;
+  max-height: 90vh; */
+}
+
+@media screen and (max-width: 1000px) {
   .videoBox {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+    padding: 10px;
+    display: block;
+    grid-gap: 10px;
+  }
+  .videoBox .box2 {
+    height: 100vh;
+    width: 100%;
   }
   .mobileButton {
     display: none !important;
   }
 }
-.videoBox .box1 {
-  position: relative;
-  background: #111;
-  width: 100%;
-  height: 100%;
-  border: 6px double rgba(131, 131, 131, 0.105);
-  padding: 10px;
+.video-js.vjs-ended .vjs-poster {
+  display: block;
 }
 .videoBox .box1 h3 {
   color: #fff;
@@ -55,18 +45,19 @@
 .videoBar {
   position: relative;
   display: flex;
-  margin-top: 5px;
+  padding: 5px;
+  background: #111;
 }
 .videoBar .social {
   position: relative;
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 .videoBar h5 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   color: #fff;
-  padding: 5px;
+  margin-top: 10px;
   width: 100%;
   text-transform: uppercase;
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import config from '../../default';
 import Layout from '../../layout/Layout'
 import './LiveStream.css';
+import Upcoming from '../Shows/Upcoming';
 export default class LiveStreams extends React.Component {
 
     constructor(props) {
@@ -29,7 +30,7 @@ export default class LiveStreams extends React.Component {
                 let streams = res.data;
                 if (typeof (streams['live'] !== 'undefined')) {
                     this.getStreamsInfo(streams['live']);
-                    console.log(res.data);
+                    // console.log(res.data);
                 }
             });
     }
@@ -40,11 +41,11 @@ export default class LiveStreams extends React.Component {
                 streams: live_streams
             }
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({
                 live_streams: res.data
             }, () => {
-                console.log(this.state);
+                // console.log(this.state);
 
             });
         });
@@ -59,7 +60,7 @@ export default class LiveStreams extends React.Component {
 
                     <Link to={'/stream/' + stream.username}>
                         <div className="stream-thumbnail">
-                            <img src={'/thumbnails/' + stream.stream_key + '.png'} style={{ width: "100%" }} alt="thumbnail" />
+                            <img src={'/thumbnails/' + stream.stream_key + '.png'} style={{ width: "100%", height: "200px" }} alt="thumbnail" />
                         </div>
                     </Link>
 
@@ -83,7 +84,7 @@ export default class LiveStreams extends React.Component {
                     <div className="streams row mt-5">
                         {streams}
                     </div>
-
+                    <Upcoming />
                 </div>
             </Layout>
         )

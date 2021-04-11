@@ -1,10 +1,9 @@
 const express = require('express'),
     router = express.Router(),
-    User = require('../models/User').User,
-    shortid = require('shortid');
+import User from '../models/User';
+shortid = require('shortid');
 
 router.get('/stream_key',
-    require('connect-ensure-login').ensureLoggedIn(),
     (req, res) => {
         User.findOne({ email: req.user.email }, (err, user) => {
             if (!err) {
@@ -18,7 +17,7 @@ router.get('/stream_key',
     });
 
 router.post('/stream_key',
-    require('connect-ensure-login').ensureLoggedIn(),
+
     (req, res) => {
 
         User.findOneAndUpdate({
