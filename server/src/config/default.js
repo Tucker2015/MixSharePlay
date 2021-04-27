@@ -10,7 +10,7 @@ const config = {
             gop_cache: false,
             ping: 60,
             ping_timeout: 30,
-            
+
         },
         http: {
             port: 8888,
@@ -24,10 +24,10 @@ const config = {
 
             key: '/etc/letsencrypt/live/live.mixshare.co.uk/privkey.pem',
             cert: '/etc/letsencrypt/live/live.mixshare.co.uk/fullchain.pem',
-            
+
         },
         trans: {
-            ffmpeg: '/usr/local/bin/ffmpeg',
+            ffmpeg: '/usr/bin/ffmpeg',
             tasks: [
                 {
                     app: 'live',
