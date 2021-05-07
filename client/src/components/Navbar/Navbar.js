@@ -59,6 +59,11 @@ const Navbar = ({ auth, logOutUser, history }) => {
                 )}
                 {auth.me?.role === 'ADMIN' && (
                   <li className="nav-item">
+                    <Link to="/event"><i className="fa fa-lock" aria-hidden="true"></i> Event</Link>
+                  </li>
+                )}
+                {auth.me?.role === 'ADMIN' && (
+                  <li className="nav-item">
                     <Link to="/usersAdmin"><i className="fa fa-lock" aria-hidden="true"></i> Edit Users</Link>
                   </li>
                 )}

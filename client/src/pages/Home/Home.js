@@ -3,6 +3,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import bg from './bg.jpg';
+import logo from './logo.png';
+
 import { reseedDatabase } from '../../store/actions/authActions';
 import Upcoming from '../Shows/Upcoming';
 import './styles.css';
@@ -25,7 +27,10 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
       <div className="banner">
         <img src={bg} alt="" />
         <div className="content">
-          <h1>MixShare Live</h1>
+          <div>
+
+            <h1>MixShare Live</h1>
+          </div>
           <h2>Live Video Streaming</h2>
           <p>For Viewers, DJ's and Creators.</p>
           <Link to="/liveStream">

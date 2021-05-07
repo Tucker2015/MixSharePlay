@@ -1,0 +1,11 @@
+.help {
+  position: absolute;
+  margin: 0px 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.help p{
+  color: #fff;
+  text-align: center;
+}

@@ -7,29 +7,6 @@
   white-space: nowrap;
   letter-spacing: 1px;
 }
-.goLive {
-  position: relative;
-  width: 120px;
-  height: 50px;
-  margin: 0 50px;
-  border-radius: 10px;
-  border: none;
-  background: rgb(186, 17, 17);
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-@media screen and (max-width: 768px) {
-  .logo {
-    font-size: 1.2em;
-  }
-  .goLive {
-    display: none;
-  }
-}
-
 .nav-links {
   list-style: none;
   font-size: 1.2rem;
@@ -39,14 +16,9 @@
 
 .nav-item {
   display: inline-flex;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
-@media screen and (max-width: 500px) {
-  .navbar-collapse {
-    font-size: 0.8em;
-    text-align: center;
-  }
-}
+
 .nav-item a {
   padding: 10px;
   text-decoration: none;
@@ -70,4 +42,42 @@
   border-radius: 25px;
   align-self: center;
   object-fit: cover;
+}
+
+.goLive {
+  position: relative;
+  width: 120px;
+  height: 50px;
+  margin: 0 50px;
+  border-radius: 10px;
+  border: none;
+  background: rgb(186, 17, 17);
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  ul {
+    position: relative;
+    display: flex;
+    margin: auto;
+    font-size: 1rem;
+  }
+
+  .navbar .img {
+    display: hidden;
+    visibility: hidden;
+  }
+  .logo {
+    font-size: 1.4em;
+  }
+  .goLive {
+    display: none;
+  }
+  .navbar-collapse {
+    font-size: 0.1em;
+    text-align: center;
+  }
 }

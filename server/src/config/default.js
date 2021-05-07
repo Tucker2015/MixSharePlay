@@ -10,7 +10,7 @@ const config = {
             gop_cache: false,
             ping: 60,
             ping_timeout: 30,
-            
+
         },
         http: {
             port: 8888,
@@ -22,9 +22,9 @@ const config = {
             mediaroot: './src/media',
             allow_origin: '*',
 
-            key: '/etc/letsencrypt/live/live.mixshare.co.uk/privkey.pem',
-            cert: '/etc/letsencrypt/live/live.mixshare.co.uk/fullchain.pem',
-            
+            key: './security/cert.key',
+            cert: './security/cert.pem',
+
         },
         trans: {
             ffmpeg: '/usr/local/bin/ffmpeg',
