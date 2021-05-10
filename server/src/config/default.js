@@ -21,13 +21,12 @@ const config = {
             port: 8443,
             mediaroot: './src/media',
             allow_origin: '*',
-
-            key: './security/cert.key',
-            cert: './security/cert.pem',
+key: '/etc/letsencrypt/live/live.mixshare.co.uk/privkey.pem',
+            cert: '/etc/letsencrypt/live/live.mixshare.co.uk/fullchain.pem',
 
         },
         trans: {
-            ffmpeg: '/usr/local/bin/ffmpeg',
+            ffmpeg: '/usr/bin/ffmpeg',
             tasks: [
                 {
                     app: 'live',
