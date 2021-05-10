@@ -4,14 +4,9 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import bg from './bg.jpg';
 import logo from './logo.png';
-
-import { reseedDatabase } from '../../store/actions/authActions';
-import Upcoming from '../Shows/Upcoming';
+import Layout from '../../layout/Layout'
 import './styles.css';
-import Loader from '../../components/Loader/Loader';
-import Navbar from '../../components/Navbar/Navbar';
 import { logOutUser } from '../../store/actions/authActions';
-import CookieConsent from "react-cookie-consent";
 
 const Home = ({ auth, isLoading, logOutUser, history }) => {
 
@@ -21,9 +16,7 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
   };
   return (
 
-    <>
-      <Navbar />
-
+    <Layout>
       <div className="banner">
         <img src={bg} alt="" />
         <div className="content">
@@ -45,6 +38,10 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
               <button className="button button2"><i className="fas fa-sign-in-alt" aria-hidden="true"></i> Login</button>
             </Link>
           )}
+          <div className="mt-4">
+            <p>Interested in hosting a Live PPV event with us ?</p>
+            <p><a href="mailto:info@mixshare.co.uk?subject=MixShare Live Event">Contact Us</a> for more information</p>
+          </div>
         </div>
         <footer className="footerBx">
           <a href="https://mixshare.co.uk">©2021, MixShare.</a>
@@ -54,7 +51,7 @@ const Home = ({ auth, isLoading, logOutUser, history }) => {
           </div>
         </footer>
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -9,6 +9,7 @@ import requireAuth from '../../hoc/requireAuth';
 import './user_styles.css';
 import Navbar from '../../components/Navbar/Navbar';
 import requireAdmin from '../../hoc/requireAdmin';
+import Layout from '../../layout/Layout';
 
 const UsersAdmin = ({ getUsers, users: { users, isLoading } }) => {
   useEffect(() => {
@@ -16,8 +17,7 @@ const UsersAdmin = ({ getUsers, users: { users, isLoading } }) => {
   }, []);
 
   return (
-    <div>
-      <Navbar />
+    <Layout>
       <div className="userAdmin mx-auto mt-2">
         <h2>Edit Users</h2>
         <div className="row m-5">
@@ -71,7 +71,7 @@ const UsersAdmin = ({ getUsers, users: { users, isLoading } }) => {
           )}
         </div>
       </div>
-    </div >
+    </Layout >
   );
 };
 

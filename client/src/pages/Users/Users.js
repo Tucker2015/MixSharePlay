@@ -7,9 +7,7 @@ import { getUsers } from '../../store/actions/usersActions';
 import Layout from '../../layout/Layout';
 import Loader from '../../components/Loader/Loader';
 import requireAuth from '../../hoc/requireAuth';
-
 import './styles.css';
-import Navbar from '../../components/Navbar/Navbar';
 
 const Users = ({ getUsers, users: { users, isLoading } }) => {
   useEffect(() => {
@@ -24,8 +22,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
 
   return (
 
-    <div>
-      <Navbar />
+    <Layout>
       <div className="users mx-auto mt-2">
 
         <h2>Users Page</h2>
@@ -69,7 +66,7 @@ const Users = ({ getUsers, users: { users, isLoading } }) => {
           )}
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
