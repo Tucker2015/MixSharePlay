@@ -5,17 +5,12 @@ import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import VideoPlayer from './pages/Live/LiveVideo'
 import LiveStreams from './pages/Live/LiveStream'
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Home from './pages/Home/Home';
-import Profile from './pages/Profile/Profile';
-import Users from './pages/Users/Users';
-import UsersAdmin from './pages/Admin/UsersAdmin';
-import Admin from './pages/Admin/Admin';
 import NotFound from './pages/NotFound/NotFound';
 import Upcoming from './pages/Shows/Upcoming';
 import Loader from './components/Loader/Loader';
-import Help from './pages/Help/Help';
+import Event from './pages/Event/Event';
+import { Users, Login, Admin, UsersAdmin, Profile, Home, Register } from './pages';
+import EventVideoPlayer from './pages/Event/EventLiveVideo';
 import { logInUserWithOauth, loadMe } from './store/actions/authActions';
 
 
@@ -46,7 +41,6 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
       {auth.appLoaded ? (
         <Switch>
           <Route path="/login" component={Login} />
-
           <Route exact path="/liveStream" render={(props) => (
             <LiveStreams  {...props} />
           )} />
@@ -59,14 +53,15 @@ const App = ({ logInUserWithOauth, auth, loadMe }) => {
           <Route path="/usersAdmin" component={UsersAdmin} />
           <Route path="/admin" component={Admin} />
           <Route path="/shows" component={Upcoming} />
-          <Route path="/help" component={Help} />
+          <Route path="/event" component={Event} />
+          <Route path="/eventplayer" component={EventVideoPlayer} />
           <Route exact path="/:username" component={Profile} />
           <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
       ) : (
-          <Loader />
-        )}
+        <Loader />
+      )}
     </>
   );
 };

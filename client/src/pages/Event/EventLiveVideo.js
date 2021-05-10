@@ -2,13 +2,21 @@ import React from 'react';
 import videojs from 'video.js'
 import axios from 'axios';
 import config from '../../default';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import watermark from 'videojs-watermark';
-import Layout from '../../layout/Layout'
 import '../../../node_modules/videojs-watermark/dist/videojs-watermark.css';
 import './VideoPlayer.css';
-import { Navbar, Loader, ChatBox } from '../../components/'
+import Navbar from '../../components/Navbar/Navbar'
+import Loader from '../../components/Loader/Loader';
+import ChatBox from '../../components/ChatBox/ChatBox';
+import LiveView from '../../components/Views/LiveViews';
 import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, EmailIcon, EmailShareButton, WhatsappIcon, WhatsappShareButton } from 'react-share';
-export default class VideoPlayer extends React.Component {
+import Upcoming from '../Shows/Upcoming'
+import requireEvent from '../../hoc/requireEvent';
+
+class EventVideoPlayer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,9 +29,11 @@ export default class VideoPlayer extends React.Component {
     componentDidMount() {
         videojs.registerPlugin('watermark', watermark)
 
+
         axios.get('/streams/user', {
             params: {
                 username: this.props.match.params.username,
+
             }
 
         }).then(res => {
@@ -76,7 +86,9 @@ export default class VideoPlayer extends React.Component {
         const title = this.props.match.params.username + ' Playing live now on MixShare Live';
 
         return (
-            <Layout>
+            <>
+                <Navbar />
+                <h1>TEST PAGE</h1>
                 <div className="videoBox mx-auto">
                     <div className="box1">
                         {this.state.stream ? (
@@ -126,14 +138,16 @@ export default class VideoPlayer extends React.Component {
                         </div>
                     </div>
                     <div className="box2">
-                        <ChatBox roomId={this.props.match.params.username} />
+                        {/* <ChatBox roomId={this.props.match.params.username} /> */}
+                        <ChatBox />
 
                     </div>
                 </div>
 
-            </Layout>
+            </>
 
 
         )
     }
 }
+export default requireEvent(EventVideoPlayer);

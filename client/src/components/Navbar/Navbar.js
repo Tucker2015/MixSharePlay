@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { logOutUser } from '../../store/actions/authActions';
 import './styles.css';
-import CookieConsent from "react-cookie-consent";
+
 const Navbar = ({ auth, logOutUser, history }) => {
   const onLogOut = (event) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ const Navbar = ({ auth, logOutUser, history }) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="nav ml-auto justify-content-center">
+          <ul className="nav">
             <li className="nav-item">
               <Link to="/"><i className="fa fa-home"></i> Home</Link>
             </li>
@@ -55,6 +55,11 @@ const Navbar = ({ auth, logOutUser, history }) => {
                 {auth.me?.role === 'ADMIN' && (
                   <li className="nav-item">
                     <Link to="/admin"><i className="fa fa-lock" aria-hidden="true"></i> Admin</Link>
+                  </li>
+                )}
+                {auth.me?.role === 'ADMIN' && (
+                  <li className="nav-item">
+                    <Link to="/event"><i className="fa fa-lock" aria-hidden="true"></i> Event</Link>
                   </li>
                 )}
                 {auth.me?.role === 'ADMIN' && (
